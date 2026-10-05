@@ -7,19 +7,20 @@ This is the static website published with GitHub Pages. It uses plain HTML, CSS,
 
 ### Change the current event
 
-Open `event-data.js` and edit the `featuredEvent` values near the top. Set `active: true` when you have an event to display and `active: false` when there is no featured event. Update the date, time, location, address, description, and attending kittens there. The address automatically links to a Google Maps search. The October 3, 2026 event is currently marked inactive because that date has passed.
+Open `event-data.js` and edit the `featuredEvent` values near the top. Set `active: true` and fill in the current weekend's location, date, time, address, description, and attending kittens. When there is no confirmed placement, leave `active: false`; the homepage displays “Coming soon” and the regular schedule. The address automatically links to Google Maps.
 
-### Add or remove hero photos
+### Add or remove foster photos
+### Add or remove foster photos
 
-Put your own photos in `assets/hero/`. Open `script.js` and add each filename to the `HERO_PHOTOS` list near the top, such as `"photo1.jpg"`. Remove a filename from that list to stop showing that photo. With an empty list, the homepage displays a placeholder.
+Put your own foster photos in `assets/hero/`. Open `script.js` and add each filename to the `FOSTER_CAROUSEL_PHOTOS` list near the top, such as `"photo1.jpg"`. Remove a filename from that list to stop showing that photo. With an empty list, the homepage displays a placeholder.
 
 ### Update regular adoption locations
 
-In `event-data.js`, edit the `regularSchedule.locations` list. Change a location's name, weekend timing, or days there. Set `regularSchedule.active` to `false` to hide the section.
+In `event-data.js`, edit the `regularSchedule.locations` list. Change a location's name, weekend timing, days, or address there. The address itself links to a Google Maps search. The note beneath the locations is the `regularSchedule.note` value.
 
 ### Change special-event notices
 
-In `event-data.js`, set `specialEvent.active` to `true` and update its title, description, location, date, time, and address. Set it to `false` to hide the panel completely. The October safety notice is in `octoberNotice`; set its `active` value to `false` when it no longer applies.
+In `event-data.js`, set `specialEvent.active` to `true` and update its title, description, location, date, time, and address. Set it to `false` to hide the panel completely. The October attendance notice is in `octoberNotice`; update its text or set `active` to `false` when it no longer applies.
 
 ### Update social links
 
@@ -33,11 +34,15 @@ Set `profileUrl` to `kittens/profile-template.html?id=your-kitten-id` to link th
 
 ### Update the About story
 
-Open `script.js` and find the `ABOUT STORY — EDIT HERE` block near the top. Its paragraphs and litter totals are kept together there.
+Open `script.js` and find the `ABOUT STORY — EDIT HERE` block near the top. Its paragraphs are kept together there.
+
+### Update How to Adopt information
+
+The adoption steps are in `how-to-adopt.html`. To update the rescue name, official website, Petfinder link, or application instructions, edit the clearly labeled values in `adoption-data.js`. Leave a link blank to omit it from the page.
 
 ### Add your logo
 
-Add your real logo as `assets/logo.jpg`. The header will use it automatically; until it is present, the original P mark remains visible. No placeholder or generated image is included.
+The real logo is stored at `assets/logo.jpg` and is used in the homepage and kitten-profile headers. Replace that file if the logo changes.
 
 ## Main Files
 
@@ -46,4 +51,5 @@ Add your real logo as `assets/logo.jpg`. The header will use it automatically; u
 - `script.js` — carousels, navigation, homepage rendering, and About story
 - `kitten-data.js` — homepage kitten cards and future profile details
 - `event-data.js` — featured event, regular schedule, and optional notices
+- `how-to-adopt.html` and `adoption-data.js` — adoption steps and editable rescue information
 - `kittens/profile-template.html` — reusable kitten profile layout

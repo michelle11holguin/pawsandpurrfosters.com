@@ -1,24 +1,23 @@
 // ==========================================
-// HERO PHOTOS — EDIT HERE
-// Add or remove your own filenames from assets/hero.
+// FOSTER PHOTO CAROUSEL — EDIT HERE
+// Add or remove your own photo filenames from assets/hero.
 // Example: "photo1.jpg"
 // ==========================================
-const HERO_PHOTOS = [];
+const FOSTER_CAROUSEL_PHOTOS = [];
 
 // ==========================================
 // ABOUT STORY — EDIT HERE
-// Keep the paragraphs and litter counts together in this object.
+// Keep the story paragraphs together in this object.
 // ==========================================
 const ABOUT_STORY = {
   paragraphs: [
     "Paws & Purr Fosters is a small foster team run by my brother and me, with the help of our family. We officially began fostering kittens on February 29, 2024.",
-    "Before we officially began fostering, we unexpectedly raised a single kitten. That experience showed us how much love, patience, and care goes into helping a kitten grow and thrive, and eventually inspired us to officially begin fostering.",
-    "That kitten was Figaro. He showed me how much love I could have for a kitten. Figaro passed away in 2020. When we were ready to officially begin fostering in 2024, I wanted to honor the impact he had on my life by helping other kittens.",
+    "Before we officially began fostering, we unexpectedly raised a single kitten. That experience showed me how much love, patience, and care goes into helping a kitten grow and thrive, and eventually inspired me to begin fostering.",
+    "That kitten was Figaro, but we called him Fig. Fig showed me how much love I could have for a kitten. He passed away in 2020. On February 29, 2024, I decided to begin fostering to honor the impact he had on my life by helping save and raise other kittens.",
     "We are now on our 12th litter and have fostered 43 kittens so far. Every kitten in our care receives plenty of love, care, socialization, positive experiences, play, and opportunities to build confidence while waiting for their forever home.",
-    "All of our kittens are harness-trained. It helps them build confidence and experience new things, including safe trips to the veterinarian and fun adventures with their future families.",
-    "We are proud of what we do and look forward to helping many more kittens find the loving homes they deserve."
-  ],
-  litterTotals: [4, 3, 7, 1, 1, 4, 4, 3, 4, 4, 4, 4]
+    "All of our kittens are harness-trained to some degree while in our care. The longer they stay with us, the more opportunity they have to become fully comfortable with it. Harness training helps them build confidence and experience new things, including safe trips to the veterinarian and fun adventures with their future families.",
+    "We're proud of what we do and look forward to helping many more kittens find the loving homes they deserve."
+  ]
 };
 
 const menuToggle = document.querySelector(".menu-toggle");
@@ -38,9 +37,6 @@ function renderAbout() {
   const container = document.querySelector("#about-content");
   if (!container) return;
   const paragraphs = ABOUT_STORY.paragraphs.map(text => `<p>${escapeHTML(text)}</p>`).join("");
-  const totals = ABOUT_STORY.litterTotals.map((count, index) =>
-    `<li>${index + 1}${["st", "nd", "rd"][index] || "th"} litter: ${escapeHTML(count)}</li>`
-  ).join("");
 
   container.innerHTML = `
     <div class="about-accent"><span>Since</span><strong>2024</strong><span>43 kittens fostered</span></div>
@@ -48,11 +44,10 @@ function renderAbout() {
       <p class="eyebrow">About Paws &amp; Purr Fosters</p>
       <h2>A small foster team, with a lot of love to give.</h2>
       ${paragraphs}
-      <details class="litter-totals"><summary>Our litter totals</summary><ol>${totals}</ol></details>
     </div>`;
 }
 
-function renderHeroCarousel() {
+function renderFosterPhotoCarousel() {
   const slides = document.querySelector("#hero-slides");
   const empty = document.querySelector("#hero-empty");
   const previous = document.querySelector("#hero-previous");
@@ -60,7 +55,7 @@ function renderHeroCarousel() {
   const dots = document.querySelector("#hero-dots");
   if (!slides || !empty || !previous || !next || !dots) return;
 
-  const photoPaths = HERO_PHOTOS.filter(Boolean).map(filename => `assets/hero/${filename}`);
+  const photoPaths = FOSTER_CAROUSEL_PHOTOS.filter(Boolean).map(filename => `assets/hero/${filename}`);
   if (!photoPaths.length) return;
 
   empty.hidden = true;
@@ -156,8 +151,8 @@ function renderKittenCards() {
   updateControls();
 }
 
-function mapsLink(event) {
-  return event.mapsUrl || `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(event.address || event.location || "")}`;
+function mapsLink(address, mapsUrl = "") {
+  return mapsUrl || `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(address || "")}`;
 }
 
 function renderEvents() {
@@ -165,22 +160,33 @@ function renderEvents() {
   if (!data) return;
 
   const featured = document.querySelector("#event-featured");
-  const event = data.featuredEvent;
-  if (featured && event?.active) {
-    const attendees = event.attendingKittens?.length
-      ? `<p><strong>Attending kittens:</strong> ${escapeHTML(event.attendingKittens.join(", "))}</p>`
-      : "";
-    const notice = event.specialNotice ? `<p class="event-special-note">${escapeHTML(event.specialNotice)}</p>` : "";
-    const address = event.address
-      ? `<a class="event-address" href="${escapeHTML(mapsLink(event))}" target="_blank" rel="noopener noreferrer">${escapeHTML(event.address)} ↗</a>`
-      : "";
-    featured.innerHTML = `<div class="event-card">
-      <div><p class="eyebrow">This weekend</p><h2>${escapeHTML(event.title)}</h2>
-        <p class="event-date">${escapeHTML(event.date)} · ${escapeHTML(event.time)}</p>
-        <p>${escapeHTML(event.description)}</p>${attendees}${notice}
-      </div>
-      <div class="event-location"><span>${escapeHTML(event.location)}</span>${address}</div>
-    </div>`;
+  const event = data.featuredEvent || {};
+  if (featured) {
+    if (event.active) {
+      const attendees = event.attendingKittens?.length
+        ? `<p><strong>Attending kittens:</strong> ${escapeHTML(event.attendingKittens.join(", "))}</p>`
+        : "";
+      const notice = event.specialNotice ? `<p class="event-special-note">${escapeHTML(event.specialNotice)}</p>` : "";
+      const dateAndTime = [event.date, event.time].filter(Boolean).map(escapeHTML).join(" · ");
+      const address = event.address
+        ? `<a class="event-address" href="${escapeHTML(mapsLink(event.address, event.mapsUrl))}" target="_blank" rel="noopener noreferrer">${escapeHTML(event.address)}</a>`
+        : "";
+      featured.innerHTML = `<div class="event-card">
+        <div><p class="eyebrow">This weekend</p><h2>Where to Find Us</h2>
+          ${event.location ? `<h3 class="placement-location">${escapeHTML(event.location)}</h3>` : ""}
+          ${dateAndTime ? `<p class="event-date">${dateAndTime}</p>` : ""}
+          ${event.description ? `<p>${escapeHTML(event.description)}</p>` : ""}${attendees}${notice}
+        </div>
+        <div class="event-location">${address || "<span>See the regular schedule below for our usual locations.</span>"}</div>
+      </div>`;
+    } else {
+      featured.innerHTML = `<div class="event-card event-coming-soon">
+        <div><p class="eyebrow">This weekend</p><h2>Where to Find Us</h2><h3 class="placement-location">Coming soon</h3>
+          <p>Check our regular adoption schedule below for our usual locations.</p>
+        </div>
+        <div class="event-location"><span>Weekend placement updates are posted here as soon as they are confirmed.</span></div>
+      </div>`;
+    }
     featured.hidden = false;
   }
 
@@ -188,7 +194,8 @@ function renderEvents() {
   if (schedule && data.regularSchedule?.active) {
     const locations = data.regularSchedule.locations.map(location => `
       <article class="schedule-location"><h3>${escapeHTML(location.name)}</h3>
-        <p>${escapeHTML(location.timing)}</p>${location.days ? `<p>${escapeHTML(location.days)}</p>` : ""}</article>`
+        <p>${escapeHTML(location.timing)}</p>${location.days ? `<p>${escapeHTML(location.days)}</p>` : ""}
+        ${location.address ? `<a class="schedule-address" href="${escapeHTML(mapsLink(location.address, location.mapsUrl))}" target="_blank" rel="noopener noreferrer">${escapeHTML(location.address)}</a>` : ""}</article>`
     ).join("");
     schedule.innerHTML = `<p class="eyebrow">Find us regularly</p><h2>Regular Adoption Schedule</h2>
       <div class="schedule-locations">${locations}</div>
@@ -199,7 +206,7 @@ function renderEvents() {
   const special = document.querySelector("#special-event");
   if (special && data.specialEvent?.active) {
     const place = data.specialEvent.address
-      ? `<a class="event-address" href="${escapeHTML(mapsLink(data.specialEvent))}" target="_blank" rel="noopener noreferrer">${escapeHTML(data.specialEvent.address)} ↗</a>`
+      ? `<a class="event-address" href="${escapeHTML(mapsLink(data.specialEvent.address, data.specialEvent.mapsUrl))}" target="_blank" rel="noopener noreferrer">${escapeHTML(data.specialEvent.address)}</a>`
       : "";
     special.innerHTML = `<p class="eyebrow">One-time opportunity</p><h2>${escapeHTML(data.specialEvent.title)}</h2>
       <p>${escapeHTML(data.specialEvent.description)}</p>
@@ -213,20 +220,6 @@ function renderEvents() {
       ${data.octoberNotice.messages.map(message => `<p>${escapeHTML(message)}</p>`).join("")}`;
     notice.hidden = false;
   }
-}
-
-function initializeLogo() {
-  const logo = document.querySelector("#brand-logo");
-  const fallback = document.querySelector("#brand-fallback");
-  if (!logo || !fallback) return;
-  const showLogo = () => {
-    if (logo.naturalWidth > 0) {
-      logo.hidden = false;
-      fallback.hidden = true;
-    }
-  };
-  logo.addEventListener("load", showLogo);
-  if (logo.complete) showLogo();
 }
 
 if (menuToggle && nav) {
@@ -244,7 +237,6 @@ if (menuToggle && nav) {
 }
 
 renderAbout();
-renderHeroCarousel();
+renderFosterPhotoCarousel();
 renderKittenCards();
 renderEvents();
-initializeLogo();

@@ -5,28 +5,30 @@
 window.PAWS_EVENT_DATA = {
   featuredEvent: {
     active: false,
-    title: "Adoption Event",
-    location: "PetSmart — Pittsburg",
-    date: "Saturday, October 3, 2026",
-    time: "11:00 AM–3:00 PM",
-    address: "4655 Century Blvd, Pittsburg, CA 94565",
+    title: "Where to Find Us",
+    location: "",
+    date: "",
+    time: "",
+    address: "",
     mapsUrl: "",
     attendingKittens: [],
-    description: "Meet our adoptable kittens in person at PetSmart in Pittsburg.",
+    description: "",
     specialNotice: ""
   },
   regularSchedule: {
     active: true,
-    note: "The regular schedule can change, and special events may occur.",
+    note: "Schedule is subject to change. Special adoption events and additional locations may be added.",
     locations: [
       {
         name: "Pittsburg PetSmart",
-        timing: "1st and 3rd weekend of the month"
+        timing: "1st & 3rd Saturday of each month",
+        address: "4655 Century Blvd, Pittsburg, CA 94565"
       },
       {
         name: "Antioch PetSmart",
-        timing: "2nd weekend of the month",
-        days: "Saturday and Sunday"
+        timing: "2nd weekend of each month",
+        days: "Saturday & Sunday",
+        address: "5879 Lone Tree Way, Antioch, CA 94531"
       }
     ]
   },
@@ -42,10 +44,10 @@ window.PAWS_EVENT_DATA = {
   },
   octoberNotice: {
     active: true,
-    title: "October adoption and attendance notice",
+    title: "October Adoption Attendance Notice",
     messages: [
-      "During the month of October, black cats will not be available for adoption due to safety risks associated with the month, in accordance with rescue policy.",
-      "Claudia will not be attending adoption events during October. Because Paloma is bonded with Claudia, Paloma will not be attending events during October either."
+      "During October, black cats will not be available for adoption at adoption events due to safety risks associated with the month, in accordance with the rescue's policy. We always want to prioritize the safety of our foster cats.",
+      "Claudia will not be attending adoption events during October and the first week of November. Paloma, her bonded pair, will generally not attend events during this time either, although she may occasionally attend an event when we feel it is appropriate."
     ]
   }
 };
