@@ -10,7 +10,8 @@
 <body>
   <header class="site-header">
     <a class="brand" href="index.html" aria-label="Paws & Purr Fosters home">
-      <span class="brand-mark">P</span>
+      <span class="brand-mark" id="brand-fallback" aria-hidden="true">P</span>
+      <img class="brand-logo" id="brand-logo" src="assets/logo.jpg" alt="" hidden>
       <span>
         <strong>Paws &amp; Purr</strong>
         <small>FOSTERS</small>
@@ -43,10 +44,17 @@
       </div>
 
       <div class="hero-art" aria-label="Photo placeholder">
-        <div class="photo-placeholder large">
+      <div class="hero-art">
+        <div class="hero-carousel" id="hero-carousel" role="region" aria-label="Foster kitten photos">
+          <div class="hero-slides" id="hero-slides" aria-live="polite"></div>
+          <div class="photo-placeholder large" id="hero-empty">
           <div class="placeholder-icon">+</div>
-          <span>Add a favorite foster photo here</span>
-          <small>Your real kitten photo will go here.</small>
+            <span>Your foster photos will appear here</span>
+            <small>Add your own photos in assets/hero.</small>
+          </div>
+          <button class="carousel-button hero-arrow hero-previous" id="hero-previous" type="button" aria-label="Previous photo" hidden>‹</button>
+          <button class="carousel-button hero-arrow hero-next" id="hero-next" type="button" aria-label="Next photo" hidden>›</button>
+          <div class="hero-dots" id="hero-dots" aria-label="Choose a photo"></div>
         </div>
         <div class="floating-card">
           <strong>Finding forever homes</strong>
@@ -56,7 +64,7 @@
     </section>
 
     <section class="intro section">
-      <div class="section-heading centered">
+      <div class="section-heading centered intro-heading">
         <p class="eyebrow">Welcome</p>
         <h2>Little paws, big personalities.</h2>
         <p>
@@ -68,94 +76,33 @@
 
     <section class="kittens section" id="kittens">
       <div class="section-heading">
+      <div class="section-heading">
         <div>
           <p class="eyebrow">Meet the kittens</p>
           <h2>Our current fosters</h2>
         </div>
-        <a class="text-link" href="#">View all kittens <span>→</span></a>
+        <div class="kitten-carousel-controls" aria-label="Kitten carousel controls">
+          <button class="carousel-button" id="kitten-previous" type="button" aria-label="Previous kittens">‹</button>
+          <button class="carousel-button" id="kitten-next" type="button" aria-label="Next kittens">›</button>
+        </div>
       </div>
 
-      <div class="kitten-grid">
-        <article class="kitten-card">
-          <div class="photo-placeholder card-photo">
-            <span>Kitten photo</span>
-          </div>
-          <div class="card-content">
-            <div class="status">Available</div>
-            <h3>Diego</h3>
-            <p>Outgoing, playful, social, and always ready to be part of the action.</p>
-            <a href="#" class="card-link">Meet Diego →</a>
-          </div>
-        </article>
-
-        <article class="kitten-card">
-          <div class="photo-placeholder card-photo">
-            <span>Kitten photo</span>
-          </div>
-          <div class="card-content">
-            <div class="status">Available</div>
-            <h3>Valentina</h3>
-            <p>Confident, playful, and always happy to meet new people.</p>
-            <a href="#" class="card-link">Meet Valentina →</a>
-          </div>
-        </article>
-
-        <article class="kitten-card">
-          <div class="photo-placeholder card-photo">
-            <span>Kitten photo</span>
-          </div>
-          <div class="card-content">
-            <div class="status">Available</div>
-            <h3>Your next foster</h3>
-            <p>This space is ready for another kitten profile when you are.</p>
-            <a href="#" class="card-link">Coming soon →</a>
-          </div>
-        </article>
+      <div class="kitten-track" id="kitten-track" role="region" aria-label="Current foster kittens" tabindex="0">
       </div>
     </section>
 
     <section class="event section" id="events">
-      <div class="event-card">
-        <div>
-          <p class="eyebrow">This weekend</p>
-          <h2>Adoption Event</h2>
-          <p class="event-date">Saturday, October 3, 2026 · 11:00 AM–3:00 PM</p>
-          <p>
-            Meet our adoptable kittens in person at PetSmart in Pittsburg.
-            All of our current fosters will be attending except Claudia and Paloma.
-          </p>
-          <a class="button light" href="#contact">Event Details</a>
-        </div>
-        <div class="event-location">
-          <span>PetSmart — Pittsburg</span>
-          <strong>4655 Century Blvd</strong>
-          <span>Pittsburg, CA 94565</span>
-        </div>
+      <div id="event-featured" hidden></div>
+      <div class="event-panels">
+        <section class="schedule-panel" id="regular-schedule" hidden></section>
+        <section class="special-event-panel" id="special-event" hidden></section>
+        <aside class="october-notice" id="october-notice" hidden></aside>
       </div>
     </section>
 
+    <!-- ABOUT STORY — EDIT THIS SECTION -->
     <section class="about section" id="about">
-      <div class="about-grid">
-        <div class="about-accent">
-          <span>Since</span>
-          <strong>2024</strong>
-          <span>Helping kittens find home.</span>
-        </div>
-        <div>
-          <p class="eyebrow">About Paws &amp; Purr Fosters</p>
-          <h2>Helping little paws find their forever homes.</h2>
-          <p>
-            Paws &amp; Purr Fosters is a small foster team run by my brother and me.
-            We have been fostering kittens since February 29, 2024, and are now on our
-            12th litter.
-          </p>
-          <p>
-            Every kitten receives plenty of love, care, socialization, and positive
-            experiences while waiting for a forever home. Most of our kittens are also
-            harness-trained to help them build confidence and enjoy new experiences.
-          </p>
-        </div>
-      </div>
+      <div class="about-grid" id="about-content"></div>
     </section>
 
     <section class="contact section" id="contact">
@@ -164,8 +111,8 @@
         <h2>Follow their journey.</h2>
         <p>Follow Paws &amp; Purr Fosters for kitten updates, adoption events, photos, and videos.</p>
         <div class="social-buttons">
-          <a href="#" class="button primary">Instagram</a>
-          <a href="#" class="button secondary">Facebook</a>
+          <a href="https://www.instagram.com/pawsandpurrfosters?stkn=dmp6djdrcTlkcmht&amp;utm_source=qr" class="button primary" target="_blank" rel="noopener noreferrer">Instagram</a>
+          <a href="https://www.facebook.com/profile.php?id=61559442804395&amp;mibextid=wwXIfr" class="button secondary" target="_blank" rel="noopener noreferrer">Facebook</a>
         </div>
       </div>
     </section>
@@ -179,6 +126,9 @@
     <span>© 2026 Paws &amp; Purr Fosters</span>
   </footer>
 
+  <script src="script.js"></script>
+  <script src="kitten-data.js"></script>
+  <script src="event-data.js"></script>
   <script src="script.js"></script>
 </body>
 </html>

@@ -1,5 +1,233 @@
+// ==========================================
+// HERO PHOTOS — EDIT HERE
+// Add or remove your own filenames from assets/hero.
+// Example: "photo1.jpg"
+// ==========================================
+const HERO_PHOTOS = [];
+
+// ==========================================
+// ABOUT STORY — EDIT HERE
+// Keep the paragraphs and litter counts together in this object.
+// ==========================================
+const ABOUT_STORY = {
+  paragraphs: [
+    "Paws & Purr Fosters is a small foster team run by my brother and me, with the help of our family. We officially began fostering kittens on February 29, 2024.",
+    "Before we officially began fostering, we unexpectedly raised a single kitten. That experience showed us how much love, patience, and care goes into helping a kitten grow and thrive, and eventually inspired us to officially begin fostering.",
+    "That kitten was Figaro. He showed me how much love I could have for a kitten. Figaro passed away in 2020. When we were ready to officially begin fostering in 2024, I wanted to honor the impact he had on my life by helping other kittens.",
+    "We are now on our 12th litter and have fostered 43 kittens so far. Every kitten in our care receives plenty of love, care, socialization, positive experiences, play, and opportunities to build confidence while waiting for their forever home.",
+    "All of our kittens are harness-trained. It helps them build confidence and experience new things, including safe trips to the veterinarian and fun adventures with their future families.",
+    "We are proud of what we do and look forward to helping many more kittens find the loving homes they deserve."
+  ],
+  litterTotals: [4, 3, 7, 1, 1, 4, 4, 3, 4, 4, 4, 4]
+};
+
 const menuToggle = document.querySelector(".menu-toggle");
 const nav = document.querySelector(".nav");
+
+function escapeHTML(value) {
+  return String(value ?? "").replace(/[&<>"']/g, character => ({
+    "&": "&amp;",
+    "<": "&lt;",
+    ">": "&gt;",
+    '"': "&quot;",
+    "'": "&#39;"
+  })[character]);
+}
+
+function renderAbout() {
+  const container = document.querySelector("#about-content");
+  if (!container) return;
+  const paragraphs = ABOUT_STORY.paragraphs.map(text => `<p>${escapeHTML(text)}</p>`).join("");
+  const totals = ABOUT_STORY.litterTotals.map((count, index) =>
+    `<li>${index + 1}${["st", "nd", "rd"][index] || "th"} litter: ${escapeHTML(count)}</li>`
+  ).join("");
+
+  container.innerHTML = `
+    <div class="about-accent"><span>Since</span><strong>2024</strong><span>43 kittens fostered</span></div>
+    <div>
+      <p class="eyebrow">About Paws &amp; Purr Fosters</p>
+      <h2>A small foster team, with a lot of love to give.</h2>
+      ${paragraphs}
+      <details class="litter-totals"><summary>Our litter totals</summary><ol>${totals}</ol></details>
+    </div>`;
+}
+
+function renderHeroCarousel() {
+  const slides = document.querySelector("#hero-slides");
+  const empty = document.querySelector("#hero-empty");
+  const previous = document.querySelector("#hero-previous");
+  const next = document.querySelector("#hero-next");
+  const dots = document.querySelector("#hero-dots");
+  if (!slides || !empty || !previous || !next || !dots) return;
+
+  const photoPaths = HERO_PHOTOS.filter(Boolean).map(filename => `assets/hero/${filename}`);
+  if (!photoPaths.length) return;
+
+  empty.hidden = true;
+  slides.innerHTML = photoPaths.map((path, index) => `
+    <img class="hero-photo${index === 0 ? " is-active" : ""}" src="${escapeHTML(path)}"
+      alt="Paws &amp; Purr foster kitten${photoPaths.length > 1 ? "s" : ""}" ${index ? "loading=\"lazy\"" : ""}>
+  `).join("");
+
+  const images = Array.from(slides.querySelectorAll("img"));
+  let activeIndex = 0;
+  let timer;
+  const showSlide = index => {
+    activeIndex = (index + images.length) % images.length;
+    images.forEach((image, imageIndex) => image.classList.toggle("is-active", imageIndex === activeIndex));
+    dots.querySelectorAll("button").forEach((dot, dotIndex) => {
+      dot.classList.toggle("is-active", dotIndex === activeIndex);
+      dot.setAttribute("aria-current", String(dotIndex === activeIndex));
+    });
+  };
+
+  dots.innerHTML = images.map((_, index) =>
+    `<button type="button" aria-label="Show photo ${index + 1}" aria-current="${index === 0}"></button>`
+  ).join("");
+  dots.querySelectorAll("button").forEach((dot, index) => dot.addEventListener("click", () => showSlide(index)));
+  previous.hidden = images.length < 2;
+  next.hidden = images.length < 2;
+  dots.hidden = images.length < 2;
+  previous.addEventListener("click", () => showSlide(activeIndex - 1));
+  next.addEventListener("click", () => showSlide(activeIndex + 1));
+
+  if (images.length > 1 && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    timer = window.setInterval(() => showSlide(activeIndex + 1), 5000);
+    const carousel = document.querySelector("#hero-carousel");
+    carousel.addEventListener("mouseenter", () => window.clearInterval(timer));
+    carousel.addEventListener("mouseleave", () => {
+      window.clearInterval(timer);
+      timer = window.setInterval(() => showSlide(activeIndex + 1), 5000);
+    });
+  }
+
+  images.forEach(image => image.addEventListener("error", () => {
+    image.remove();
+    const remainingImages = slides.querySelectorAll("img");
+    if (!remainingImages.length) {
+      slides.hidden = true;
+      empty.hidden = false;
+      previous.hidden = true;
+      next.hidden = true;
+      dots.hidden = true;
+    }
+  }));
+}
+
+function renderKittenCards() {
+  const track = document.querySelector("#kitten-track");
+  if (!track || !Array.isArray(window.PAWS_KITTENS)) return;
+
+  track.innerHTML = window.PAWS_KITTENS.map(kitten => {
+    const photo = kitten.image
+      ? `<img src="${escapeHTML(kitten.image)}" alt="${escapeHTML(kitten.name)}" loading="lazy">`
+      : `<div class="photo-placeholder card-photo"><span>Photo coming soon</span></div>`;
+    const profileAction = kitten.profileUrl
+      ? `<a href="${escapeHTML(kitten.profileUrl)}" class="card-link">Meet ${escapeHTML(kitten.name)} →</a>`
+      : `<span class="card-link profile-coming-soon">Profile coming soon</span>`;
+    return `<article class="kitten-card">
+      <div class="card-photo-wrap">${photo}</div>
+      <div class="card-content">
+        <div class="status">${escapeHTML(kitten.status || "Available")}</div>
+        <h3>${escapeHTML(kitten.name)}</h3>
+        <p>${escapeHTML(kitten.description)}</p>
+        ${profileAction}
+      </div>
+    </article>`;
+  }).join("");
+
+  const previous = document.querySelector("#kitten-previous");
+  const next = document.querySelector("#kitten-next");
+  const updateControls = () => {
+    const maxScroll = track.scrollWidth - track.clientWidth;
+    previous.disabled = track.scrollLeft <= 2;
+    next.disabled = track.scrollLeft >= maxScroll - 2;
+    previous.hidden = maxScroll <= 2;
+    next.hidden = maxScroll <= 2;
+  };
+  const scrollCards = direction => {
+    const card = track.querySelector(".kitten-card");
+    if (card) track.scrollBy({ left: direction * (card.getBoundingClientRect().width + 22), behavior: "smooth" });
+  };
+  previous.addEventListener("click", () => scrollCards(-1));
+  next.addEventListener("click", () => scrollCards(1));
+  track.addEventListener("scroll", updateControls, { passive: true });
+  window.addEventListener("resize", updateControls);
+  updateControls();
+}
+
+function mapsLink(event) {
+  return event.mapsUrl || `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(event.address || event.location || "")}`;
+}
+
+function renderEvents() {
+  const data = window.PAWS_EVENT_DATA;
+  if (!data) return;
+
+  const featured = document.querySelector("#event-featured");
+  const event = data.featuredEvent;
+  if (featured && event?.active) {
+    const attendees = event.attendingKittens?.length
+      ? `<p><strong>Attending kittens:</strong> ${escapeHTML(event.attendingKittens.join(", "))}</p>`
+      : "";
+    const notice = event.specialNotice ? `<p class="event-special-note">${escapeHTML(event.specialNotice)}</p>` : "";
+    const address = event.address
+      ? `<a class="event-address" href="${escapeHTML(mapsLink(event))}" target="_blank" rel="noopener noreferrer">${escapeHTML(event.address)} ↗</a>`
+      : "";
+    featured.innerHTML = `<div class="event-card">
+      <div><p class="eyebrow">This weekend</p><h2>${escapeHTML(event.title)}</h2>
+        <p class="event-date">${escapeHTML(event.date)} · ${escapeHTML(event.time)}</p>
+        <p>${escapeHTML(event.description)}</p>${attendees}${notice}
+      </div>
+      <div class="event-location"><span>${escapeHTML(event.location)}</span>${address}</div>
+    </div>`;
+    featured.hidden = false;
+  }
+
+  const schedule = document.querySelector("#regular-schedule");
+  if (schedule && data.regularSchedule?.active) {
+    const locations = data.regularSchedule.locations.map(location => `
+      <article class="schedule-location"><h3>${escapeHTML(location.name)}</h3>
+        <p>${escapeHTML(location.timing)}</p>${location.days ? `<p>${escapeHTML(location.days)}</p>` : ""}</article>`
+    ).join("");
+    schedule.innerHTML = `<p class="eyebrow">Find us regularly</p><h2>Regular Adoption Schedule</h2>
+      <div class="schedule-locations">${locations}</div>
+      <p class="schedule-note">${escapeHTML(data.regularSchedule.note)}</p>`;
+    schedule.hidden = false;
+  }
+
+  const special = document.querySelector("#special-event");
+  if (special && data.specialEvent?.active) {
+    const place = data.specialEvent.address
+      ? `<a class="event-address" href="${escapeHTML(mapsLink(data.specialEvent))}" target="_blank" rel="noopener noreferrer">${escapeHTML(data.specialEvent.address)} ↗</a>`
+      : "";
+    special.innerHTML = `<p class="eyebrow">One-time opportunity</p><h2>${escapeHTML(data.specialEvent.title)}</h2>
+      <p>${escapeHTML(data.specialEvent.description)}</p>
+      <p>${[data.specialEvent.date, data.specialEvent.time, data.specialEvent.location].filter(Boolean).map(escapeHTML).join(" · ")}</p>${place}`;
+    special.hidden = false;
+  }
+
+  const notice = document.querySelector("#october-notice");
+  if (notice && data.octoberNotice?.active) {
+    notice.innerHTML = `<h2>${escapeHTML(data.octoberNotice.title)}</h2>
+      ${data.octoberNotice.messages.map(message => `<p>${escapeHTML(message)}</p>`).join("")}`;
+    notice.hidden = false;
+  }
+}
+
+function initializeLogo() {
+  const logo = document.querySelector("#brand-logo");
+  const fallback = document.querySelector("#brand-fallback");
+  if (!logo || !fallback) return;
+  const showLogo = () => {
+    if (logo.naturalWidth > 0) {
+      logo.hidden = false;
+      fallback.hidden = true;
+    }
+  };
+  logo.addEventListener("load", showLogo);
+  if (logo.complete) showLogo();
+}
 
 if (menuToggle && nav) {
   menuToggle.addEventListener("click", () => {
@@ -14,3 +242,9 @@ if (menuToggle && nav) {
     });
   });
 }
+
+renderAbout();
+renderHeroCarousel();
+renderKittenCards();
+renderEvents();
+initializeLogo();
