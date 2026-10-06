@@ -156,6 +156,7 @@ appRoot.PAWS_KITTENS = [
     profileUrl: "kittens/profile-template.html?id=harvey",
     gender: "Male",
     birthday: "2026-04-19",
+    litterNumber: 12,
     bio: "Meet Harvey! Harvey is a very affectionate kitten who loves people and is happiest when he is being held or included in whatever is going on around him. He loves to play and enjoys just about every toy you can offer, but once he has worn himself out, he is happiest making biscuits on a soft blanket nearby. He is very food motivated and gets super excited for mealtimes.",
     photos: [
       "assets/kittens/harvey-photo-2.png",
@@ -185,6 +186,7 @@ appRoot.PAWS_KITTENS = [
     profileUrl: "kittens/profile-template.html?id=melody",
     gender: "Female",
     birthday: "2026-04-19",
+    litterNumber: 12,
     bio: "Meet Melody! Melody is a sweet, confident, and incredibly affectionate kitten who absolutely adores people—they are her whole world. She loves being involved in whatever you are doing, being held, and following her people around. Although she is smaller than her siblings, her tiny size does not hold her back in the slightest. She is fearless, playful, and always ready to join in the fun.",
     photos: [
       "assets/kittens/melody-photo-2.png",
@@ -215,6 +217,7 @@ appRoot.PAWS_KITTENS = [
     profileUrl: "kittens/profile-template.html?id=wally",
     gender: "Male",
     birthday: "2026-02-16",
+    litterNumber: 10,
     bio: "Meet Wally! Wally is a timid boy who may need a little time to adjust, but with patience, you’ll get to see what a truly sweet kitten he is. He loves getting pets and will rub against your legs when he wants some attention. When he is especially happy, he may even flop right over! Wally loves to play, purr, and spend time with his people. Once he knows you, he really enjoys being near you and soaking up all the love he can get.\n\nWally was previously adopted and has since returned to foster care. He is not being returned because of a behavior problem — he is simply a very sweet, affectionate boy who has lots of love to give and does best with people who are willing to give him the time and patience he needs to feel comfortable.",
     photos: [
       "assets/kittens/wally-photo-2.png",
@@ -243,6 +246,7 @@ appRoot.PAWS_KITTENS = [
     profileUrl: "kittens/profile-template.html?id=raymond",
     gender: "Male",
     birthday: "2026-02-09",
+    litterNumber: 10,
     bio: "Meet Raymond! He is a very affectionate, playful boy who absolutely loves being around people. Raymond loves being petted and has the loudest purrs when he’s getting attention, and he’s always happy to play and spend time with his people. He may need a little time to adjust to a new environment, but once he feels comfortable, his sweet personality really shines through. Raymond was previously adopted and has since returned to foster care. This was not because of a behavior problem—he is simply an exceptionally affectionate, people-loving boy with lots of love and attention to give.",
     photos: [
       "assets/kittens/raymond-photo-2.png",
