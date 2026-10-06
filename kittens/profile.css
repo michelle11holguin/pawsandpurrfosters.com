@@ -11,6 +11,7 @@
 .profile-photo-placeholder { min-height: 350px; display: grid; place-items: center; padding: 24px; border: 1px dashed rgba(117,98,141,.38); border-radius: 24px; color: var(--muted); background: linear-gradient(145deg, var(--sage-light), var(--purple-light)); text-align: center; }
 .profile-intro h1 { margin-bottom: 10px; font-size: clamp(42px, 5vw, 64px); }
 .profile-status { display: inline-block; padding: 5px 10px; border-radius: 999px; background: var(--sage-light); color: var(--sage-dark); font-size: 12px; font-weight: 800; }
+.profile-status.status-returned { background: #e8def6; color: #5a3d7a; }
 .profile-bio { color: var(--muted); font-size: 17px; }
 .profile-details { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px 48px; margin-top: 60px; }
 .profile-detail { border-top: 1px solid var(--line); padding-top: 20px; }

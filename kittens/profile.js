@@ -107,6 +107,7 @@ function formatCompatibilityValue(rawValue) {
   const value = String(rawValue ?? "").trim();
   if (!value) return "Unknown — no direct experience";
   const lowercase = value.toLowerCase();
+  if (lowercase.startsWith("yes — prefers to be the only cat")) return value;
   if (lowercase.includes("possibly")) return "Possibly — no direct experience";
   if (lowercase.includes("unknown") || lowercase.includes("no direct experience")) return "Unknown — no direct experience";
   if (lowercase.includes("with proper introduction")) return "Yes — with proper introduction";
@@ -224,7 +225,17 @@ function renderProfile(kitten) {
     ? `<section class="profile-detail"><h2>Video</h2><a class="text-link" href="${escapeHTML(kitten.videoUrl)}" target="_blank" rel="noopener noreferrer">Watch ${escapeHTML(kitten.name)}'s video ↗</a></section>`
     : "";
 
-  const adoptionReminder = kitten.id === "valentina"
+  const adoptionReminder = kitten.id === "raymond"
+    ? `
+    <section class="profile-detail profile-reminder">
+      <h2>Interested in adopting Raymond?</h2>
+      <p>Raymond must be adopted with his bonded brother, <a class="text-link" href="profile-template.html?id=wally">Wally</a>. If you're interested in making them part of your family, you can learn more about Wally below and review the adoption process to see what comes next.</p>
+      <p>Have questions or want to see if Raymond is a good fit for your home?</p>
+      <p>Reach out to <strong><a href="https://www.nopawsleftbehindkittyrescue.com/">No Paws Left Behind Kitty Rescue</a></strong> with questions or to ask about scheduling a meet-and-greet. You can also visit our <a class="text-link" href="../index.html#events">Events</a> page to find out where Raymond will be this weekend. If you have questions about the adoption process, <strong><a href="https://www.nopawsleftbehindkittyrescue.com/">No Paws Left Behind Kitty Rescue</a></strong> is always happy to help. For smaller questions or foster-specific details, you can also email us directly at <a href="mailto:PawsAndPurrFosters@gmail.com">PawsAndPurrFosters@gmail.com</a>.</p>
+      <a class="button primary" href="../how-to-adopt.html">Learn How to Adopt</a>
+    </section>
+  `
+    : kitten.id === "valentina"
     ? `
     <section class="profile-detail profile-reminder">
       <h2>Interested in adopting Valentina?</h2>
@@ -298,7 +309,7 @@ function renderProfile(kitten) {
     <div class="profile-intro">
       <p class="eyebrow">Get to Know</p>
       <h1>${escapeHTML(kitten.name)}</h1>
-      <p class="profile-status">${escapeHTML(kitten.adoptionStatus || kitten.status || "")}</p>
+      <p class="profile-status${kitten.id === "raymond" && (kitten.adoptionStatus || kitten.status) === "Returned — Available" ? " status-returned" : ""}">${escapeHTML(kitten.adoptionStatus || kitten.status || "")}</p>
       ${kitten.birthday ? `<p><strong>Birthday:</strong> ${escapeHTML(formatBirthday(kitten.birthday))}${kittenAge(kitten.birthday) ? ` · ${escapeHTML(kittenAge(kitten.birthday))} old` : ""}</p>` : ""}
       ${kitten.gender ? `<p><strong>Gender:</strong> ${escapeHTML(kitten.gender)}</p>` : ""}
       ${bioMarkup}

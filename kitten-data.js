@@ -238,20 +238,24 @@ appRoot.PAWS_KITTENS = [
     image: "assets/kittens/raymond-main.png",
     profileUrl: "kittens/profile-template.html?id=raymond",
     gender: "Male",
-    birthday: "",
-    litterNumber: 10,
-    bio: "Raymond is gentle, social, and playful. He enjoys being near people, especially when there is fun to be had.",
-    photos: [],
-    personalityTraits: ["Gentle", "Social", "Playful", "Affectionate", "Curious", "Sweet"],
-    idealHome: "A calm home where he can be close to people and enjoy gentle play, cuddles, and companionship.",
-    compatibility: { dogs: "Unknown — no direct experience", cats: "Yes — with proper introduction", youngerChildren: "Possibly — no direct experience", olderChildren: "Yes" },
+    birthday: "2026-02-09",
+    bio: "Meet Raymond! He is a very affectionate, playful boy who absolutely loves being around people. Raymond loves being petted and has the loudest purrs when he’s getting attention, and he’s always happy to play and spend time with his people. He may need a little time to adjust to a new environment, but once he feels comfortable, his sweet personality really shines through. Raymond was previously adopted and has since returned to foster care. This was not because of a behavior problem—he is simply an exceptionally affectionate, people-loving boy with lots of love and attention to give.",
+    photos: [
+      "assets/kittens/raymond-photo-2.png",
+      "assets/kittens/raymond-photo-3.png",
+      "assets/kittens/raymond-photo-4.png"
+    ],
+    personalityTraits: ["Affectionate", "Playful", "People-loving", "Sweet", "Cuddly", "Social"],
+    idealHome: "Raymond would do best in a patient home that understands he may need some time to settle into a new environment. Once he feels comfortable, his affectionate and loving personality really comes through. He would prefer to be the only cat in the home, but he can be okay with other cats with a proper introduction. He would be happy with older children and people who enjoy having a very affectionate companion.",
+    compatibility: { dogs: "No", cats: "Yes — prefers to be the only cat, but can be okay with other cats with proper introduction", youngerChildren: "No", olderChildren: "Yes" },
     healthChecklist: ["Neutered", "Fully vaccinated", "Dewormed", "Flea treated", "Microchipped", "Fostered and socialized"],
     adoptionRequirements: [],
-    petfinderUrl: "",
+    petfinderUrl: "https://www.petfinder.com/cat/raymond-eaad2ec5-2d15-41d5-9967-5abc10225e8d/ca/oakley/no-paws-left-behind-kitty-rescue-ca3018/details/",
     whereToMeet: "",
     videoUrl: "",
     eventInformation: "",
-    pairing: { type: "must", kittenId: "wally" }
+    pairing: { type: "must", kittenId: "wally" },
+    pairingDescription: "Raymond and Wally are foster brothers who have been together since they were 10 weeks old and bonded almost right away. As a bonded pair, they are deeply attached and count on each other to feel confident and comfortable; they do just about everything together. They should not be separated and need to be adopted as a pair."
   }
 ];
 
