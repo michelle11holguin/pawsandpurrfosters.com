@@ -117,6 +117,7 @@ function formatCompatibilityValue(rawValue) {
 
 function getPairingDescription(kitten, pairingData) {
   if (!pairingData) return "";
+  if (kitten.pairingDescription) return kitten.pairingDescription;
   const pairNames = [kitten.name, pairingData.kittenName].filter(Boolean);
   if (pairNames.includes("Diego") && pairNames.includes("Valentina")) {
     if (kitten.id === "diego") {
@@ -180,6 +181,7 @@ function renderProfile(kitten) {
     <section class="profile-detail profile-ideal-home">
       <h2>Ideal Home</h2>
       ${kitten.idealHome ? `<p class="profile-ideal-description">${escapeHTML(kitten.idealHome)}</p>` : ""}
+      ${kitten.idealHomeNote ? `<p>${escapeHTML(kitten.idealHomeNote)}</p>` : ""}
       ${compatibilityEntries.length ? `<div class="compatibility-list">${compatibilityEntries.map(([label, value]) => `<div class="compatibility-item"><span>${escapeHTML(label)}:</span> <strong>${escapeHTML(formatCompatibilityValue(value))}</strong></div>`).join("")}</div>` : ""}
     </section>
   `;
@@ -198,6 +200,14 @@ function renderProfile(kitten) {
         <p><a class="text-link" href="${escapeHTML(`profile-template.html?id=${pairingData.kittenId}`)}">${escapeHTML(pairingData.kittenName)}</a></p>
         ${pairingDescription ? `<p class="profile-pairing-copy">${escapeHTML(pairingDescription)}</p>` : ""}
         <p><a class="text-link" href="${escapeHTML(`profile-template.html?id=${pairingData.kittenId}`)}">Get to Know ${escapeHTML(pairingData.kittenName)} →</a></p>
+      </section>`
+    : "";
+
+  const octoberNotice = typeof window !== "undefined" ? window.PAWS_EVENT_DATA?.octoberNotice : null;
+  const safetyNotice = kitten.id === "claudia" && octoberNotice?.active
+    ? `<section class="profile-detail profile-reminder">
+        <h2>${escapeHTML(octoberNotice.title)}</h2>
+        ${(octoberNotice.messages || []).map(message => `<p>${escapeHTML(message)}</p>`).join("")}
       </section>`
     : "";
 
@@ -229,6 +239,16 @@ function renderProfile(kitten) {
       <a class="button primary" href="../how-to-adopt.html">Learn How to Adopt</a>
     </section>
   `
+    : kitten.id === "claudia"
+    ? `
+    <section class="profile-detail profile-reminder">
+      <h2>Interested in adopting Claudia?</h2>
+      <p>Claudia must be adopted with her sister, <a class="text-link" href="profile-template.html?id=paloma">Paloma</a>. If you're interested in making them part of your family, you can learn more about Paloma below and review the adoption process to see what comes next.</p>
+      <p>Have questions or want to see if Claudia is a good fit for your home?</p>
+      <p>Reach out to <strong><a href="https://www.nopawsleftbehindkittyrescue.com/">No Paws Left Behind Kitty Rescue</a></strong> with questions or to ask about scheduling a meet-and-greet. You can also visit our <a class="text-link" href="../index.html#events">Events</a> page to find out where Claudia will be this weekend. If you have questions about the adoption process, <strong><a href="https://www.nopawsleftbehindkittyrescue.com/">No Paws Left Behind Kitty Rescue</a></strong> is always happy to help. For smaller questions or foster-specific details, you can also email us directly at <a href="mailto:PawsAndPurrFosters@gmail.com">PawsAndPurrFosters@gmail.com</a>.</p>
+      <a class="button primary" href="../how-to-adopt.html">Learn How to Adopt</a>
+    </section>
+  `
     : `
     <section class="profile-detail profile-reminder">
       <h2>Interested in adopting ${escapeHTML(kitten.name)}?</h2>
@@ -251,7 +271,7 @@ function renderProfile(kitten) {
     </div>
   </div>
   <div class="profile-details">
-    ${traits}${idealHomeBlock}${health}${requirements}${pairing}${meeting}${video}${adoptionReminder}
+    ${traits}${idealHomeBlock}${health}${requirements}${pairing}${meeting}${video}${safetyNotice}${adoptionReminder}
   </div>`;
 
   const lightbox = document.querySelector("#photo-lightbox");
