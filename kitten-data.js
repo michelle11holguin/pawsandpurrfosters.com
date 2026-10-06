@@ -214,20 +214,24 @@ appRoot.PAWS_KITTENS = [
     image: "assets/kittens/wally-main.png",
     profileUrl: "kittens/profile-template.html?id=wally",
     gender: "Male",
-    birthday: "",
-    litterNumber: 10,
-    bio: "Wally is curious, funny, and outgoing. He loves exploring new spaces and then settling in with the people he adores.",
-    photos: [],
-    personalityTraits: ["Curious", "Funny", "Outgoing", "Social", "Active", "Playful"],
-    idealHome: "A playful home where his curiosity and personality are welcomed every day.",
-    compatibility: { dogs: "Unknown — no direct experience", cats: "Yes — with proper introduction", youngerChildren: "Possibly — no direct experience", olderChildren: "Yes" },
+    birthday: "2026-02-16",
+    bio: "Meet Wally! Wally is a timid boy who may need a little time to adjust, but with patience, you’ll get to see what a truly sweet kitten he is. He loves getting pets and will rub against your legs when he wants some attention. When he is especially happy, he may even flop right over! Wally loves to play, purr, and spend time with his people. Once he knows you, he really enjoys being near you and soaking up all the love he can get.\n\nWally was previously adopted and has since returned to foster care. He is not being returned because of a behavior problem — he is simply a very sweet, affectionate boy who has lots of love to give and does best with people who are willing to give him the time and patience he needs to feel comfortable.",
+    photos: [
+      "assets/kittens/wally-photo-2.png",
+      "assets/kittens/wally-photo-3.png",
+      "assets/kittens/wally-photo-4.png"
+    ],
+    personalityTraits: ["Timid at first", "Sweet", "Affectionate", "Playful", "People-loving", "Cuddly"],
+    idealHome: "Wally would do best in a patient home that understands he may need some time to settle into a new environment. Once he feels comfortable, his affectionate and loving personality really comes through. He would prefer to be the only cat in the home, but he can be okay with other cats with a proper introduction. He would be happy with older children and people who enjoy having a very affectionate companion.",
+    compatibility: { dogs: "No", cats: "Yes — prefers to be the only cat, but can be okay with other cats with proper introduction", youngerChildren: "No", olderChildren: "Yes" },
     healthChecklist: ["Neutered", "Fully vaccinated", "Dewormed", "Flea treated", "Microchipped", "Fostered and socialized"],
     adoptionRequirements: [],
-    petfinderUrl: "",
+    petfinderUrl: "https://www.petfinder.com/cat/wally-064a5676-3e7c-430d-a699-37ba466c2400/ca/oakley/no-paws-left-behind-kitty-rescue-ca3018/details/",
     whereToMeet: "",
     videoUrl: "",
     eventInformation: "",
-    pairing: { type: "must", kittenId: "raymond" }
+    pairing: { type: "must", kittenId: "raymond" },
+    pairingDescription: "Wally and Raymond have been together since they were about 10 weeks old and have formed an incredibly strong bond. Raymond helps Wally feel confident and comfortable, while Wally is happiest when his brother is nearby. They play together, nap together, and look to each other for comfort, so they need to find a home together."
   },
   {
     id: "raymond",
