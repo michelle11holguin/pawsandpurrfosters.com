@@ -204,7 +204,12 @@ function renderProfile(kitten) {
     : "";
 
   const octoberNotice = typeof window !== "undefined" ? window.PAWS_EVENT_DATA?.octoberNotice : null;
-  const safetyNotice = kitten.id === "claudia" && octoberNotice?.active
+  const safetyNotice = kitten.adoptionNotice
+    ? `<section class="profile-detail profile-reminder">
+        <h2>${escapeHTML(kitten.adoptionNotice.title)}</h2>
+        <p>${escapeHTML(kitten.adoptionNotice.message)}</p>
+      </section>`
+    : kitten.id === "claudia" && octoberNotice?.active
     ? `<section class="profile-detail profile-reminder">
         <h2>${escapeHTML(octoberNotice.title)}</h2>
         ${(octoberNotice.messages || []).map(message => `<p>${escapeHTML(message)}</p>`).join("")}
@@ -236,6 +241,16 @@ function renderProfile(kitten) {
       <p>Diego must be adopted with his sister, <a class="text-link" href="profile-template.html?id=valentina">Valentina</a>. If you're interested in making them part of your family, you can learn more about Valentina below and review the adoption process to see what comes next.</p>
       <p>Have questions or want to see if Diego is a good fit for your home?</p>
       <p>Reach out to <strong><a href="https://www.nopawsleftbehindkittyrescue.com/">No Paws Left Behind Kitty Rescue</a></strong> with questions or to ask about scheduling a meet-and-greet. You can also visit our <a class="text-link" href="../index.html#events">Events</a> page to find out where Diego will be this weekend. If you have questions about the adoption process, No Paws Left Behind Kitty Rescue is always happy to help. For smaller questions or foster-specific details, you can also email us directly at <a href="mailto:PawsAndPurrFosters@gmail.com">PawsAndPurrFosters@gmail.com</a>.</p>
+      <a class="button primary" href="../how-to-adopt.html">Learn How to Adopt</a>
+    </section>
+  `
+    : kitten.id === "paloma"
+    ? `
+    <section class="profile-detail profile-reminder">
+      <h2>Interested in adopting Paloma?</h2>
+      <p>Paloma must be adopted with her sister, <a class="text-link" href="profile-template.html?id=claudia">Claudia</a>. If you're interested in making them part of your family, you can learn more about Claudia below and review the adoption process to see what comes next.</p>
+      <p>Have questions or want to see if Paloma is a good fit for your home?</p>
+      <p>Reach out to <strong><a href="https://www.nopawsleftbehindkittyrescue.com/">No Paws Left Behind Kitty Rescue</a></strong> with questions or to ask about scheduling a meet-and-greet. You can also visit our <a class="text-link" href="../index.html#events">Events</a> page to find out where Paloma will be this weekend. If you have questions about the adoption process, <strong><a href="https://www.nopawsleftbehindkittyrescue.com/">No Paws Left Behind Kitty Rescue</a></strong> is always happy to help. For smaller questions or foster-specific details, you can also email us directly at <a href="mailto:PawsAndPurrFosters@gmail.com">PawsAndPurrFosters@gmail.com</a>.</p>
       <a class="button primary" href="../how-to-adopt.html">Learn How to Adopt</a>
     </section>
   `

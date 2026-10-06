@@ -121,20 +121,30 @@ appRoot.PAWS_KITTENS = [
     image: "assets/kittens/paloma-main.png",
     profileUrl: "kittens/profile-template.html?id=paloma",
     gender: "Female",
-    birthday: "",
+    birthday: "2026-03-24",
     litterNumber: 11,
-    bio: "Paloma is curious, friendly, and cuddle-loving. She enjoys exploring and then winding down close to the people she loves.",
-    photos: [],
-    personalityTraits: ["Curious", "Friendly", "Cuddly", "Playful", "Social", "Sweet"],
-    idealHome: "A warm home with gentle activity and plenty of opportunities to explore and settle in close to her people.",
+    bio: "Meet Paloma! She is a sweet and gentle kitten who may be shy when meeting new people, but she warms up quickly. Once comfortable, she is affectionate and loves curling up beside you for attention. She is calmer than her siblings and enjoys relaxing with her favorite people. She also loves kneading soft blankets, giving morning kisses, and cuddling with you at night.",
+    photos: [
+      "assets/kittens/paloma-photo-2.png",
+      "assets/kittens/paloma-photo-3.png",
+      "assets/kittens/paloma-photo-4.png",
+      "assets/kittens/paloma-photo-5.png"
+    ],
+    personalityTraits: ["Sweet", "Gentle", "Shy at first", "Calm", "Affectionate", "Cuddly"],
+    idealHome: "Paloma would do best in a home that is willing to give her time and patience to adjust. She may be shy when first meeting someone or entering a new environment, but once she feels comfortable, her sweet and affectionate personality will show.",
     compatibility: { dogs: "Unknown — no direct experience", cats: "Yes — with proper introduction", youngerChildren: "Possibly — no direct experience", olderChildren: "Yes" },
     healthChecklist: ["Spayed", "Fully vaccinated", "Dewormed", "Flea treated", "Microchipped", "Fostered and socialized"],
     adoptionRequirements: [],
-    petfinderUrl: "",
+    petfinderUrl: "https://www.petfinder.com/cat/paloma-4a4706d0-5d49-4ff9-bd0a-c969e5d121c0/ca/oakley/no-paws-left-behind-kitty-rescue-ca3018/details/",
     whereToMeet: "",
     videoUrl: "",
     eventInformation: "",
-    pairing: { type: "must", kittenId: "claudia" }
+    pairing: { type: "must", kittenId: "claudia" },
+    pairingDescription: "Claudia and Paloma are biological sisters with a special bond and are rarely far apart. They follow each other everywhere, love chasing and playing together, and curl up side by side for naps. They are a very sweet duo who should get to keep growing up together.",
+    adoptionNotice: {
+      title: "Adoption Event Notice",
+      message: "From September 30 through November 5, Claudia cannot attend adoption events during the rescue's black-cat safety period. Because Paloma must be adopted with Claudia, Paloma will not attend events during this period either. Adoption inquiries for the pair may resume after November 5."
+    }
   },
   {
     id: "harvey",
