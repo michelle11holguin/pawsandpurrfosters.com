@@ -28,7 +28,7 @@ appRoot.PAWS_KITTENS = [
     status: "Available",
     adoptionStatus: "Available",
     description: "Diego is a super outgoing and playful kitten who loves being involved in every activity.",
-    image: "https://i.ibb.co/vrmdcNt/65-A61253-47-A9-465-F-8-C0-F-2-ABCC1-B4-FB53.png",
+    image: "https://i.ibb.co/dJJGLPH9/65-A61253-47-A9-465-F-8-C0-F-2-ABCC1-B4-FB53.png",
     profileUrl: "kittens/profile-template.html?id=diego",
     gender: "Male",
     birthday: "2026-03-24",
