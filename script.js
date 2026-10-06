@@ -119,12 +119,13 @@ function renderKittenCards() {
       : `<span class="card-link profile-coming-soon">Profile coming soon</span>`;
     const status = kitten.adoptionStatus || kitten.status || "Available";
     const returnedStatusClass = status === "Returned — Available" ? " status-returned" : "";
+    const description = window.PAWS_KITTEN_CARD_DESCRIPTIONS?.[kitten.id] || kitten.description;
     return `<article class="kitten-card">
       <div class="card-photo-wrap">${photo}</div>
       <div class="card-content">
         <div class="status${returnedStatusClass}">${escapeHTML(status)}</div>
         <h3>${escapeHTML(kitten.name)}</h3>
-        <p>${escapeHTML(kitten.description)}</p>
+        <p>${escapeHTML(description)}</p>
         ${profileAction}
       </div>
     </article>`;
