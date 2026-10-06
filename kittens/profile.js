@@ -8,6 +8,10 @@ function escapeHTML(value) {
   })[character]);
 }
 
+function profilePhotoSource(photo) {
+  return /^(?:https?:)?\/\//i.test(photo) ? photo : `../${photo}`;
+}
+
 function formatBirthday(dateString) {
   if (!dateString) return "";
   const date = new Date(`${dateString}T00:00:00`);
@@ -115,6 +119,9 @@ function getPairingDescription(kitten, pairingData) {
   if (!pairingData) return "";
   const pairNames = [kitten.name, pairingData.kittenName].filter(Boolean);
   if (pairNames.includes("Diego") && pairNames.includes("Valentina")) {
+    if (kitten.id === "diego") {
+      return "Diego and Valentina are brother and sister who have grown up side by side. They love playing, wrestling, cuddling, and simply being around each other. With their similar personalities and close bond, they bring so much fun and love to a home together.";
+    }
     return "Diego and Valentina are biological siblings who have been together since they were born. They love playing, cuddling, and simply being near each other. They have such similar personalities and do wonderfully as a pair, making them a sweet duo to welcome into a home together.";
   }
   if (pairingData.type === "must") {
@@ -135,7 +142,7 @@ function renderProfile(kitten) {
 
   const photoSet = [...new Set([kitten.image, ...(kitten.photos || [])].filter(Boolean))];
   const galleryPhotos = photoSet.length ? photoSet : [];
-  const mainImage = galleryPhotos[0] ? `../${galleryPhotos[0]}` : "";
+  const mainImage = galleryPhotos[0] ? profilePhotoSource(galleryPhotos[0]) : "";
   const photoGallery = galleryPhotos.length
     ? `<div class="profile-gallery">
         <button class="profile-main-photo photo-open" type="button" data-index="0" aria-label="Open ${escapeHTML(kitten.name)}'s main photo">
@@ -143,7 +150,7 @@ function renderProfile(kitten) {
         </button>
         <div class="profile-thumbnails">${galleryPhotos.slice(1).map((photo, index) => `
           <button class="photo-open" type="button" data-index="${index + 1}" aria-label="Open ${escapeHTML(kitten.name)} photo ${index + 2}">
-            <img src="../${escapeHTML(photo)}" alt="${escapeHTML(kitten.name)} photo ${index + 2}" loading="lazy">
+            <img src="${escapeHTML(profilePhotoSource(photo))}" alt="${escapeHTML(kitten.name)} photo ${index + 2}" loading="lazy">
           </button>`).join("")}</div>
       </div>`
     : '<div class="profile-photo-placeholder">Add this kitten\'s photos in assets/kittens/</div>';
@@ -198,7 +205,17 @@ function renderProfile(kitten) {
     ? `<section class="profile-detail"><h2>Video</h2><a class="text-link" href="${escapeHTML(kitten.videoUrl)}" target="_blank" rel="noopener noreferrer">Watch ${escapeHTML(kitten.name)}'s video ↗</a></section>`
     : "";
 
-  const adoptionReminder = `
+  const adoptionReminder = kitten.id === "diego"
+    ? `
+    <section class="profile-detail profile-reminder">
+      <h2>Interested in adopting Diego?</h2>
+      <p>Diego must be adopted with his sister, <a class="text-link" href="profile-template.html?id=valentina">Valentina</a>. If you're interested in making them part of your family, you can learn more about Valentina below and review the adoption process to see what comes next.</p>
+      <p>Have questions or want to see if Diego is a good fit for your home?</p>
+      <p>Reach out to <strong><a href="https://www.nopawsleftbehindkittyrescue.com/">No Paws Left Behind Kitty Rescue</a></strong> with questions or to ask about scheduling a meet-and-greet. You can also visit our <a class="text-link" href="../index.html#events">Events</a> page to find out where Diego will be this weekend. If you have questions about the adoption process, No Paws Left Behind Kitty Rescue is always happy to help. For smaller questions or foster-specific details, you can also email us directly at <a href="mailto:PawsAndPurrFosters@gmail.com">PawsAndPurrFosters@gmail.com</a>.</p>
+      <a class="button primary" href="../how-to-adopt.html">Learn How to Adopt</a>
+    </section>
+  `
+    : `
     <section class="profile-detail profile-reminder">
       <h2>Interested in adopting ${escapeHTML(kitten.name)}?</h2>
       ${pairingData ? `<p>${escapeHTML(kitten.name)} ${pairingData.type === "must" ? "must be adopted with" : "is happiest with"} <a class="text-link" href="${escapeHTML(`profile-template.html?id=${pairingData.kittenId}`)}">${escapeHTML(pairingData.kittenName)}</a>.</p>` : "<p>We would love to hear from you.</p>"}
@@ -210,8 +227,8 @@ function renderProfile(kitten) {
   root.innerHTML = `<div class="profile-layout">
     <div>${photoGallery}</div>
     <div class="profile-intro">
-      <p class="eyebrow">Meet a foster kitten</p>
-      <h1>Get to Know ${escapeHTML(kitten.name)}</h1>
+      <p class="eyebrow">Get to Know</p>
+      <h1>${escapeHTML(kitten.name)}</h1>
       <p class="profile-status">${escapeHTML(kitten.adoptionStatus || kitten.status || "")}</p>
       ${kitten.birthday ? `<p><strong>Birthday:</strong> ${escapeHTML(formatBirthday(kitten.birthday))}${kittenAge(kitten.birthday) ? ` · ${escapeHTML(kittenAge(kitten.birthday))} old` : ""}</p>` : ""}
       ${kitten.gender ? `<p><strong>Gender:</strong> ${escapeHTML(kitten.gender)}</p>` : ""}
@@ -231,7 +248,7 @@ function renderProfile(kitten) {
   const openLightbox = index => {
     if (!lightbox || !lightboxImage || !galleryPhotos.length) return;
     const nextIndex = (index + galleryPhotos.length) % galleryPhotos.length;
-    lightboxImage.src = `../${galleryPhotos[nextIndex]}`;
+    lightboxImage.src = profilePhotoSource(galleryPhotos[nextIndex]);
     lightboxImage.alt = `${kitten.name} photo ${nextIndex + 1}`;
     lightbox.dataset.index = String(nextIndex);
     lightbox.showModal();
