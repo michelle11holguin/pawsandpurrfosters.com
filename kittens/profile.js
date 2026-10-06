@@ -148,7 +148,7 @@ function renderProfile(kitten) {
   const mainImage = galleryPhotos[0] ? profilePhotoSource(galleryPhotos[0]) : "";
   const photoGallery = galleryPhotos.length
     ? `<div class="profile-gallery">
-        <button class="profile-main-photo${kitten.id === "diego" ? " profile-main-photo--natural" : ""} photo-open" type="button" data-index="0" aria-label="Open ${escapeHTML(kitten.name)}'s main photo">
+        <button class="profile-main-photo photo-open" type="button" data-index="0" aria-label="Open ${escapeHTML(kitten.name)}'s main photo">
           <img src="${escapeHTML(mainImage)}" alt="${escapeHTML(kitten.name)}">
         </button>
         <div class="profile-thumbnails">${galleryPhotos.slice(1).map((photo, index) => `
@@ -264,7 +264,6 @@ function renderProfile(kitten) {
     const nextIndex = (index + galleryPhotos.length) % galleryPhotos.length;
     lightboxImage.src = profilePhotoSource(galleryPhotos[nextIndex]);
     lightboxImage.alt = `${kitten.name} photo ${nextIndex + 1}`;
-    lightboxImage.classList.toggle("profile-lightbox-image--diego-main", kitten.id === "diego" && nextIndex === 0);
     lightbox.dataset.index = String(nextIndex);
     lightbox.showModal();
   };
