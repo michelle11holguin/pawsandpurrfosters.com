@@ -122,6 +122,9 @@ function getPairingDescription(kitten, pairingData) {
     if (kitten.id === "diego") {
       return "Diego and Valentina are brother and sister who have grown up side by side. They love playing, wrestling, cuddling, and simply being around each other. With their similar personalities and close bond, they bring so much fun and love to a home together.";
     }
+    if (kitten.id === "valentina") {
+      return "Valentina and Diego are brother and sister and best friends. They love playing and wrestling, and always enjoy being together. They are a sweet duo to welcome into a home together.";
+    }
     return "Diego and Valentina are biological siblings who have been together since they were born. They love playing, cuddling, and simply being near each other. They have such similar personalities and do wonderfully as a pair, making them a sweet duo to welcome into a home together.";
   }
   if (pairingData.type === "must") {
@@ -156,6 +159,9 @@ function renderProfile(kitten) {
     : '<div class="profile-photo-placeholder">Add this kitten\'s photos in assets/kittens/</div>';
 
   const bioText = kitten.bio || "Coming Soon";
+  const bioMarkup = kitten.id === "valentina"
+    ? bioText.split(/\n\s*\n/).map(paragraph => `<p class="profile-bio">${escapeHTML(paragraph)}</p>`).join("")
+    : `<p class="profile-bio">${escapeHTML(bioText)}</p>`;
   const petfinderText = kitten.petfinderUrl
     ? `<a class="button primary" href="${escapeHTML(kitten.petfinderUrl)}" target="_blank" rel="noopener noreferrer">View ${escapeHTML(kitten.name)} on Petfinder</a>`
     : `<p class="profile-meta-label"><strong>Petfinder:</strong> Coming Soon</p>`;
@@ -232,7 +238,7 @@ function renderProfile(kitten) {
       <p class="profile-status">${escapeHTML(kitten.adoptionStatus || kitten.status || "")}</p>
       ${kitten.birthday ? `<p><strong>Birthday:</strong> ${escapeHTML(formatBirthday(kitten.birthday))}${kittenAge(kitten.birthday) ? ` · ${escapeHTML(kittenAge(kitten.birthday))} old` : ""}</p>` : ""}
       ${kitten.gender ? `<p><strong>Gender:</strong> ${escapeHTML(kitten.gender)}</p>` : ""}
-      <p class="profile-bio">${escapeHTML(bioText)}</p>
+      ${bioMarkup}
       ${petfinderText}
     </div>
   </div>
