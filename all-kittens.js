@@ -102,7 +102,7 @@ function renderAllKittens() {
   container.innerHTML = groups.map(({ litterNumber, kittens }) => `
     <section class="all-litters__group">
       <h3 class="all-litters__heading">${escapeHTML(formatLitterHeading(litterNumber))}</h3>
-      <div class="all-litters__cards">${kittens.map(renderKittenCard).join("")}</div>
+      <div class="all-litters__cards${Number(litterNumber) === 11 ? " all-litters__cards--scroll" : ""}">${kittens.map(renderKittenCard).join("")}</div>
     </section>
   `).join("");
 }

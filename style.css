@@ -199,6 +199,8 @@ h3 { font-family: "Playfair Display", serif; font-size: 27px; margin: 6px 0; }
 .all-litters__group { display: grid; gap: 22px; }
 .all-litters__heading { margin: 0 0 6px; color: var(--purple-dark); font-size: clamp(24px, 2vw, 34px); }
 .all-litters__cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr)); gap: 22px; }
+.all-litters__cards--scroll { display: flex; overflow-x: auto; padding-bottom: 12px; scroll-snap-type: x mandatory; scroll-behavior: smooth; scrollbar-color: var(--sage) var(--sage-light); scrollbar-width: thin; -webkit-overflow-scrolling: touch; }
+.all-litters__cards--scroll > .kitten-card { flex: 0 0 calc((100% - 22px) / 2); scroll-snap-align: start; }
 .kitten-card {
   background: white; border: 1px solid var(--line); border-radius: var(--radius);
   overflow: hidden; box-shadow: 0 8px 30px rgba(62,67,57,.04);
@@ -316,6 +318,7 @@ footer strong { color: var(--purple-dark); font-family: "Playfair Display", seri
   .event-card, .about-grid { grid-template-columns: 1fr; }
   .about-grid { gap: 35px; }
   .section-heading { align-items: start; flex-direction: column; }
+  .all-litters__cards--scroll > .kitten-card { flex-basis: 100%; }
 }
 @media (max-width: 500px) {
   h1 { font-size: 45px; }
