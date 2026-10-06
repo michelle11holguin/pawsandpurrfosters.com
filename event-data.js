@@ -26,8 +26,7 @@ window.PAWS_EVENT_DATA = {
       },
       {
         name: "Antioch PetSmart",
-        timing: "2nd weekend of each month",
-        days: "Saturday & Sunday",
+        timing: "2nd Saturday & Sunday of each month",
         address: "5879 Lone Tree Way, Antioch, CA 94531"
       }
     ]

@@ -11,12 +11,9 @@ const FOSTER_CAROUSEL_PHOTOS = [];
 // ==========================================
 const ABOUT_STORY = {
   paragraphs: [
-    "Paws & Purr Fosters is a small foster team run by my brother and me, with the help of our family. We officially began fostering kittens on February 29, 2024.",
-    "Before we officially began fostering, we unexpectedly raised a single kitten. That experience showed me how much love, patience, and care goes into helping a kitten grow and thrive, and eventually inspired me to begin fostering.",
-    "That kitten was Figaro, but we called him Fig. Fig showed me how much love I could have for a kitten. He passed away in 2020. On February 29, 2024, I decided to begin fostering to honor the impact he had on my life by helping save and raise other kittens.",
-    "We are now on our 12th litter and have fostered 43 kittens so far. Every kitten in our care receives plenty of love, care, socialization, positive experiences, play, and opportunities to build confidence while waiting for their forever home.",
-    "All of our kittens are harness-trained to some degree while in our care. The longer they stay with us, the more opportunity they have to become fully comfortable with it. Harness training helps them build confidence and experience new things, including safe trips to the veterinarian and fun adventures with their future families.",
-    "We're proud of what we do and look forward to helping many more kittens find the loving homes they deserve."
+    "Paws & Purr Fosters is a small foster team run by my brother and me, with the help of our family. We officially began fostering kittens on February 29, 2024. Before we officially began fostering, we unexpectedly raised a single kitten. That kitten was Figaro, but we called him Fig. Fig passed away in 2020. Fig showed me how much love I could have for a kitten and inspired me to begin fostering.",
+    "Beginning fostering on February 29, 2024 allowed me to honor Fig's impact by helping other kittens. We are now on our 12th litter and have fostered 43 kittens so far. Every kitten receives love, care, socialization, positive experiences, play, and opportunities to build confidence while waiting for their forever homes.",
+    "All of our kittens are harness-trained to some degree while in our care. The longer they stay with us, the more opportunity they have to become fully comfortable with the harness. Harness training helps kittens build confidence and experience new things, including safe trips to the veterinarian and fun adventures with their future families. We're proud of what we do and look forward to helping many more kittens find the loving homes they deserve."
   ]
 };
 
@@ -181,10 +178,10 @@ function renderEvents() {
       </div>`;
     } else {
       featured.innerHTML = `<div class="event-card event-coming-soon">
-        <div><p class="eyebrow">This weekend</p><h2>Where to Find Us</h2><h3 class="placement-location">Coming soon</h3>
-          <p>Check our regular adoption schedule below for our usual locations.</p>
+        <div><p class="eyebrow">This weekend</p><h2>Where to Find Us</h2><h3 class="placement-location">Weekend placement: Coming soon</h3>
+          <p>Our weekend location will be posted here as soon as it is available.</p>
         </div>
-        <div class="event-location"><span>Weekend placement updates are posted here as soon as they are confirmed.</span></div>
+        <div class="event-location"><strong>Weekend placement: Coming soon</strong><span>Our weekend location will be posted here as soon as it is available.</span></div>
       </div>`;
     }
     featured.hidden = false;
@@ -194,7 +191,7 @@ function renderEvents() {
   if (schedule && data.regularSchedule?.active) {
     const locations = data.regularSchedule.locations.map(location => `
       <article class="schedule-location"><h3>${escapeHTML(location.name)}</h3>
-        <p>${escapeHTML(location.timing)}</p>${location.days ? `<p>${escapeHTML(location.days)}</p>` : ""}
+        <p>${escapeHTML(location.timing)}</p>
         ${location.address ? `<a class="schedule-address" href="${escapeHTML(mapsLink(location.address, location.mapsUrl))}" target="_blank" rel="noopener noreferrer">${escapeHTML(location.address)}</a>` : ""}</article>`
     ).join("");
     schedule.innerHTML = `<p class="eyebrow">Find us regularly</p><h2>Regular Adoption Schedule</h2>
