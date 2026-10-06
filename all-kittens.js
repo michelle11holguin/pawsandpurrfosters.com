@@ -99,12 +99,41 @@ function renderAllKittens() {
     return;
   }
 
-  container.innerHTML = groups.map(({ litterNumber, kittens }) => `
-    <section class="all-litters__group">
-      <h3 class="all-litters__heading">${escapeHTML(formatLitterHeading(litterNumber))}</h3>
-      <div class="all-litters__cards${Number(litterNumber) === 11 ? " all-litters__cards--scroll" : ""}">${kittens.map(renderKittenCard).join("")}</div>
-    </section>
-  `).join("");
+  container.innerHTML = groups.map(({ litterNumber, kittens }) => {
+    const heading = formatLitterHeading(litterNumber);
+    return `
+      <section class="all-litters__group">
+        <h3 class="all-litters__heading">${escapeHTML(heading)}</h3>
+        <div class="all-litters__carousel">
+          <button class="carousel-button all-litters__arrow" type="button" aria-label="Previous kittens in ${escapeHTML(heading)}">‹</button>
+          <div class="all-litters__cards" role="region" aria-label="${escapeHTML(heading)} kittens" tabindex="0">${kittens.map(renderKittenCard).join("")}</div>
+          <button class="carousel-button all-litters__arrow" type="button" aria-label="Next kittens in ${escapeHTML(heading)}">›</button>
+        </div>
+      </section>
+    `;
+  }).join("");
+
+  container.querySelectorAll(".all-litters__carousel").forEach(carousel => {
+    const track = carousel.querySelector(".all-litters__cards");
+    const [previous, next] = carousel.querySelectorAll(".all-litters__arrow");
+    const updateControls = () => {
+      const maxScroll = track.scrollWidth - track.clientWidth;
+      previous.disabled = track.scrollLeft <= 2;
+      next.disabled = track.scrollLeft >= maxScroll - 2;
+    };
+    const scrollCards = direction => {
+      const card = track.querySelector(".kitten-card");
+      if (!card) return;
+      const gap = Number.parseFloat(getComputedStyle(track).columnGap) || 0;
+      track.scrollBy({ left: direction * (card.getBoundingClientRect().width + gap), behavior: "smooth" });
+    };
+
+    previous.addEventListener("click", () => scrollCards(-1));
+    next.addEventListener("click", () => scrollCards(1));
+    track.addEventListener("scroll", updateControls, { passive: true });
+    if (typeof window !== "undefined") window.addEventListener("resize", updateControls);
+    updateControls();
+  });
 }
 
 if (typeof globalThis !== "undefined") {
