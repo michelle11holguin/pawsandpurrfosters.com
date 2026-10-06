@@ -123,7 +123,7 @@ function getPairingDescription(kitten, pairingData) {
       return "Diego and Valentina are brother and sister who have grown up side by side. They love playing, wrestling, cuddling, and simply being around each other. With their similar personalities and close bond, they bring so much fun and love to a home together.";
     }
     if (kitten.id === "valentina") {
-      return "Valentina and Diego are brother and sister and best friends. They love playing and wrestling, and always enjoy being together. They are a sweet duo to welcome into a home together.";
+      return "Valentina and Diego are brother and sister who have grown up side by side. They love playing, wrestling, cuddling, and being around each other, and are a sweet duo to welcome into a home together.";
     }
     return "Diego and Valentina are biological siblings who have been together since they were born. They love playing, cuddling, and simply being near each other. They have such similar personalities and do wonderfully as a pair, making them a sweet duo to welcome into a home together.";
   }
@@ -159,9 +159,7 @@ function renderProfile(kitten) {
     : '<div class="profile-photo-placeholder">Add this kitten\'s photos in assets/kittens/</div>';
 
   const bioText = kitten.bio || "Coming Soon";
-  const bioMarkup = kitten.id === "valentina"
-    ? bioText.split(/\n\s*\n/).map(paragraph => `<p class="profile-bio">${escapeHTML(paragraph)}</p>`).join("")
-    : `<p class="profile-bio">${escapeHTML(bioText)}</p>`;
+  const bioMarkup = `<p class="profile-bio">${escapeHTML(bioText)}</p>`;
   const petfinderText = kitten.petfinderUrl
     ? `<a class="button primary" href="${escapeHTML(kitten.petfinderUrl)}" target="_blank" rel="noopener noreferrer">View ${escapeHTML(kitten.name)} on Petfinder</a>`
     : `<p class="profile-meta-label"><strong>Petfinder:</strong> Coming Soon</p>`;
@@ -211,7 +209,17 @@ function renderProfile(kitten) {
     ? `<section class="profile-detail"><h2>Video</h2><a class="text-link" href="${escapeHTML(kitten.videoUrl)}" target="_blank" rel="noopener noreferrer">Watch ${escapeHTML(kitten.name)}'s video ↗</a></section>`
     : "";
 
-  const adoptionReminder = kitten.id === "diego"
+  const adoptionReminder = kitten.id === "valentina"
+    ? `
+    <section class="profile-detail profile-reminder">
+      <h2>Interested in adopting Valentina?</h2>
+      <p>Valentina must be adopted with her brother, <a class="text-link" href="profile-template.html?id=diego">Diego</a>. If you're interested in making them part of your family, you can learn more about Diego below and review the adoption process to see what comes next.</p>
+      <p>Have questions or want to see if Valentina is a good fit for your home?</p>
+      <p>Reach out to <strong><a href="https://www.nopawsleftbehindkittyrescue.com/">No Paws Left Behind Kitty Rescue</a></strong> with questions or to ask about scheduling a meet-and-greet. You can also visit our <a class="text-link" href="../index.html#events">Events</a> page to find out where Valentina will be this weekend. If you have questions about the adoption process, <strong><a href="https://www.nopawsleftbehindkittyrescue.com/">No Paws Left Behind Kitty Rescue</a></strong> is always happy to help. For smaller questions or foster-specific details, you can also email us directly at <a href="mailto:PawsAndPurrFosters@gmail.com">PawsAndPurrFosters@gmail.com</a>.</p>
+      <a class="button primary" href="../how-to-adopt.html">Learn How to Adopt</a>
+    </section>
+  `
+    : kitten.id === "diego"
     ? `
     <section class="profile-detail profile-reminder">
       <h2>Interested in adopting Diego?</h2>
