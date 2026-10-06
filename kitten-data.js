@@ -169,8 +169,8 @@ appRoot.PAWS_KITTENS = [
   {
     id: "wally",
     name: "Wally",
-    status: "Available",
-    adoptionStatus: "Available",
+    status: "Returned — Available",
+    adoptionStatus: "Returned — Available",
     description: "A curious kitten who enjoys exploring, playing, and making himself part of the family.",
     image: "",
     profileUrl: "kittens/profile-template.html?id=wally",
@@ -193,8 +193,8 @@ appRoot.PAWS_KITTENS = [
   {
     id: "raymond",
     name: "Raymond",
-    status: "Available",
-    adoptionStatus: "Available",
+    status: "Returned — Available",
+    adoptionStatus: "Returned — Available",
     description: "A gentle, social kitten who loves people and turns every room into a new adventure.",
     image: "",
     profileUrl: "kittens/profile-template.html?id=raymond",

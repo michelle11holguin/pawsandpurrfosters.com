@@ -97,28 +97,9 @@ function renderAllKittens() {
   container.innerHTML = groups.map(({ litterNumber, kittens }) => `
     <section class="litter-group">
       <h3 class="litter-heading">${escapeHTML(formatLitterHeading(litterNumber))}</h3>
-      <div class="litter-track-wrap">
-        <button class="litter-arrow litter-arrow-prev" type="button" aria-label="Scroll left">‹</button>
-        <div class="litter-track">${kittens.map(renderKittenCard).join("")}</div>
-        <button class="litter-arrow litter-arrow-next" type="button" aria-label="Scroll right">›</button>
-      </div>
+      <div class="litter-grid">${kittens.map(renderKittenCard).join("")}</div>
     </section>
   `).join("");
-
-  document.querySelectorAll(".litter-track-wrap").forEach(wrap => {
-    const track = wrap.querySelector(".litter-track");
-    const prev = wrap.querySelector(".litter-arrow-prev");
-    const next = wrap.querySelector(".litter-arrow-next");
-    if (!track) return;
-
-    const scrollAmount = () => {
-      const card = track.querySelector(".kitten-card");
-      return card ? card.getBoundingClientRect().width + 22 : 320;
-    };
-
-    prev?.addEventListener("click", () => track.scrollBy({ left: -scrollAmount(), behavior: "smooth" }));
-    next?.addEventListener("click", () => track.scrollBy({ left: scrollAmount(), behavior: "smooth" }));
-  });
 }
 
 if (typeof globalThis !== "undefined") {
