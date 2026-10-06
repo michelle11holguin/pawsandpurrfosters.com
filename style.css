@@ -195,9 +195,10 @@ h3 { font-family: "Playfair Display", serif; font-size: 27px; margin: 6px 0; }
 .text-link, .card-link { color: var(--purple-dark); font-weight: 700; font-size: 14px; }
 
 .kitten-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
-.litter-group { display: grid; gap: 22px; margin-bottom: 42px; }
-.litter-heading { margin: 0 0 6px; color: var(--purple-dark); font-size: clamp(24px, 2vw, 34px); }
-.litter-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr)); gap: 22px; }
+.all-litters { display: grid; grid-template-columns: minmax(0, 1fr); gap: 42px; }
+.all-litters__group { display: grid; gap: 22px; }
+.all-litters__heading { margin: 0 0 6px; color: var(--purple-dark); font-size: clamp(24px, 2vw, 34px); }
+.all-litters__cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr)); gap: 22px; }
 .kitten-card {
   background: white; border: 1px solid var(--line); border-radius: var(--radius);
   overflow: hidden; box-shadow: 0 8px 30px rgba(62,67,57,.04);

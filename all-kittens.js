@@ -61,7 +61,12 @@ function groupKittensByLitter(kittenList) {
   return [...grouped.entries()]
     .filter(([key]) => key !== "unassigned")
     .sort(([left], [right]) => Number(left) - Number(right))
-    .map(([litterNumber, kittens]) => ({ litterNumber, kittens }));
+    .map(([litterNumber, kittens]) => ({
+      litterNumber,
+      kittens: Number(litterNumber) === 10
+        ? [...kittens].sort((left, right) => ["raymond", "wally"].indexOf(left.id) - ["raymond", "wally"].indexOf(right.id))
+        : kittens
+    }));
 }
 
 function renderKittenCard(kitten) {
@@ -95,9 +100,9 @@ function renderAllKittens() {
   }
 
   container.innerHTML = groups.map(({ litterNumber, kittens }) => `
-    <section class="litter-group">
-      <h3 class="litter-heading">${escapeHTML(formatLitterHeading(litterNumber))}</h3>
-      <div class="litter-grid">${kittens.map(renderKittenCard).join("")}</div>
+    <section class="all-litters__group">
+      <h3 class="all-litters__heading">${escapeHTML(formatLitterHeading(litterNumber))}</h3>
+      <div class="all-litters__cards">${kittens.map(renderKittenCard).join("")}</div>
     </section>
   `).join("");
 }
