@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>All Foster Kittens | Paws &amp; Purr Fosters</title>
+  <meta name="description" content="Meet the kittens currently in our care and follow their foster journey.">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="index.html" aria-label="Paws &amp; Purr Fosters home">
+      <img class="brand-logo" src="https://i.ibb.co/23CcJGzW/paws-and-purr-fosters-logo.jpg" alt="Paws &amp; Purr Fosters">
+      <span>
+        <strong>Paws &amp; Purr</strong>
+        <small>FOSTERS</small>
+      </span>
+    </a>
+
+    <button class="menu-toggle" aria-label="Open menu" aria-expanded="false">☰</button>
+
+    <nav class="nav" aria-label="Main navigation">
+      <a href="index.html">Home</a>
+      <a href="all-kittens.html">All Foster Kittens</a>
+      <a href="available-kittens.html">Available Kittens</a>
+      <a href="how-to-adopt.html">How to Adopt</a>
+      <a class="nav-button" href="index.html#contact">Contact</a>
+    </nav>
+  </header>
+
+  <main class="page-shell">
+    <section class="page-intro foster-page-intro">
+      <p class="eyebrow">Current fosters</p>
+      <h1>All Foster Kittens</h1>
+      <p>
+        These are the kittens currently in our care. Not every kitten is ready for adoption yet,
+        but you can follow their journey as they grow, learn, and prepare for their forever homes.
+      </p>
+      <div class="page-actions">
+        <a class="button primary" href="available-kittens.html">Meet Our Available Kittens</a>
+      </div>
+    </section>
+
+    <section class="status-guide-wrap">
+      <details class="status-guide" open>
+        <summary>Adoption Status Guide</summary>
+        <div class="status-guide-body">
+          <p>Please read this guide to understand what each status means.</p>
+          <ul class="status-guide-list">
+            <li><strong>Available</strong> — Currently available for adoption. Adoption interests and applications are being accepted.</li>
+            <li><strong>Returned — Available</strong> — Previously adopted and now looking for a new home. These kittens may need additional patience and time to settle into a new home.</li>
+            <li><strong>Pending Interest</strong> — Someone is currently interested or going through the adoption process. Other people may still apply. We work on a first-come, first-served basis, and if the current application does not move forward, another approved applicant may have the opportunity to adopt.</li>
+            <li><strong>Almost Available</strong> — Getting close to being ready for adoption, but not currently available.</li>
+            <li><strong>Pre-Adopted</strong> — A specific person has expressed interest and an adoption is being arranged. This is a rare status and does not mean the adoption is finalized.</li>
+            <li><strong>Coming Soon</strong> — Not ready for adoption yet. These kittens may still be growing, receiving medical care, developing their personalities, or getting comfortable in foster care.</li>
+            <li><strong>Adopted</strong> — Adoption has been completed. Adopted kittens will eventually be moved to the Foster Alumni section.</li>
+          </ul>
+          <p class="status-guide-note">
+            Important: “Coming Soon” and “Almost Available” do not mean a kitten is currently available for adoption.
+            Adoption applications are accepted only when a kitten has been medically cleared and is officially listed as Available.
+          </p>
+        </div>
+      </details>
+    </section>
+
+    <section class="section foster-section" aria-labelledby="all-kittens-heading">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">Meet the kittens</p>
+          <h2 id="all-kittens-heading">Current foster kittens</h2>
+        </div>
+      </div>
+      <div class="kitten-grid" id="all-kittens-grid" aria-live="polite"></div>
+    </section>
+  </main>
+
+  <footer>
+    <div>
+      <strong>Paws &amp; Purr Fosters</strong>
+      <span>Helping little paws find their forever homes.</span>
+    </div>
+    <span>© 2026 Paws &amp; Purr Fosters</span>
+  </footer>
+
+  <script src="kitten-data.js"></script>
+  <script src="all-kittens.js"></script>
+</body>
+</html>

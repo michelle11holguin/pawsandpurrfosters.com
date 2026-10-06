@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Available Kittens | Paws &amp; Purr Fosters</title>
+  <meta name="description" content="Meet the kittens who are currently available for adoption or in active adoption consideration.">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="index.html" aria-label="Paws &amp; Purr Fosters home">
+      <img class="brand-logo" src="https://i.ibb.co/23CcJGzW/paws-and-purr-fosters-logo.jpg" alt="Paws &amp; Purr Fosters">
+      <span>
+        <strong>Paws &amp; Purr</strong>
+        <small>FOSTERS</small>
+      </span>
+    </a>
+
+    <button class="menu-toggle" aria-label="Open menu" aria-expanded="false">☰</button>
+
+    <nav class="nav" aria-label="Main navigation">
+      <a href="index.html">Home</a>
+      <a href="all-kittens.html">All Foster Kittens</a>
+      <a href="available-kittens.html">Available Kittens</a>
+      <a href="how-to-adopt.html">How to Adopt</a>
+      <a class="nav-button" href="index.html#contact">Contact</a>
+    </nav>
+  </header>
+
+  <main class="page-shell">
+    <section class="page-intro foster-page-intro">
+      <p class="eyebrow">Adoptable kittens</p>
+      <h1>Available Kittens</h1>
+      <p>
+        These kittens are currently relevant to someone looking to adopt, including cats who are available,
+        returned to the adoption pool, or in active adoption consideration.
+      </p>
+    </section>
+
+    <section class="section foster-section" aria-labelledby="available-kittens-heading">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">Meet the kittens</p>
+          <h2 id="available-kittens-heading">Ready to meet their forever family</h2>
+        </div>
+      </div>
+      <div class="kitten-grid" id="available-kittens-grid" aria-live="polite"></div>
+    </section>
+  </main>
+
+  <footer>
+    <div>
+      <strong>Paws &amp; Purr Fosters</strong>
+      <span>Helping little paws find their forever homes.</span>
+    </div>
+    <span>© 2026 Paws &amp; Purr Fosters</span>
+  </footer>
+
+  <script src="kitten-data.js"></script>
+  <script src="available-kittens.js"></script>
+</body>
+</html>
