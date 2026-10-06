@@ -33,8 +33,7 @@ function isAvailableStatus(kitten) {
   return new Set([
     "Available",
     "Returned — Available",
-    "Pending Interest",
-    "Pre-Adopted"
+    "Pending Interest"
   ]).has(status);
 }
 
@@ -53,7 +52,6 @@ function renderAvailableKittens() {
 
   container.innerHTML = matches.map(kitten => {
     const status = kitten.adoptionStatus || kitten.status || "Available";
-    const label = status === "Pre-Adopted" ? "Potentially Pre-Adopted" : status;
     const photo = kitten.image
       ? `<img src="${escapeHTML(kitten.image)}" alt="${escapeHTML(kitten.name)}" loading="lazy">`
       : `<div class="photo-placeholder card-photo"><span>Photo coming soon</span></div>`;
@@ -61,7 +59,7 @@ function renderAvailableKittens() {
     return `<article class="kitten-card">
       <div class="card-photo-wrap">${photo}</div>
       <div class="card-content">
-        <span class="status-badge ${statusClassName(status)}">${escapeHTML(label)}</span>
+        <span class="status-badge ${statusClassName(status)}">${escapeHTML(status)}</span>
         <h3>${escapeHTML(kitten.name)}</h3>
         <p>${escapeHTML(shortBlurb(kitten))}</p>
         <a class="card-link" href="${escapeHTML(kitten.profileUrl || "#")}">Get to Know ${escapeHTML(kitten.name)} →</a>

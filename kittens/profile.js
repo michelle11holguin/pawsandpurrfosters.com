@@ -57,6 +57,72 @@ function getPairingData(kitten) {
   return null;
 }
 
+function getProfileTraits(kitten) {
+  const explicitTraits = Array.isArray(kitten.personalityTraits)
+    ? kitten.personalityTraits.filter(Boolean).map(item => String(item).trim())
+    : [];
+
+  const bioText = [kitten.bio, kitten.description].filter(Boolean).join(" ").toLowerCase();
+  const recognizedTraits = [
+    ["Active", "active"],
+    ["Affectionate", "affectionate"],
+    ["Bold", "bold"],
+    ["Calm", "calm"],
+    ["Confident", "confident"],
+    ["Curious", "curious"],
+    ["Cuddly", "cuddly"],
+    ["Energetic", "energetic"],
+    ["Friendly", "friendly"],
+    ["Funny", "funny"],
+    ["Gentle", "gentle"],
+    ["Independent", "independent"],
+    ["Lively", "lively"],
+    ["Observant", "observant"],
+    ["Outgoing", "outgoing"],
+    ["Playful", "playful"],
+    ["Quiet", "quiet"],
+    ["Social", "social"],
+    ["Sweet", "sweet"]
+  ]
+    .filter(([label]) => !explicitTraits.includes(label))
+    .filter(([, keyword]) => bioText.includes(keyword))
+    .map(([label]) => label);
+
+  return [...new Set([...explicitTraits, ...recognizedTraits])].slice(0, 6);
+}
+
+function normalizeHealthChecklist(kitten) {
+  const gender = String(kitten.gender || "").trim().toLowerCase();
+  const preferred = gender.startsWith("male") ? "Neutered" : gender.startsWith("female") ? "Spayed" : "";
+  return [preferred, "Fully vaccinated", "Dewormed", "Flea treated", "Microchipped", "Fostered and socialized"]
+    .filter(Boolean)
+    .filter((item, index, all) => all.indexOf(item) === index);
+}
+
+function formatCompatibilityValue(rawValue) {
+  const value = String(rawValue ?? "").trim();
+  if (!value) return "Unknown — no direct experience";
+  const lowercase = value.toLowerCase();
+  if (lowercase.includes("possibly")) return "Possibly — no direct experience";
+  if (lowercase.includes("unknown") || lowercase.includes("no direct experience")) return "Unknown — no direct experience";
+  if (lowercase.includes("with proper introduction")) return "Yes — with proper introduction";
+  if (lowercase.startsWith("yes")) return "Yes";
+  if (lowercase.startsWith("no")) return "No";
+  return value;
+}
+
+function getPairingDescription(kitten, pairingData) {
+  if (!pairingData) return "";
+  const pairNames = [kitten.name, pairingData.kittenName].filter(Boolean);
+  if (pairNames.includes("Diego") && pairNames.includes("Valentina")) {
+    return "Diego and Valentina are biological siblings who have been together since they were born. They love playing, cuddling, and simply being near each other. They have such similar personalities and do wonderfully as a pair, making them a sweet duo to welcome into a home together.";
+  }
+  if (pairingData.type === "must") {
+    return `${kitten.name} and ${pairingData.kittenName} are a bonded pair and do best together.`;
+  }
+  return `${kitten.name} is happiest with ${pairingData.kittenName} and would thrive in a home that keeps them together.`;
+}
+
 function renderProfile(kitten) {
   if (typeof document === "undefined") return;
   const root = document.querySelector("#profile-main");
@@ -87,33 +153,41 @@ function renderProfile(kitten) {
     ? `<a class="button primary" href="${escapeHTML(kitten.petfinderUrl)}" target="_blank" rel="noopener noreferrer">View ${escapeHTML(kitten.name)} on Petfinder</a>`
     : `<p class="profile-meta-label"><strong>Petfinder:</strong> Coming Soon</p>`;
 
-  const traits = kitten.personalityTraits?.length
-    ? `<section class="profile-detail"><h2>Personality</h2><ul class="profile-traits">${kitten.personalityTraits.map(trait => `<li>${escapeHTML(trait)}</li>`).join("")}</ul></section>`
+  const profileTraits = getProfileTraits(kitten);
+  const traits = profileTraits.length
+    ? `<section class="profile-detail"><h2>Personality</h2><ul class="profile-traits">${profileTraits.map(trait => `<li>${escapeHTML(trait)}</li>`).join("")}</ul></section>`
     : "";
 
-  const compatibilityItems = [
-    ["Dogs", kitten.compatibility?.dogs],
+  const compatibilityEntries = [
     ["Cats", kitten.compatibility?.cats],
-    ["Younger children", kitten.compatibility?.youngerChildren],
-    ["Older children", kitten.compatibility?.olderChildren]
-  ].filter(([, value]) => value);
-  const compatibility = compatibilityItems.length
-    ? `<section class="profile-detail"><h2>Home compatibility</h2><dl>${compatibilityItems.map(([label, value]) => `<div><dt>${label}</dt><dd>${escapeHTML(value)}</dd></div>`).join("")}</dl></section>`
-    : "";
+    ["Dogs", kitten.compatibility?.dogs],
+    ["Younger Children", kitten.compatibility?.youngerChildren],
+    ["Older Children", kitten.compatibility?.olderChildren]
+  ].filter(([, value]) => value !== undefined && value !== null && value !== "");
 
-  const health = kitten.healthChecklist?.length
-    ? `<section class="profile-detail"><h2>Vet and health</h2><ul>${kitten.healthChecklist.map(item => `<li>${escapeHTML(item)}</li>`).join("")}</ul></section>`
-    : "";
+  const idealHomeBlock = `
+    <section class="profile-detail profile-ideal-home">
+      <h2>Ideal Home</h2>
+      ${kitten.idealHome ? `<p class="profile-ideal-description">${escapeHTML(kitten.idealHome)}</p>` : ""}
+      ${compatibilityEntries.length ? `<div class="compatibility-list">${compatibilityEntries.map(([label, value]) => `<div class="compatibility-item"><span>${escapeHTML(label)}:</span> <strong>${escapeHTML(formatCompatibilityValue(value))}</strong></div>`).join("")}</div>` : ""}
+    </section>
+  `;
+
+  const health = `<section class="profile-detail"><h2>Health</h2><ul>${normalizeHealthChecklist(kitten).map(item => `<li>${escapeHTML(item)}</li>`).join("")}</ul></section>`;
 
   const requirements = kitten.adoptionRequirements?.length
     ? `<section class="profile-detail"><h2>Adoption requirements</h2><ul>${kitten.adoptionRequirements.map(item => `<li>${escapeHTML(item)}</li>`).join("")}</ul></section>`
     : "";
 
-  const idealHome = kitten.idealHome ? `<section class="profile-detail"><h2>Ideal home</h2><p>${escapeHTML(kitten.idealHome)}</p></section>` : "";
-
   const pairingData = getPairingData(kitten);
+  const pairingDescription = pairingData ? getPairingDescription(kitten, pairingData) : "";
   const pairing = pairingData
-    ? `<section class="profile-detail"><h2>${pairingData.type === "must" ? "Must Be Adopted With" : "Preferred Pair"}</h2><p><a class="text-link" href="${escapeHTML(`profile-template.html?id=${pairingData.kittenId}`)}">${escapeHTML(pairingData.kittenName)}</a></p></section>`
+    ? `<section class="profile-detail profile-pairing">
+        <h2>${pairingData.type === "must" ? "Must Be Adopted With" : "Preferred Pair"}</h2>
+        <p><a class="text-link" href="${escapeHTML(`profile-template.html?id=${pairingData.kittenId}`)}">${escapeHTML(pairingData.kittenName)}</a></p>
+        ${pairingDescription ? `<p class="profile-pairing-copy">${escapeHTML(pairingDescription)}</p>` : ""}
+        <p><a class="text-link" href="${escapeHTML(`profile-template.html?id=${pairingData.kittenId}`)}">Get to Know ${escapeHTML(pairingData.kittenName)} →</a></p>
+      </section>`
     : "";
 
   const meeting = kitten.whereToMeet || kitten.eventInformation
@@ -128,27 +202,25 @@ function renderProfile(kitten) {
     <section class="profile-detail profile-reminder">
       <h2>Interested in adopting ${escapeHTML(kitten.name)}?</h2>
       ${pairingData ? `<p>${escapeHTML(kitten.name)} ${pairingData.type === "must" ? "must be adopted with" : "is happiest with"} <a class="text-link" href="${escapeHTML(`profile-template.html?id=${pairingData.kittenId}`)}">${escapeHTML(pairingData.kittenName)}</a>.</p>` : "<p>We would love to hear from you.</p>"}
-      <p class="adoption-policy">Kittens six months and younger are adopted in pairs in accordance with rescue policy. Bonded pairs must be adopted together regardless of age. Pairing recommendations and requirements are listed on each kitten's profile.</p>
       <a class="button primary" href="../how-to-adopt.html">Learn How to Adopt</a>
     </section>
   `;
 
-  document.title = `Meet ${kitten.name} | Paws & Purr Fosters`;
+  document.title = `Get to Know ${kitten.name} | Paws & Purr Fosters`;
   root.innerHTML = `<div class="profile-layout">
     <div>${photoGallery}</div>
     <div class="profile-intro">
       <p class="eyebrow">Meet a foster kitten</p>
-      <h1>${escapeHTML(kitten.name)}</h1>
+      <h1>Get to Know ${escapeHTML(kitten.name)}</h1>
       <p class="profile-status">${escapeHTML(kitten.adoptionStatus || kitten.status || "")}</p>
       ${kitten.birthday ? `<p><strong>Birthday:</strong> ${escapeHTML(formatBirthday(kitten.birthday))}${kittenAge(kitten.birthday) ? ` · ${escapeHTML(kittenAge(kitten.birthday))} old` : ""}</p>` : ""}
       ${kitten.gender ? `<p><strong>Gender:</strong> ${escapeHTML(kitten.gender)}</p>` : ""}
-      ${kitten.litterNumber ? `<p><strong>Litter:</strong> ${escapeHTML(kitten.litterNumber)}</p>` : ""}
       <p class="profile-bio">${escapeHTML(bioText)}</p>
       ${petfinderText}
     </div>
   </div>
   <div class="profile-details">
-    ${traits}${idealHome}${compatibility}${health}${requirements}${pairing}${meeting}${video}${adoptionReminder}
+    ${traits}${idealHomeBlock}${health}${requirements}${pairing}${meeting}${video}${adoptionReminder}
   </div>`;
 
   const lightbox = document.querySelector("#photo-lightbox");
@@ -231,6 +303,9 @@ if (typeof globalThis !== "undefined") {
   globalThis.formatBirthday = formatBirthday;
   globalThis.kittenAge = kittenAge;
   globalThis.getPairingData = getPairingData;
+  globalThis.getProfileTraits = getProfileTraits;
+  globalThis.normalizeHealthChecklist = normalizeHealthChecklist;
+  globalThis.formatCompatibilityValue = formatCompatibilityValue;
   globalThis.renderProfile = renderProfile;
 }
 
@@ -246,6 +321,9 @@ if (typeof module !== "undefined") {
     formatBirthday,
     kittenAge,
     getPairingData,
+    getProfileTraits,
+    normalizeHealthChecklist,
+    formatCompatibilityValue,
     renderProfile
   };
 }

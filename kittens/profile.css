@@ -21,6 +21,12 @@
 .profile-detail dd { margin: 0; }
 .profile-traits { display: flex; flex-wrap: wrap; gap: 8px; padding: 0; list-style: none; }
 .profile-traits li { padding: 6px 11px; border-radius: 999px; background: var(--sage-light); color: var(--sage-dark); }
+.profile-ideal-description { margin-bottom: 18px; }
+.compatibility-list { display: grid; gap: 10px; }
+.compatibility-item { display: flex; justify-content: space-between; align-items: center; gap: 16px; padding: 10px 12px; border-radius: 12px; background: var(--sage-light); color: var(--ink); }
+.compatibility-item span { font-weight: 700; }
+.compatibility-item strong { font-weight: 700; color: var(--sage-dark); }
+.profile-pairing-copy { margin-top: 12px; }
 .profile-not-found { max-width: 620px; margin: 60px auto; text-align: center; }
 .profile-lightbox { position: relative; width: min(92vw, 1100px); max-width: none; max-height: 92vh; padding: 46px 16px 16px; border: 0; border-radius: 12px; background: #fff; }
 .profile-lightbox::backdrop { background: rgba(24, 25, 23, .82); }
@@ -38,4 +44,5 @@
   .profile-details { margin-top: 40px; }
   .profile-main-photo { aspect-ratio: 1; }
   .profile-detail dl div { grid-template-columns: 1fr; gap: 2px; }
+  .compatibility-item { display: block; }
 }

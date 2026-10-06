@@ -37,12 +37,28 @@ a { color: inherit; text-decoration: none; }
   display: block; border: 1px solid var(--line); border-radius: 22px; background: white; box-shadow: 0 8px 30px rgba(62, 67, 57, .03);
 }
 .status-guide summary {
-  list-style: none; cursor: pointer; padding: 22px 26px; font-size: 1.1rem; font-weight: 700; color: var(--purple-dark);
+  list-style: none; cursor: pointer; display: flex; justify-content: space-between; align-items: flex-start; gap: 18px; padding: 22px 26px; font-size: 1.1rem; font-weight: 700; color: var(--purple-dark);
 }
 .status-guide summary::-webkit-details-marker { display: none; }
+.status-guide-summary { display: flex; flex-direction: column; gap: 4px; }
+.status-guide-title { font-size: 1.1rem; font-weight: 800; }
+.status-guide-subtitle { color: var(--muted); font-size: .92rem; font-weight: 600; }
+.status-guide-chevron {
+  display: inline-flex; align-items: center; justify-content: center; min-width: 22px; font-size: 1.3rem; transition: transform .2s ease;
+}
+.status-guide[open] .status-guide-chevron { transform: rotate(180deg); }
 .status-guide-body { padding: 0 26px 24px; color: var(--muted); }
 .status-guide-body p { margin: 0 0 16px; }
 .status-guide-list { margin: 0 0 18px; padding-left: 1.2rem; display: grid; gap: 10px; }
+.status-guide-status {
+  display: inline-block; padding: 4px 8px; border-radius: 999px; font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: .08em; white-space: nowrap;
+}
+.status-guide-status.status-available { background: var(--sage-light); color: var(--sage-dark); }
+.status-guide-status.status-returned { background: #f4e7d2; color: #8b5e1c; }
+.status-guide-status.status-pending { background: #dfeaf8; color: #3c5f93; }
+.status-guide-status.status-almost { background: #f2ebe5; color: #8a5d28; }
+.status-guide-status.status-coming-soon { background: #f4ebf5; color: #775d87; }
+.status-guide-status.status-adopted { background: #f7d9d9; color: #8d2b2b; }
 .status-guide-note {
   margin-top: 12px; padding-top: 16px; border-top: 1px solid var(--line); font-weight: 600; color: var(--ink);
 }
@@ -170,6 +186,9 @@ h3 { font-family: "Playfair Display", serif; font-size: 27px; margin: 6px 0; }
 .text-link, .card-link { color: var(--purple-dark); font-weight: 700; font-size: 14px; }
 
 .kitten-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+.litter-group { display: grid; gap: 22px; margin-bottom: 42px; }
+.litter-heading { margin: 0 0 6px; color: var(--purple-dark); font-size: clamp(24px, 2vw, 34px); }
+.grouped-kitten-grid { margin-top: 4px; }
 .kitten-track { display: flex; gap: 22px; overflow-x: auto; padding: 2px 2px 18px; scroll-snap-type: x mandatory; scroll-behavior: smooth; scrollbar-color: var(--sage) var(--sage-light); scrollbar-width: thin; }
 .kitten-card {
   flex: 0 0 calc((100% - 44px) / 3);
