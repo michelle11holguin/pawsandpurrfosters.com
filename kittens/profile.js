@@ -244,6 +244,16 @@ function renderProfile(kitten) {
       <a class="button primary" href="../how-to-adopt.html">Learn How to Adopt</a>
     </section>
   `
+    : kitten.id === "melody"
+    ? `
+    <section class="profile-detail profile-reminder">
+      <h2>Interested in adopting Melody?</h2>
+      <p>Melody must be adopted with her brother, <a class="text-link" href="profile-template.html?id=harvey">Harvey</a>. If you're interested in making them part of your family, you can learn more about Harvey below and review the adoption process to see what comes next.</p>
+      <p>Have questions or want to see if Melody is a good fit for your home?</p>
+      <p>Reach out to <strong><a href="https://www.nopawsleftbehindkittyrescue.com/">No Paws Left Behind Kitty Rescue</a></strong> with questions or to ask about scheduling a meet-and-greet. You can also visit our <a class="text-link" href="../index.html#events">Events</a> page to find out where Melody will be this weekend. If you have questions about the adoption process, <strong><a href="https://www.nopawsleftbehindkittyrescue.com/">No Paws Left Behind Kitty Rescue</a></strong> is always happy to help. For smaller questions or foster-specific details, you can also email us directly at <a href="mailto:PawsAndPurrFosters@gmail.com">PawsAndPurrFosters@gmail.com</a>.</p>
+      <a class="button primary" href="../how-to-adopt.html">Learn How to Adopt</a>
+    </section>
+  `
     : kitten.id === "harvey"
     ? `
     <section class="profile-detail profile-reminder">
