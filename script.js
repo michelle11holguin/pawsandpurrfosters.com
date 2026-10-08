@@ -13,7 +13,20 @@ const FOSTER_CAROUSEL_PHOTOS = [
   "foster-07.png",
   "foster-08.png",
   "foster-09.png",
-  "foster-10.png"
+  "foster-10.png",
+  "foster-11.png",
+  "foster-12.png",
+  "foster-13.png",
+  "foster-14.png",
+  "foster-15.png",
+  "foster-16.png",
+  "foster-17.png",
+  "foster-18.png",
+  "foster-19.png",
+  "foster-20.png",
+  "foster-21.png",
+  "foster-22.png",
+  "foster-23.png"
 ];
 
 // ==========================================
