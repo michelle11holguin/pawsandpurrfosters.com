@@ -32,6 +32,12 @@ Open `kitten-data.js` and add one object inside `window.PAWS_KITTENS` for each k
 
 Set `profileUrl` to `kittens/profile-template.html?id=your-kitten-id` to link the homepage card to the reusable profile page. Copy `kittens/profile-template.html` when you eventually want a separate named HTML page for a kitten, and keep that kitten's details in `kitten-data.js`. Empty optional fields are hidden automatically. Enter birthdays as `YYYY-MM-DD` so age can be calculated.
 
+### Add foster alumni
+
+Open `alumni-data.js` and add an object to `PAWS_FOSTER_ALUMNI` for each kitten whose adoption is confirmed and whose adoption date is known. Follow the commented example: use `status: "Adopted"`, dates in `YYYY-MM-DD` format, the foster litter number, and the main and optional gallery image paths. Use `companionId` to link two alumni adopted together. Records without a confirmed adopted status, valid dates, litter number, or main photo are not displayed. Alumni are grouped by litter, newest litter first, and then by adoption date, newest first.
+
+The page calculates zodiac signs, current age, birthday-month cake symbols, and exact-day birthday and Gotcha Day celebrations from those saved dates. Returned kittens should not be listed as alumni unless a new adoption is confirmed and recorded.
+
 ### Update the About story
 
 Open `script.js` and find the `ABOUT STORY — EDIT HERE` block near the top. Its paragraphs are kept together there.

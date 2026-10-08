@@ -355,3 +355,42 @@ footer strong { color: var(--purple-dark); font-family: "Playfair Display", seri
   .adoption-step-number { width: 34px; height: 34px; }
   .adoption-step h2 { font-size: 24px; }
 }
+
+.alumni-litters { display: grid; gap: 42px; }
+.foster-page-intro .page-actions { gap: 12px; flex-wrap: wrap; }
+.alumni-litter { min-width: 0; }
+.alumni-litter-heading { display: flex; justify-content: space-between; align-items: center; gap: 16px; margin-bottom: 18px; }
+.alumni-litter-heading h2 { margin: 0; color: var(--purple-dark); font-size: clamp(25px, 3vw, 36px); }
+.alumni-carousel-controls { display: flex; gap: 8px; flex: 0 0 auto; }
+.alumni-arrow { display: grid; }
+.alumni-cards {
+  display: flex; min-width: 0; flex-wrap: nowrap; gap: 22px; overflow-x: auto; padding: 2px 2px 14px;
+  scroll-snap-type: x mandatory; scroll-behavior: smooth; scrollbar-color: var(--sage) var(--sage-light);
+  scrollbar-width: thin; -webkit-overflow-scrolling: touch;
+}
+.alumni-card { flex: 0 0 clamp(220px, calc((100% - 44px) / 3), 320px); min-width: 0; scroll-snap-align: start; }
+.alumni-main-photo { position: relative; }
+.alumni-main-photo > img { object-fit: contain; }
+.alumni-birthday-cake {
+  position: absolute; top: 12px; right: 12px; display: grid; place-items: center;
+  width: 38px; height: 38px; border: 1px solid rgba(117,98,141,.22); border-radius: 50%;
+  background: rgba(255,255,255,.94); box-shadow: 0 4px 14px rgba(62,67,57,.1); font-size: 21px;
+}
+.alumni-card-content h3 { margin: 0 0 15px; }
+.alumni-details { display: grid; gap: 9px; margin: 0; }
+.alumni-details > div { display: flex; justify-content: space-between; gap: 12px; }
+.alumni-details dt { color: var(--muted); font-size: 13px; }
+.alumni-details dd { margin: 0; text-align: right; font-size: 13px; font-weight: 700; }
+.alumni-gallery { display: flex; gap: 8px; overflow-x: auto; margin-top: 17px; padding-bottom: 4px; }
+.alumni-gallery img { width: 62px; height: 62px; flex: 0 0 62px; border-radius: 10px; background: var(--sage-light); object-fit: contain; }
+.alumni-companion { display: inline-block; margin-top: 16px; color: var(--purple-dark); font-size: 13px; font-weight: 700; text-decoration: underline; text-underline-offset: 3px; }
+.alumni-celebration { margin: 16px 0 0; padding: 10px 12px; border-radius: 12px; background: var(--purple-light); color: var(--purple-dark); font-size: 13px; font-weight: 700; }
+.alumni-gotcha { background: var(--sage-light); color: var(--sage-dark); }
+
+@media (max-width: 500px) {
+  .alumni-litter-heading { align-items: flex-start; }
+  .alumni-carousel-controls { gap: 5px; }
+  .alumni-arrow { width: 36px; height: 36px; }
+  .alumni-cards { gap: 14px; }
+  .alumni-card { flex-basis: min(76vw, 310px); }
+}
