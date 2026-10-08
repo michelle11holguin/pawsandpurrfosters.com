@@ -3,7 +3,18 @@
 // Add or remove your own photo filenames from assets/hero.
 // Example: "photo1.jpg"
 // ==========================================
-const FOSTER_CAROUSEL_PHOTOS = [];
+const FOSTER_CAROUSEL_PHOTOS = [
+  "foster-01.png",
+  "foster-02.png",
+  "foster-03.png",
+  "foster-04.png",
+  "foster-05.png",
+  "foster-06.png",
+  "foster-07.png",
+  "foster-08.png",
+  "foster-09.png",
+  "foster-10.png"
+];
 
 // ==========================================
 // ABOUT STORY — EDIT HERE
