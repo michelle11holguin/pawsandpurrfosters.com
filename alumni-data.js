@@ -6,6 +6,40 @@ const alumniRoot = typeof window !== "undefined" ? window : globalThis;
 
 alumniRoot.PAWS_FOSTER_ALUMNI = [
   {
+    id: "oscar",
+    status: "Adopted",
+    name: "Oscar",
+    gender: "Male",
+    birthday: "2024-04-04",
+    adoptionDate: "2024-08-10",
+    fosterLitter: 2,
+    image: "assets/kittens/alumni-oscar.png",
+    photos: []
+  },
+  {
+    id: "roscoe",
+    status: "Adopted",
+    name: "Roscoe",
+    gender: "Male",
+    birthday: "2024-04-04",
+    adoptionDate: "2024-08-03",
+    fosterLitter: 2,
+    image: "assets/kittens/alumni-roscoe.png",
+    photos: [],
+    fosterFail: true
+  },
+  {
+    id: "bea",
+    status: "Adopted",
+    name: "Bea",
+    gender: "Female",
+    birthday: "2024-04-04",
+    adoptionDate: "2024-08-10",
+    fosterLitter: 2,
+    image: "assets/kittens/alumni-bea.png",
+    photos: []
+  },
+  {
     id: "rosie",
     status: "Adopted",
     name: "Rosie",

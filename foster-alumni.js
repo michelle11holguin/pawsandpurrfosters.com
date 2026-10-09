@@ -29,10 +29,10 @@ function getZodiacSign(birthday) {
   if (!date) return "";
   const monthDay = (date.getMonth() + 1) * 100 + date.getDate();
   const signs = [
-    [120, "Capricorn"], [219, "Aquarius"], [321, "Pisces"], [420, "Aries"],
-    [521, "Taurus"], [621, "Gemini"], [723, "Cancer"], [823, "Leo"],
-    [923, "Virgo"], [1023, "Libra"], [1122, "Scorpio"], [1222, "Sagittarius"],
-    [1232, "Capricorn"]
+    [120, "Capricorn ♑"], [219, "Aquarius ♒"], [321, "Pisces ♓"], [420, "Aries ♈"],
+    [521, "Taurus ♉"], [621, "Gemini ♊"], [723, "Cancer ♋"], [823, "Leo ♌"],
+    [923, "Virgo ♍"], [1023, "Libra ♎"], [1122, "Scorpio ♏"], [1222, "Sagittarius ♐"],
+    [1232, "Capricorn ♑"]
   ];
   return signs.find(([boundary]) => monthDay < boundary)?.[1] || "Capricorn";
 }
