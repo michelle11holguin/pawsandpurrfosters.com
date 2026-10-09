@@ -124,6 +124,7 @@ function renderAlumniCard(kitten, alumniIds, today = new Date()) {
     </div>
     <div class="card-content alumni-card-content">
       <h3>${escapeHTML(kitten.name)}</h3>
+      ${kitten.fosterFail ? '<span class="alumni-special-badge">Foster Fail</span>' : ""}
       <dl class="alumni-details">
         <div><dt>Gender</dt><dd>${escapeHTML(kitten.gender)}</dd></div>
         <div><dt>Birthday</dt><dd>${formatAlumniDate(parseAlumniDate(kitten.birthday))}</dd></div>

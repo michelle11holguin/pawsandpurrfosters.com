@@ -5,16 +5,51 @@
 const alumniRoot = typeof window !== "undefined" ? window : globalThis;
 
 alumniRoot.PAWS_FOSTER_ALUMNI = [
-  // {
-  //   id: "kitten-id",
-  //   status: "Adopted",
-  //   name: "Kitten name",
-  //   gender: "Female",
-  //   birthday: "2026-03-24",
-  //   adoptionDate: "2026-06-10",
-  //   fosterLitter: 11,
-  //   image: "assets/kittens/kitten-main.png",
-  //   photos: ["assets/kittens/kitten-photo-2.png"],
-  //   companionId: "companion-id"
-  // }
+  {
+    id: "rosie",
+    status: "Adopted",
+    name: "Rosie",
+    gender: "Female",
+    birthday: "2024-01-12",
+    adoptionDate: "2024-06-23",
+    fosterLitter: 1,
+    image: "assets/kittens/alumni-rosie.png",
+    photos: [],
+    companionId: "lily"
+  },
+  {
+    id: "lily",
+    status: "Adopted",
+    name: "Lily",
+    gender: "Female",
+    birthday: "2024-01-12",
+    adoptionDate: "2024-06-23",
+    fosterLitter: 1,
+    image: "assets/kittens/alumni-lily.png",
+    photos: [],
+    companionId: "rosie"
+  },
+  {
+    id: "mouse",
+    status: "Adopted",
+    name: "Mouse",
+    gender: "Male",
+    birthday: "2024-01-12",
+    adoptionDate: "2025-04-11",
+    fosterLitter: 1,
+    image: "assets/kittens/alumni-mouse.png",
+    photos: []
+  },
+  {
+    id: "smudge",
+    status: "Adopted",
+    name: "Smudge",
+    gender: "Male",
+    birthday: "2024-01-12",
+    adoptionDate: "2024-04-23",
+    fosterLitter: 1,
+    image: "assets/kittens/alumni-smudge.png",
+    photos: [],
+    fosterFail: true
+  }
 ];

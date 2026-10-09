@@ -377,6 +377,11 @@ footer strong { color: var(--purple-dark); font-family: "Playfair Display", seri
   background: rgba(255,255,255,.94); box-shadow: 0 4px 14px rgba(62,67,57,.1); font-size: 21px;
 }
 .alumni-card-content h3 { margin: 0 0 15px; }
+.alumni-special-badge {
+  display: inline-block; margin: -5px 0 14px; padding: 5px 10px; border-radius: 999px;
+  background: var(--purple-light); color: var(--purple-dark); font-size: 11px; font-weight: 800;
+  letter-spacing: .04em;
+}
 .alumni-details { display: grid; gap: 9px; margin: 0; }
 .alumni-details > div { display: flex; justify-content: space-between; gap: 12px; }
 .alumni-details dt { color: var(--muted); font-size: 13px; }
