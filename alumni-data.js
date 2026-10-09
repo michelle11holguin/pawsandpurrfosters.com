@@ -13,6 +13,7 @@ alumniRoot.PAWS_FOSTER_ALUMNI = [
     birthday: "2024-07-07",
     adoptionDate: "2024-10-27",
     fosterLitter: 3,
+    image: "assets/kittens/alumni-lyra.png",
     photos: [],
     companionId: "hamlet"
   },
@@ -24,6 +25,7 @@ alumniRoot.PAWS_FOSTER_ALUMNI = [
     birthday: "2024-07-07",
     adoptionDate: "2024-10-27",
     fosterLitter: 3,
+    image: "assets/kittens/alumni-hamlet.png",
     photos: [],
     companionId: "lyra"
   },
@@ -35,6 +37,7 @@ alumniRoot.PAWS_FOSTER_ALUMNI = [
     birthday: "2024-07-07",
     adoptionDate: "2024-11-16",
     fosterLitter: 3,
+    image: "assets/kittens/alumni-iris.png",
     photos: [],
     companionId: "lucy"
   },
@@ -46,6 +49,7 @@ alumniRoot.PAWS_FOSTER_ALUMNI = [
     birthday: "2024-07-07",
     adoptionDate: "2024-11-16",
     fosterLitter: 3,
+    image: "assets/kittens/alumni-lucy.png",
     photos: [],
     companionId: "iris"
   },
@@ -57,6 +61,7 @@ alumniRoot.PAWS_FOSTER_ALUMNI = [
     birthday: "2024-07-07",
     adoptionDate: "2024-12-21",
     fosterLitter: 3,
+    image: "assets/kittens/alumni-marceline.png",
     photos: [],
     companionId: "finn"
   },
@@ -68,6 +73,7 @@ alumniRoot.PAWS_FOSTER_ALUMNI = [
     birthday: "2024-07-07",
     adoptionDate: "2024-12-21",
     fosterLitter: 4,
+    image: "assets/kittens/alumni-finn.png",
     photos: [],
     companionId: "marceline"
   },
@@ -79,6 +85,7 @@ alumniRoot.PAWS_FOSTER_ALUMNI = [
     birthday: "2024-07-07",
     adoptionDate: "2025-04-27",
     fosterLitter: 3,
+    image: "assets/kittens/alumni-mavis.png",
     photos: [],
     companionId: "fawn",
     secondChance: true
@@ -91,6 +98,7 @@ alumniRoot.PAWS_FOSTER_ALUMNI = [
     birthday: "2024-07-07",
     adoptionDate: "2025-04-27",
     fosterLitter: 3,
+    image: "assets/kittens/alumni-fawn.png",
     photos: [],
     companionId: "mavis",
     secondChance: true
