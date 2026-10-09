@@ -378,10 +378,11 @@ footer strong { color: var(--purple-dark); font-family: "Playfair Display", seri
 }
 .alumni-card-content h3 { margin: 0 0 15px; }
 .alumni-special-badge {
-  display: inline-block; margin: -5px 0 14px; padding: 5px 10px; border-radius: 999px;
+  display: inline-block; margin: 0 0 2px 6px; padding: 4px 8px; border-radius: 999px;
   background: var(--purple-light); color: var(--purple-dark); font-size: 11px; font-weight: 800;
   letter-spacing: .04em;
 }
+.alumni-special-badge--second-chance { background: var(--sage-light); color: var(--sage-dark); }
 .alumni-details { display: grid; gap: 9px; margin: 0; }
 .alumni-details > div { display: flex; justify-content: space-between; gap: 12px; }
 .alumni-details dt { color: var(--muted); font-size: 13px; }

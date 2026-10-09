@@ -6,6 +6,96 @@ const alumniRoot = typeof window !== "undefined" ? window : globalThis;
 
 alumniRoot.PAWS_FOSTER_ALUMNI = [
   {
+    id: "lyra",
+    status: "Adopted",
+    name: "Lyra",
+    gender: "Female",
+    birthday: "2024-07-07",
+    adoptionDate: "2024-10-27",
+    fosterLitter: 3,
+    photos: [],
+    companionId: "hamlet"
+  },
+  {
+    id: "hamlet",
+    status: "Adopted",
+    name: "Hamlet",
+    gender: "Male",
+    birthday: "2024-07-07",
+    adoptionDate: "2024-10-27",
+    fosterLitter: 3,
+    photos: [],
+    companionId: "lyra"
+  },
+  {
+    id: "iris",
+    status: "Adopted",
+    name: "Iris",
+    gender: "Female",
+    birthday: "2024-07-07",
+    adoptionDate: "2024-11-16",
+    fosterLitter: 3,
+    photos: [],
+    companionId: "lucy"
+  },
+  {
+    id: "lucy",
+    status: "Adopted",
+    name: "Lucy",
+    gender: "Female",
+    birthday: "2024-07-07",
+    adoptionDate: "2024-11-16",
+    fosterLitter: 3,
+    photos: [],
+    companionId: "iris"
+  },
+  {
+    id: "marceline",
+    status: "Adopted",
+    name: "Marceline",
+    gender: "Female",
+    birthday: "2024-07-07",
+    adoptionDate: "2024-12-21",
+    fosterLitter: 3,
+    photos: [],
+    companionId: "finn"
+  },
+  {
+    id: "finn",
+    status: "Adopted",
+    name: "Finn",
+    gender: "Male",
+    birthday: "2024-07-07",
+    adoptionDate: "2024-12-21",
+    fosterLitter: 4,
+    photos: [],
+    companionId: "marceline"
+  },
+  {
+    id: "mavis",
+    status: "Adopted",
+    name: "Mavis",
+    gender: "Female",
+    birthday: "2024-07-07",
+    adoptionDate: "2025-04-27",
+    fosterLitter: 3,
+    photos: [],
+    companionId: "fawn",
+    secondChance: true
+  },
+  {
+    id: "fawn",
+    status: "Adopted",
+    name: "Fawn",
+    gender: "Female",
+    birthday: "2024-07-07",
+    adoptionDate: "2025-04-27",
+    fosterLitter: 3,
+    photos: [],
+    companionId: "mavis",
+    secondChance: true
+  },
+  {
     id: "oscar",
     status: "Adopted",
     name: "Oscar",

@@ -77,7 +77,6 @@ function getConfirmedAlumni(kittenList) {
     && parseAlumniDate(kitten.adoptionDate)
     && Number.isInteger(Number(kitten.fosterLitter))
     && Number(kitten.fosterLitter) > 0
-    && kitten.image
   );
 }
 
@@ -101,6 +100,11 @@ function formatAlumniLitter(litterNumber) {
 function renderAlumniCard(kitten, alumniIds, today = new Date()) {
   const celebrations = getAlumniCelebrations(kitten, today);
   const age = getAlumniAge(kitten.birthday, today);
+  const designation = kitten.fosterFail
+    ? '<span class="alumni-special-badge">Foster Fail</span>'
+    : kitten.secondChance
+      ? '<span class="alumni-special-badge alumni-special-badge--second-chance">Second Chance</span>'
+      : "";
   const photos = Array.isArray(kitten.photos)
     ? kitten.photos.filter(photo => typeof photo === "string" && photo.trim())
     : [];
@@ -119,12 +123,11 @@ function renderAlumniCard(kitten, alumniIds, today = new Date()) {
 
   return `<article class="kitten-card alumni-card" id="alumni-${escapeHTML(kitten.id)}">
     <div class="card-photo-wrap alumni-main-photo">
-      <img src="${escapeHTML(kitten.image)}" alt="${escapeHTML(kitten.name)}" loading="lazy">
+      ${kitten.image ? `<img src="${escapeHTML(kitten.image)}" alt="${escapeHTML(kitten.name)}" loading="lazy">` : ""}
       ${celebrations.celebratesBirthday ? '<span class="alumni-birthday-cake" aria-label="Birthday month">🎂</span>' : ""}
     </div>
     <div class="card-content alumni-card-content">
-      <h3>${escapeHTML(kitten.name)}</h3>
-      ${kitten.fosterFail ? '<span class="alumni-special-badge">Foster Fail</span>' : ""}
+      <h3>${escapeHTML(kitten.name)}${designation ? ` ${designation}` : ""}</h3>
       <dl class="alumni-details">
         <div><dt>Gender</dt><dd>${escapeHTML(kitten.gender)}</dd></div>
         <div><dt>Birthday</dt><dd>${formatAlumniDate(parseAlumniDate(kitten.birthday))}</dd></div>

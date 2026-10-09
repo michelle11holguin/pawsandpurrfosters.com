@@ -34,7 +34,7 @@ Set `profileUrl` to `kittens/profile-template.html?id=your-kitten-id` to link th
 
 ### Add foster alumni
 
-Open `alumni-data.js` and add an object to `PAWS_FOSTER_ALUMNI` for each kitten whose adoption is confirmed and whose adoption date is known. Follow the commented example: use `status: "Adopted"`, dates in `YYYY-MM-DD` format, the foster litter number, and the main and optional gallery image paths. Use `companionId` to link two alumni adopted together. Records without a confirmed adopted status, valid dates, litter number, or main photo are not displayed. Alumni are grouped by litter, newest litter first, and then by adoption date, newest first.
+Open `alumni-data.js` and add an object to `PAWS_FOSTER_ALUMNI` for each kitten whose adoption is confirmed and whose adoption date is known. Follow the commented example: use `status: "Adopted"`, dates in `YYYY-MM-DD` format, the foster litter number, and the main and optional gallery image paths when available. Use `companionId` to link two alumni adopted together. Records without a confirmed adopted status, valid dates, or litter number are not displayed; a missing main photo leaves the photo area empty until a local image is added. Alumni are grouped by litter, newest litter first, and then by adoption date, newest first.
 
 The page calculates zodiac signs, current age, birthday-month cake symbols, and exact-day birthday and Gotcha Day celebrations from those saved dates. Returned kittens should not be listed as alumni unless a new adoption is confirmed and recorded.
 
