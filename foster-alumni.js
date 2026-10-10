@@ -124,7 +124,7 @@ function renderAlumniCard(kitten, alumniIds, today = new Date()) {
       </div>`
     : "";
   const companionLink = kitten.companionId && alumniIds.has(kitten.companionId)
-    ? `<a class="alumni-companion" href="#alumni-${escapeHTML(kitten.companionId)}">Adopted with ${escapeHTML(alumniIds.get(kitten.companionId))}</a>`
+    ? `<a class="alumni-companion" href="foster-alumni/#alumni-${escapeHTML(kitten.companionId)}">Adopted with ${escapeHTML(alumniIds.get(kitten.companionId))}</a>`
     : "";
   const celebrationMessages = [
     celebrations.birthdayMessage ? `<p class="alumni-celebration" role="status">Happy Birthday, ${escapeHTML(kitten.name)}! ${escapeHTML(celebrations.birthdayAge)} old today.</p>` : "",

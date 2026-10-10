@@ -140,7 +140,7 @@ function renderProfile(kitten) {
   if (!root) return;
 
   if (!kitten) {
-    root.innerHTML = '<div class="profile-not-found"><h1>Kitten profile not found</h1><p>Choose a kitten from the homepage to see their profile.</p><a class="button primary" href="../index.html#kittens">Browse kittens</a></div>';
+    root.innerHTML = '<div class="profile-not-found"><h1>Kitten profile not found</h1><p>Choose a kitten from the homepage to see their profile.</p><a class="button primary" href="../#kittens">Browse kittens</a></div>';
     return;
   }
 
@@ -231,7 +231,7 @@ function renderProfile(kitten) {
       <p>Wally must be adopted with his bonded brother, <a class="text-link" href="profile-template.html?id=raymond">Raymond</a>. If you're interested in making them part of your family, you can learn more about Raymond below and review the adoption process to see what comes next.</p>
       <p>Have questions or want to see if Wally is a good fit for your home?</p>
       <p>Reach out to <strong><a href="https://www.nopawsleftbehindkittyrescue.com/">No Paws Left Behind Kitty Rescue</a></strong> with questions or to ask about scheduling a meet-and-greet. You can also visit our <a class="text-link" href="../index.html#events">Events</a> page to find out where Wally will be this weekend. If you have questions about the adoption process, No Paws Left Behind Kitty Rescue is always happy to help. For smaller questions or foster-specific details, you can also email us directly at <a href="mailto:PawsAndPurrFosters@gmail.com">PawsAndPurrFosters@gmail.com</a>.</p>
-      <a class="button primary" href="../how-to-adopt.html">Learn How to Adopt</a>
+      <a class="button primary" href="../how-to-adopt/">Learn How to Adopt</a>
     </section>
   `
     : kitten.id === "raymond"
@@ -241,7 +241,7 @@ function renderProfile(kitten) {
       <p>Raymond must be adopted with his bonded brother, <a class="text-link" href="profile-template.html?id=wally">Wally</a>. If you're interested in making them part of your family, you can learn more about Wally below and review the adoption process to see what comes next.</p>
       <p>Have questions or want to see if Raymond is a good fit for your home?</p>
       <p>Reach out to <strong><a href="https://www.nopawsleftbehindkittyrescue.com/">No Paws Left Behind Kitty Rescue</a></strong> with questions or to ask about scheduling a meet-and-greet. You can also visit our <a class="text-link" href="../index.html#events">Events</a> page to find out where Raymond will be this weekend. If you have questions about the adoption process, <strong><a href="https://www.nopawsleftbehindkittyrescue.com/">No Paws Left Behind Kitty Rescue</a></strong> is always happy to help. For smaller questions or foster-specific details, you can also email us directly at <a href="mailto:PawsAndPurrFosters@gmail.com">PawsAndPurrFosters@gmail.com</a>.</p>
-      <a class="button primary" href="../how-to-adopt.html">Learn How to Adopt</a>
+      <a class="button primary" href="../how-to-adopt/">Learn How to Adopt</a>
     </section>
   `
     : kitten.id === "valentina"
@@ -251,7 +251,7 @@ function renderProfile(kitten) {
       <p>Valentina must be adopted with her brother, <a class="text-link" href="profile-template.html?id=diego">Diego</a>. If you're interested in making them part of your family, you can learn more about Diego below and review the adoption process to see what comes next.</p>
       <p>Have questions or want to see if Valentina is a good fit for your home?</p>
       <p>Reach out to <strong><a href="https://www.nopawsleftbehindkittyrescue.com/">No Paws Left Behind Kitty Rescue</a></strong> with questions or to ask about scheduling a meet-and-greet. You can also visit our <a class="text-link" href="../index.html#events">Events</a> page to find out where Valentina will be this weekend. If you have questions about the adoption process, <strong><a href="https://www.nopawsleftbehindkittyrescue.com/">No Paws Left Behind Kitty Rescue</a></strong> is always happy to help. For smaller questions or foster-specific details, you can also email us directly at <a href="mailto:PawsAndPurrFosters@gmail.com">PawsAndPurrFosters@gmail.com</a>.</p>
-      <a class="button primary" href="../how-to-adopt.html">Learn How to Adopt</a>
+      <a class="button primary" href="../how-to-adopt/">Learn How to Adopt</a>
     </section>
   `
     : kitten.id === "diego"
@@ -261,7 +261,7 @@ function renderProfile(kitten) {
       <p>Diego must be adopted with his sister, <a class="text-link" href="profile-template.html?id=valentina">Valentina</a>. If you're interested in making them part of your family, you can learn more about Valentina below and review the adoption process to see what comes next.</p>
       <p>Have questions or want to see if Diego is a good fit for your home?</p>
       <p>Reach out to <strong><a href="https://www.nopawsleftbehindkittyrescue.com/">No Paws Left Behind Kitty Rescue</a></strong> with questions or to ask about scheduling a meet-and-greet. You can also visit our <a class="text-link" href="../index.html#events">Events</a> page to find out where Diego will be this weekend. If you have questions about the adoption process, No Paws Left Behind Kitty Rescue is always happy to help. For smaller questions or foster-specific details, you can also email us directly at <a href="mailto:PawsAndPurrFosters@gmail.com">PawsAndPurrFosters@gmail.com</a>.</p>
-      <a class="button primary" href="../how-to-adopt.html">Learn How to Adopt</a>
+      <a class="button primary" href="../how-to-adopt/">Learn How to Adopt</a>
     </section>
   `
     : kitten.id === "melody"
@@ -271,7 +271,7 @@ function renderProfile(kitten) {
       <p>Melody must be adopted with her brother, <a class="text-link" href="profile-template.html?id=harvey">Harvey</a>. If you're interested in making them part of your family, you can learn more about Harvey below and review the adoption process to see what comes next.</p>
       <p>Have questions or want to see if Melody is a good fit for your home?</p>
       <p>Reach out to <strong><a href="https://www.nopawsleftbehindkittyrescue.com/">No Paws Left Behind Kitty Rescue</a></strong> with questions or to ask about scheduling a meet-and-greet. You can also visit our <a class="text-link" href="../index.html#events">Events</a> page to find out where Melody will be this weekend. If you have questions about the adoption process, <strong><a href="https://www.nopawsleftbehindkittyrescue.com/">No Paws Left Behind Kitty Rescue</a></strong> is always happy to help. For smaller questions or foster-specific details, you can also email us directly at <a href="mailto:PawsAndPurrFosters@gmail.com">PawsAndPurrFosters@gmail.com</a>.</p>
-      <a class="button primary" href="../how-to-adopt.html">Learn How to Adopt</a>
+      <a class="button primary" href="../how-to-adopt/">Learn How to Adopt</a>
     </section>
   `
     : kitten.id === "harvey"
@@ -281,7 +281,7 @@ function renderProfile(kitten) {
       <p>Harvey must be adopted with his sister, <a class="text-link" href="profile-template.html?id=melody">Melody</a>. If you're interested in making them part of your family, you can learn more about Melody below and review the adoption process to see what comes next.</p>
       <p>Have questions or want to see if Harvey is a good fit for your home?</p>
       <p>Reach out to <strong><a href="https://www.nopawsleftbehindkittyrescue.com/">No Paws Left Behind Kitty Rescue</a></strong> with questions or to ask about scheduling a meet-and-greet. You can also visit our <a class="text-link" href="../index.html#events">Events</a> page to find out where Harvey will be this weekend. If you have questions about the adoption process, <strong><a href="https://www.nopawsleftbehindkittyrescue.com/">No Paws Left Behind Kitty Rescue</a></strong> is always happy to help. For smaller questions or foster-specific details, you can also email us directly at <a href="mailto:PawsAndPurrFosters@gmail.com">PawsAndPurrFosters@gmail.com</a>.</p>
-      <a class="button primary" href="../how-to-adopt.html">Learn How to Adopt</a>
+      <a class="button primary" href="../how-to-adopt/">Learn How to Adopt</a>
     </section>
   `
     : kitten.id === "paloma"
@@ -291,7 +291,7 @@ function renderProfile(kitten) {
       <p>Paloma must be adopted with her sister, <a class="text-link" href="profile-template.html?id=claudia">Claudia</a>. If you're interested in making them part of your family, you can learn more about Claudia below and review the adoption process to see what comes next.</p>
       <p>Have questions or want to see if Paloma is a good fit for your home?</p>
       <p>Reach out to <strong><a href="https://www.nopawsleftbehindkittyrescue.com/">No Paws Left Behind Kitty Rescue</a></strong> with questions or to ask about scheduling a meet-and-greet. You can also visit our <a class="text-link" href="../index.html#events">Events</a> page to find out where Paloma will be this weekend. If you have questions about the adoption process, <strong><a href="https://www.nopawsleftbehindkittyrescue.com/">No Paws Left Behind Kitty Rescue</a></strong> is always happy to help. For smaller questions or foster-specific details, you can also email us directly at <a href="mailto:PawsAndPurrFosters@gmail.com">PawsAndPurrFosters@gmail.com</a>.</p>
-      <a class="button primary" href="../how-to-adopt.html">Learn How to Adopt</a>
+      <a class="button primary" href="../how-to-adopt/">Learn How to Adopt</a>
     </section>
   `
     : kitten.id === "claudia"
@@ -301,14 +301,14 @@ function renderProfile(kitten) {
       <p>Claudia must be adopted with her sister, <a class="text-link" href="profile-template.html?id=paloma">Paloma</a>. If you're interested in making them part of your family, you can learn more about Paloma below and review the adoption process to see what comes next.</p>
       <p>Have questions or want to see if Claudia is a good fit for your home?</p>
       <p>Reach out to <strong><a href="https://www.nopawsleftbehindkittyrescue.com/">No Paws Left Behind Kitty Rescue</a></strong> with questions or to ask about scheduling a meet-and-greet. You can also visit our <a class="text-link" href="../index.html#events">Events</a> page to find out where Claudia will be this weekend. If you have questions about the adoption process, <strong><a href="https://www.nopawsleftbehindkittyrescue.com/">No Paws Left Behind Kitty Rescue</a></strong> is always happy to help. For smaller questions or foster-specific details, you can also email us directly at <a href="mailto:PawsAndPurrFosters@gmail.com">PawsAndPurrFosters@gmail.com</a>.</p>
-      <a class="button primary" href="../how-to-adopt.html">Learn How to Adopt</a>
+      <a class="button primary" href="../how-to-adopt/">Learn How to Adopt</a>
     </section>
   `
     : `
     <section class="profile-detail profile-reminder">
       <h2>Interested in adopting ${escapeHTML(kitten.name)}?</h2>
       ${pairingData ? `<p>${escapeHTML(kitten.name)} ${pairingData.type === "must" ? "must be adopted with" : "is happiest with"} <a class="text-link" href="${escapeHTML(`profile-template.html?id=${pairingData.kittenId}`)}">${escapeHTML(pairingData.kittenName)}</a>.</p>` : "<p>We would love to hear from you.</p>"}
-      <a class="button primary" href="../how-to-adopt.html">Learn How to Adopt</a>
+      <a class="button primary" href="../how-to-adopt/">Learn How to Adopt</a>
     </section>
   `;
 

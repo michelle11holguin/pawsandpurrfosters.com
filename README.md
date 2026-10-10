@@ -44,7 +44,7 @@ Open `script.js` and find the `ABOUT STORY — EDIT HERE` block near the top. It
 
 ### Update How to Adopt information
 
-The adoption steps are in `how-to-adopt.html`. To update the rescue name, official website, Petfinder link, or application instructions, edit the clearly labeled values in `adoption-data.js`. Leave a link blank to omit it from the page.
+The adoption steps are in `how-to-adopt/index.html`; `how-to-adopt.html` is kept as a legacy URL. To update the rescue name, official website, Petfinder link, or application instructions, edit the clearly labeled values in `adoption-data.js`. Leave a link blank to omit it from the page.
 
 ### Add your logo
 
@@ -57,5 +57,6 @@ The real logo is stored at `assets/logo.jpg` and is used in the homepage and kit
 - `script.js` — carousels, navigation, homepage rendering, and About story
 - `kitten-data.js` — homepage kitten cards and future profile details
 - `event-data.js` — featured event, regular schedule, and optional notices
-- `how-to-adopt.html` and `adoption-data.js` — adoption steps and editable rescue information
+- `all-kittens/index.html`, `available-kittens/index.html`, `foster-alumni/index.html`, and `how-to-adopt/index.html` — clean page URLs (legacy `.html` files remain available)
+- `adoption-data.js` — editable rescue information for the adoption page
 - `kittens/profile-template.html` — reusable kitten profile layout
