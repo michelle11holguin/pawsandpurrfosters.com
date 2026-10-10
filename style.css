@@ -110,6 +110,7 @@ a { color: inherit; text-decoration: none; }
   background: transparent;
 }
 .nav { display: flex; align-items: center; gap: 28px; font-size: 14px; font-weight: 600; }
+.nav a:not(.nav-button) { color: var(--ink); }
 .nav a:hover, .text-link:hover, .card-link:hover { color: var(--purple); }
 .nav-button { padding: 10px 17px; border-radius: 999px; background: var(--sage); color: white; }
 .menu-toggle { display: none; border: 0; background: none; font-size: 25px; color: var(--purple-dark); }
@@ -225,7 +226,7 @@ h3 { font-family: "Playfair Display", serif; font-size: 27px; margin: 6px 0; }
 .card-content p { color: var(--muted); font-size: 14px; margin: 8px 0 17px; }
 
 .event { padding-top: 30px; }
-.event-panels { display: grid; gap: 26px; }
+.event-panels { display: grid; gap: 38px; }
 .schedule-panel, .special-event-panel, .october-notice { padding: 34px; border: 1px solid var(--line); border-radius: 22px; background: white; }
 .schedule-panel h2, .special-event-panel h2, .october-notice h2 { font-size: 34px; }
 .schedule-locations { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; margin-top: 24px; }
@@ -263,6 +264,8 @@ h3 { font-family: "Playfair Display", serif; font-size: 27px; margin: 6px 0; }
 .event-special-note { padding: 12px 14px; border-left: 3px solid var(--sage); background: rgba(255,255,255,.1); }
 
 .about-grid { display: grid; grid-template-columns: .55fr 1.45fr; gap: 80px; align-items: center; }
+.about.section { padding-bottom: 52px; }
+.contact.section { padding-top: 52px; }
 .about-grid p:not(.eyebrow) { color: var(--muted); }
 .about-accent {
   min-height: 300px; border-radius: 28px; background: var(--sage-light);
@@ -338,7 +341,7 @@ footer strong { color: var(--purple-dark); font-family: "Playfair Display", seri
 
 @media (max-width: 850px) {
   .schedule-locations { grid-template-columns: 1fr; }
-  .event-panels { gap: 18px; }
+  .event-panels { gap: 28px; }
 }
 
 @media (max-width: 500px) {
@@ -368,7 +371,9 @@ footer strong { color: var(--purple-dark); font-family: "Playfair Display", seri
 .alumni-temporary-notice h2 { margin: 0 0 14px; color: var(--purple-dark); font-size: clamp(25px, 3vw, 34px); }
 .alumni-temporary-notice p { margin: 0 0 14px; color: var(--muted); }
 .alumni-temporary-notice .button { margin-top: 4px; }
-.alumni-temporary-notice--pair { max-width: none; flex: 0 0 calc(clamp(220px, calc((100% - 44px) / 3), 320px) + 32px); }
+.alumni-temporary-notice--pair { max-width: none; flex: 0 0 calc(clamp(220px, calc((100% - 44px) / 3), 320px) + 32px); display: flex; flex-direction: column; }
+.alumni-temporary-notice--pair p { margin-bottom: 18px; }
+.alumni-temporary-notice--pair .button { align-self: flex-start; margin-top: auto; white-space: nowrap; }
 .alumni-temporary-notice--eleventh { flex: 0 0 calc(clamp(220px, calc((100% - 44px) / 3), 320px) + clamp(220px, calc((100% - 44px) / 3), 320px) + clamp(220px, calc((100% - 44px) / 3), 320px) + 44px); }
 .alumni-litter--temporary .alumni-cards { overflow-x: auto; }
 .foster-page-intro .page-actions { gap: 12px; flex-wrap: wrap; }

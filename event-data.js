@@ -4,14 +4,14 @@
 // ==================================================
 window.PAWS_EVENT_DATA = {
   featuredEvent: {
-    active: false,
+    active: true,
     title: "Where to Find Us",
-    location: "",
-    date: "",
-    time: "",
-    address: "",
+    location: "Antioch PetSmart",
+    date: "Saturday, October 10, 2026",
+    time: "11 a.m.–3 p.m.",
+    address: "5879 Lone Tree Way, Antioch, CA 94531",
     mapsUrl: "",
-    attendingKittens: [],
+    attendingKittens: ["Diego", "Valentina", "Harvey", "Melody", "Raymond", "Wally"],
     description: "",
     specialNotice: ""
   },
@@ -43,10 +43,9 @@ window.PAWS_EVENT_DATA = {
   },
   octoberNotice: {
     active: true,
-    title: "October Adoption Attendance Notice",
+    title: "October Adoption Event Attendance",
     messages: [
-      "During October, black cats will not be available for adoption at adoption events due to safety risks associated with the month, in accordance with the rescue's policy. We always want to prioritize the safety of our foster cats.",
-      "Claudia will not be attending adoption events during October and the first week of November. Paloma, her bonded pair, will generally not attend events during this time either, although she may occasionally attend an event when we feel it is appropriate."
+      "Paloma and Claudia will not be attending this event. Please check back after the first week of November for updates about their next adoption event."
     ]
   }
 };

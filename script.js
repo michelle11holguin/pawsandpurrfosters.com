@@ -36,7 +36,7 @@ const FOSTER_CAROUSEL_PHOTOS = [
 const ABOUT_STORY = {
   paragraphs: [
     "Paws & Purr Fosters is a small foster team run by my brother and me, with the help of our family. We officially began fostering kittens on February 29, 2024. Before we officially began fostering, we unexpectedly raised a single kitten. That kitten was Figaro, but we called him Fig. Fig passed away in 2020. Fig showed me how much love I could have for a kitten and inspired me to begin fostering.",
-    "Beginning fostering on February 29, 2024 allowed me to honor Fig's impact by helping other kittens. We are now on our 12th litter and have fostered 43 kittens so far. Every kitten receives love, care, socialization, positive experiences, play, and opportunities to build confidence while waiting for their forever homes.",
+    "Beginning fostering on February 29, 2024 allowed me to honor Fig's impact by helping other kittens. We are now on our {{currentLitter}} litter and have fostered {{kittenCount}} kittens so far. Every kitten receives love, care, socialization, positive experiences, play, and opportunities to build confidence while waiting for their forever homes.",
     "All of our kittens are harness-trained to some degree while in our care. The longer they stay with us, the more opportunity they have to become fully comfortable with the harness. Harness training helps kittens build confidence and experience new things, including safe trips to the veterinarian and fun adventures with their future families. We're proud of what we do and look forward to helping many more kittens find the loving homes they deserve."
   ]
 };
@@ -54,13 +54,54 @@ function escapeHTML(value) {
   })[character]);
 }
 
+function getFosterHistoryTotals() {
+  const currentKittens = window.PAWS_KITTENS;
+  const alumniKittens = window.PAWS_FOSTER_ALUMNI;
+  if (!Array.isArray(currentKittens) || !Array.isArray(alumniKittens)) {
+    console.error("Foster history counts could not be calculated because kitten records are missing.");
+    return null;
+  }
+
+  const kittensById = new Map();
+  let currentLitter = 0;
+  for (const kitten of [...currentKittens, ...alumniKittens]) {
+    const litterNumber = Number(kitten.litterNumber ?? kitten.fosterLitter);
+    if (typeof kitten.id !== "string" || !kitten.id.trim() || !Number.isInteger(litterNumber) || litterNumber < 1) {
+      console.error("Foster history counts could not be calculated because a kitten record is missing its ID or litter number.");
+      return null;
+    }
+    currentLitter = Math.max(currentLitter, litterNumber);
+    kittensById.set(kitten.id, kitten);
+  }
+
+  if (!kittensById.size || !currentLitter) {
+    console.error("Foster history counts could not be calculated because kitten IDs or litter numbers are missing.");
+    return null;
+  }
+
+  const litterSuffix = currentLitter % 100 >= 11 && currentLitter % 100 <= 13
+    ? "th"
+    : ({ 1: "st", 2: "nd", 3: "rd" }[currentLitter % 10] || "th");
+  return {
+    kittenCount: kittensById.size,
+    currentLitter: `${currentLitter}${litterSuffix}`
+  };
+}
+
 function renderAbout() {
   const container = document.querySelector("#about-content");
   if (!container) return;
-  const paragraphs = ABOUT_STORY.paragraphs.map(text => `<p>${escapeHTML(text)}</p>`).join("");
+  const totals = getFosterHistoryTotals();
+  if (!totals) {
+    container.innerHTML = '<p class="empty-state" role="alert">Foster history totals could not be loaded.</p>';
+    return;
+  }
+  const paragraphs = ABOUT_STORY.paragraphs.map(text =>
+    `<p>${escapeHTML(text.replaceAll("{{currentLitter}}", totals.currentLitter).replaceAll("{{kittenCount}}", String(totals.kittenCount)))}</p>`
+  ).join("");
 
   container.innerHTML = `
-    <div class="about-accent"><span>Since</span><strong>2024</strong><span>43 kittens fostered</span></div>
+    <div class="about-accent"><span>Since</span><strong>2024</strong><span>${totals.kittenCount} kittens fostered</span></div>
     <div>
       <p class="eyebrow">About Paws &amp; Purr Fosters</p>
       <h2>A small foster team, with a lot of love to give.</h2>
