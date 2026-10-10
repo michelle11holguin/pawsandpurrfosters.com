@@ -6,6 +6,113 @@ const alumniRoot = typeof window !== "undefined" ? window : globalThis;
 
 alumniRoot.PAWS_FOSTER_ALUMNI = [
   {
+    id: "eloise",
+    status: "Adopted",
+    name: "Eloise",
+    gender: "Female",
+    birthday: "2026-02-09",
+    adoptionDate: "2026-05-09",
+    fosterLitter: 10,
+    image: "assets/kittens/alumni-eloise.png",
+    photos: [],
+    companionId: "matilda"
+  },
+  {
+    id: "matilda",
+    status: "Adopted",
+    name: "Matilda",
+    gender: "Female",
+    birthday: "2026-02-09",
+    adoptionDate: "2026-05-09",
+    fosterLitter: 10,
+    image: "assets/kittens/alumni-matilda.png",
+    photos: [],
+    companionId: "eloise"
+  },
+  {
+    id: "edgar",
+    status: "Adopted",
+    name: "Edgar",
+    gender: "Male",
+    birthday: "2025-09-24",
+    adoptionDate: "2026-03-15",
+    fosterLitter: 9,
+    image: "assets/kittens/alumni-edgar.png",
+    photos: [],
+    companionId: "franklin"
+  },
+  {
+    id: "sabrina",
+    status: "Adopted",
+    name: "Sabrina",
+    gender: "Female",
+    birthday: "2025-09-24",
+    adoptionDate: "2025-12-22",
+    fosterLitter: 9,
+    image: "assets/kittens/alumni-sabrina.png",
+    photos: [],
+    companionId: "victoria"
+  },
+  {
+    id: "victoria",
+    status: "Adopted",
+    name: "Victoria",
+    gender: "Female",
+    birthday: "2025-09-24",
+    adoptionDate: "2025-12-22",
+    fosterLitter: 9,
+    image: "assets/kittens/alumni-victoria.png",
+    photos: [],
+    companionId: "sabrina"
+  },
+  {
+    id: "arthur",
+    status: "Adopted",
+    name: "Arthur",
+    gender: "Male",
+    birthday: "2025-09-10",
+    adoptionDate: "2026-02-15",
+    fosterLitter: 8,
+    image: "assets/kittens/alumni-arthur.png",
+    photos: [],
+    companionId: "gavin"
+  },
+  {
+    id: "gavin",
+    status: "Adopted",
+    name: "Gavin",
+    gender: "Male",
+    birthday: "2025-09-10",
+    adoptionDate: "2026-02-15",
+    fosterLitter: 8,
+    image: "assets/kittens/alumni-gavin.png",
+    photos: [],
+    companionId: "arthur"
+  },
+  {
+    id: "franklin",
+    status: "Adopted",
+    name: "Franklin",
+    gender: "Male",
+    birthday: "2025-09-10",
+    adoptionDate: "2026-03-15",
+    fosterLitter: 8,
+    image: "assets/kittens/alumni-franklin.png",
+    photos: [],
+    companionId: "edgar"
+  },
+  {
+    id: "timothy",
+    status: "Adopted",
+    name: "Timothy",
+    gender: "Male",
+    birthday: "2025-09-10",
+    adoptionDate: "2026-02-03",
+    fosterLitter: 8,
+    image: "assets/kittens/alumni-timothy.png",
+    photos: []
+  },
+  {
     id: "freddy",
     status: "Adopted",
     name: "Freddy",
