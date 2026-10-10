@@ -6,6 +6,30 @@ const alumniRoot = typeof window !== "undefined" ? window : globalThis;
 
 alumniRoot.PAWS_FOSTER_ALUMNI = [
   {
+    id: "freya",
+    status: "Adopted",
+    name: "Freya",
+    gender: "Female",
+    birthday: "2026-03-14",
+    adoptionDate: "2026-09-12",
+    fosterLitter: 12,
+    image: "assets/kittens/alumni-freya.png",
+    photos: [],
+    companionId: "farrah"
+  },
+  {
+    id: "farrah",
+    status: "Adopted",
+    name: "Farrah",
+    gender: "Female",
+    birthday: "2026-03-14",
+    adoptionDate: "2026-09-12",
+    fosterLitter: 12,
+    image: "assets/kittens/alumni-farrah.png",
+    photos: [],
+    companionId: "freya"
+  },
+  {
     id: "eloise",
     status: "Adopted",
     name: "Eloise",
