@@ -13,7 +13,7 @@ window.PAWS_EVENT_DATA = {
     mapsUrl: "",
     attendingKittens: ["Diego", "Valentina", "Harvey", "Melody", "Raymond", "Wally"],
     description: "",
-    specialNotice: "Paloma and Claudia will not be attending this event. Please see the October Adoption Notice below to learn why. Check back after the first week of November."
+    specialNotice: ""
   },
   regularSchedule: {
     active: true,
