@@ -227,6 +227,7 @@ h3 { font-family: "Playfair Display", serif; font-size: 27px; margin: 6px 0; }
 
 .event { padding-top: 30px; }
 .event-panels { display: grid; gap: 38px; }
+#event-featured + #regular-schedule { margin-top: 16px; }
 .schedule-panel, .special-event-panel, .october-notice { padding: 34px; border: 1px solid var(--line); border-radius: 22px; background: white; }
 .schedule-panel h2, .special-event-panel h2, .october-notice h2 { font-size: 34px; }
 .schedule-locations { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; margin-top: 24px; }
@@ -251,10 +252,9 @@ h3 { font-family: "Playfair Display", serif; font-size: 27px; margin: 6px 0; }
 .event-card .eyebrow { color: #dcd2e8; }
 .event-card h2 { margin-bottom: 10px; }
 .event-card h2 { margin-bottom: 10px; }
-.placement-location { margin: 8px 0; color: white; font-family: "DM Sans", sans-serif; font-size: 24px; font-weight: 700; }
 .event-coming-soon .event-location { min-height: 100%; justify-content: center; }
 .event-card p { color: #eee9f4; max-width: 680px; }
-.event-date { font-weight: 700; }
+.event-date { margin: 22px 0; font-size: clamp(20px, 2vw, 25px); font-weight: 700; }
 .event-location {
   background: rgba(255,255,255,.1); border: 1px solid rgba(255,255,255,.16);
   border-radius: 20px; padding: 24px; display: flex; flex-direction: column; gap: 4px;
@@ -262,6 +262,7 @@ h3 { font-family: "Playfair Display", serif; font-size: 27px; margin: 6px 0; }
 .event-location strong { font-size: 20px; }
 .event-address { display: block; margin-top: 10px; color: inherit; font-weight: 700; text-decoration: underline; text-underline-offset: 3px; }
 .event-special-note { padding: 12px 14px; border-left: 3px solid var(--sage); background: rgba(255,255,255,.1); }
+.event-attendance-note { grid-column: 1 / -1; margin: 0; color: #eee9f4; font-size: 12px; opacity: .85; }
 
 .about-grid { display: grid; grid-template-columns: .55fr 1.45fr; gap: 80px; align-items: center; }
 .about.section { padding-bottom: 52px; }

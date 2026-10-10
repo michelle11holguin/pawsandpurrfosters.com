@@ -13,7 +13,7 @@ window.PAWS_EVENT_DATA = {
     mapsUrl: "",
     attendingKittens: ["Diego", "Valentina", "Harvey", "Melody", "Raymond", "Wally"],
     description: "",
-    specialNotice: ""
+    specialNotice: "Paloma and Claudia will not be attending this event. Please see the October Adoption Notice below to learn why. Check back after the first week of November."
   },
   regularSchedule: {
     active: true,
@@ -43,9 +43,11 @@ window.PAWS_EVENT_DATA = {
   },
   octoberNotice: {
     active: true,
-    title: "October Adoption Event Attendance",
+    title: "October Adoption Notice",
     messages: [
-      "Paloma and Claudia will not be attending this event. Please check back after the first week of November for updates about their next adoption event."
+      "During the month of October, the rescue we foster with is temporarily pausing adoptions of black kittens from September 30 through November 5 to help protect them from potential harm during this time.",
+      "As a result, Claudia will not be attending adoption events until after the first week of November. Paloma, her bonded pair, will also likely miss most adoption events during these weeks, though she may attend select events when appropriate.",
+      "Thank you for understanding as we prioritize the safety and well-being of our foster kittens."
     ]
   }
 };
