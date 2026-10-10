@@ -40,11 +40,13 @@ function getZodiacSign(birthday) {
 function getAlumniAge(birthday, today = new Date()) {
   const birthDate = parseAlumniDate(birthday);
   if (!birthDate) return null;
-  let age = today.getFullYear() - birthDate.getFullYear();
-  const birthdayHasPassed = today.getMonth() + 1 > birthDate.getMonth() + 1
-    || (today.getMonth() === birthDate.getMonth() && today.getDate() >= birthDate.getDate());
-  if (!birthdayHasPassed) age -= 1;
-  return age >= 0 ? age : null;
+  let months = (today.getFullYear() - birthDate.getFullYear()) * 12
+    + today.getMonth() - birthDate.getMonth();
+  if (today.getDate() < birthDate.getDate()) months -= 1;
+  if (months < 0) return null;
+  if (months < 12) return `${months} ${months === 1 ? "month" : "months"}`;
+  const years = Math.floor(months / 12);
+  return `${years} ${years === 1 ? "year" : "years"}`;
 }
 
 function getAlumniCelebrations(kitten, today = new Date()) {
@@ -61,7 +63,7 @@ function getAlumniCelebrations(kitten, today = new Date()) {
   return {
     celebratesBirthday,
     birthdayMessage,
-    birthdayAge: birthdayMessage ? today.getFullYear() - birthday.getFullYear() : null,
+    birthdayAge: birthdayMessage ? getAlumniAge(kitten.birthday, today) : null,
     gotchaDayMessage
   };
 }
@@ -117,7 +119,7 @@ function renderAlumniCard(kitten, alumniIds, today = new Date()) {
     ? `<a class="alumni-companion" href="#alumni-${escapeHTML(kitten.companionId)}">Adopted with ${escapeHTML(alumniIds.get(kitten.companionId))}</a>`
     : "";
   const celebrationMessages = [
-    celebrations.birthdayMessage ? `<p class="alumni-celebration" role="status">Happy Birthday, ${escapeHTML(kitten.name)}! ${celebrations.birthdayAge} years old today.</p>` : "",
+    celebrations.birthdayMessage ? `<p class="alumni-celebration" role="status">Happy Birthday, ${escapeHTML(kitten.name)}! ${escapeHTML(celebrations.birthdayAge)} old today.</p>` : "",
     celebrations.gotchaDayMessage ? `<p class="alumni-celebration alumni-gotcha" role="status">Happy Gotcha Day, ${escapeHTML(kitten.name)}!</p>` : ""
   ].join("");
 
@@ -132,7 +134,7 @@ function renderAlumniCard(kitten, alumniIds, today = new Date()) {
         <div><dt>Gender</dt><dd>${escapeHTML(kitten.gender)}</dd></div>
         <div><dt>Birthday</dt><dd>${formatAlumniDate(parseAlumniDate(kitten.birthday))}</dd></div>
         <div><dt>Zodiac</dt><dd>${escapeHTML(getZodiacSign(kitten.birthday))}</dd></div>
-        <div><dt>Age</dt><dd>${age === null ? "—" : `${age} ${age === 1 ? "year" : "years"}`}</dd></div>
+        <div><dt>Age</dt><dd>${age === null ? "—" : `${escapeHTML(age)} old`}</dd></div>
         <div><dt>Gotcha Day</dt><dd>${formatAlumniDate(parseAlumniDate(kitten.adoptionDate))}</dd></div>
         <div><dt>Foster litter</dt><dd>${escapeHTML(formatAlumniLitter(kitten.fosterLitter))}</dd></div>
       </dl>

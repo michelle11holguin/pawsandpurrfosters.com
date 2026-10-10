@@ -19,12 +19,11 @@ function formatBirthday(dateString) {
   return new Intl.DateTimeFormat("en-US", { month: "long", day: "numeric", year: "numeric" }).format(date);
 }
 
-function kittenAge(dateString) {
+function kittenAge(dateString, today = new Date()) {
   if (!dateString) return "";
   const birthDate = new Date(`${dateString}T00:00:00`);
-  if (Number.isNaN(birthDate.getTime()) || birthDate > new Date()) return "";
+  if (Number.isNaN(birthDate.getTime()) || birthDate > today) return "";
 
-  const today = new Date();
   let months = (today.getFullYear() - birthDate.getFullYear()) * 12 + (today.getMonth() - birthDate.getMonth());
   if (today.getDate() < birthDate.getDate()) months -= 1;
   if (months < 0) return "";
