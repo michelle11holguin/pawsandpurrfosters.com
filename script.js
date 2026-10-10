@@ -41,9 +41,6 @@ const ABOUT_STORY = {
   ]
 };
 
-const menuToggle = document.querySelector(".menu-toggle");
-const nav = document.querySelector(".nav");
-
 function escapeHTML(value) {
   return String(value ?? "").replace(/[&<>"']/g, character => ({
     "&": "&amp;",
@@ -287,20 +284,6 @@ function renderEvents() {
       ${data.octoberNotice.messages.map(message => `<p>${escapeHTML(message)}</p>`).join("")}`;
     notice.hidden = false;
   }
-}
-
-if (menuToggle && nav) {
-  menuToggle.addEventListener("click", () => {
-    const open = nav.classList.toggle("open");
-    menuToggle.setAttribute("aria-expanded", String(open));
-  });
-
-  nav.querySelectorAll("a").forEach(link => {
-    link.addEventListener("click", () => {
-      nav.classList.remove("open");
-      menuToggle.setAttribute("aria-expanded", "false");
-    });
-  });
 }
 
 renderAbout();

@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Meet one of the Paws & Purr Fosters kittens.">
-  <title>Meet a kitten | Paws &amp; Purr Fosters</title>
+  <title>Paws &amp; Purr Fosters</title>
   <link rel="stylesheet" href="../style.css">
   <link rel="stylesheet" href="profile.css">
 </head>
@@ -14,7 +14,15 @@
       <img class="brand-logo" src="https://i.ibb.co/23CcJGzW/paws-and-purr-fosters-logo.jpg" alt="Paws &amp; Purr Fosters">
       <span><strong>Paws &amp; Purr</strong><small>FOSTERS</small></span>
     </a>
-    <a class="text-link" href="../#kittens">← All kittens</a>
+    <button class="menu-toggle" type="button" aria-label="Open menu" aria-expanded="false">☰</button>
+    <nav class="nav" aria-label="Main navigation">
+      <a href="../">Home</a>
+      <a href="../all-kittens/">All Foster Kittens</a>
+      <a href="../foster-alumni/">Foster Alumni</a>
+      <a href="../available-kittens/">Adoptable Kittens</a>
+      <a href="../#events">Events</a>
+      <a href="../#about">About</a>
+    </nav>
   </header>
 
   <main class="profile-main" id="profile-main" aria-live="polite"></main>
@@ -28,8 +36,11 @@
 
   <footer>
     <div><strong>Paws &amp; Purr Fosters</strong><span>Helping little paws find their forever homes.</span></div>
+    <a href="../#contact">Contact</a>
+    <a href="../how-to-adopt/">How to Adopt</a>
     <span>© 2026 Paws &amp; Purr Fosters</span>
   </footer>
+  <script src="../navigation.js"></script>
   <script src="../kitten-data.js"></script>
   <script src="../event-data.js"></script>
   <script src="profile.js"></script>

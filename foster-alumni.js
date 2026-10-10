@@ -124,7 +124,7 @@ function renderAlumniCard(kitten, alumniIds, today = new Date()) {
       </div>`
     : "";
   const companionLink = kitten.companionId && alumniIds.has(kitten.companionId)
-    ? `<a class="alumni-companion" href="foster-alumni/#alumni-${escapeHTML(kitten.companionId)}">Adopted with ${escapeHTML(alumniIds.get(kitten.companionId))}</a>`
+    ? `<a class="alumni-companion" href="#alumni-${escapeHTML(kitten.companionId)}">Adopted with ${escapeHTML(alumniIds.get(kitten.companionId))}</a>`
     : "";
   const celebrationMessages = [
     celebrations.birthdayMessage ? `<p class="alumni-celebration" role="status">Happy Birthday, ${escapeHTML(kitten.name)}! ${escapeHTML(celebrations.birthdayAge)} old today.</p>` : "",
@@ -288,21 +288,6 @@ function renderFosterAlumni(kittenList, today = new Date()) {
 }
 
 if (typeof window !== "undefined") {
-  const menuToggle = document.querySelector(".menu-toggle");
-  const nav = document.querySelector(".nav");
-  if (menuToggle && nav) {
-    menuToggle.addEventListener("click", () => {
-      const open = nav.classList.toggle("open");
-      menuToggle.setAttribute("aria-expanded", String(open));
-    });
-    nav.querySelectorAll("a").forEach(link => {
-      link.addEventListener("click", () => {
-        nav.classList.remove("open");
-        menuToggle.setAttribute("aria-expanded", "false");
-      });
-    });
-  }
-
   const alumni = window.PAWS_FOSTER_ALUMNI;
   if (!Array.isArray(alumni)) {
     const container = document.querySelector("#foster-alumni");
