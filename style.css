@@ -262,7 +262,6 @@ h3 { font-family: "Playfair Display", serif; font-size: 27px; margin: 6px 0; }
 .event-location strong { font-size: 20px; }
 .event-address { display: block; margin-top: 10px; color: inherit; font-weight: 700; text-decoration: underline; text-underline-offset: 3px; }
 .event-special-note { padding: 12px 14px; border-left: 3px solid var(--sage); background: rgba(255,255,255,.1); }
-.event-attendance-note { grid-column: 1 / -1; margin: 0; color: #eee9f4; font-size: 12px; opacity: .85; }
 
 .about-grid { display: grid; grid-template-columns: .55fr 1.45fr; gap: 80px; align-items: center; }
 .about.section { padding-bottom: 52px; }

@@ -239,16 +239,12 @@ function renderEvents() {
       const location = event.location
         ? `<strong>${escapeHTML(event.location)}</strong>${address}`
         : address;
-      const attendanceNote = event.specialNotice
-        ? `<p class="event-attendance-note">${escapeHTML(event.specialNotice)}</p>`
-        : "";
       featured.innerHTML = `<div class="event-card">
         <div><p class="eyebrow">This weekend</p><h2>Where to Find Us</h2>
           ${dateAndTime ? `<p class="event-date">${dateAndTime}</p>` : ""}
           ${event.description ? `<p>${escapeHTML(event.description)}</p>` : ""}${attendees}${notice}
         </div>
         <div class="event-location">${location || "<span>See the regular schedule below for our usual locations.</span>"}</div>
-        ${attendanceNote}
       </div>`;
     } else {
       featured.innerHTML = `<div class="event-card event-coming-soon">
