@@ -100,9 +100,7 @@ appRoot.PAWS_KITTENS = [
       "assets/kittens/claudia-photo-5.png"
     ],
     personalityTraits: ["Timid at first", "Playful", "Energetic", "Affectionate", "Sweet", "Loving"],
-    idealHome: "Claudia will do best in a patient, loving home that gives her the time and space she needs to feel comfortable. She can be shy at first, but once she feels safe, her sweet and gentle personality begins to shine. She would benefit from people who let her build trust at her own pace and show her that she is loved. She may do well with children, although she hasn't had direct experience with them. She hasn't had direct experience with dogs either, so any introductions should be slow and patient. She can also live with other cats with a proper introduction. Claudia deserves a home where she can settle in, gain confidence, and become the affectionate companion she's meant to be.
-Personalize the next kitten profile
-Make these sound more consistent",
+    idealHome: "idealHome: "Claudia will do best in a patient, loving home that gives her the time and space she needs to feel comfortable. She can be shy at first, but once she feels safe, her sweet and gentle personality begins to shine. She would benefit from people who let her build trust at her own pace and show her that she is loved. She may do well with children, although she hasn't had direct experience with them. She hasn't had direct experience with dogs either, so any introductions should be slow and patient. She can also live with other cats with a proper introduction. Claudia deserves a home where she can settle in, gain confidence, and become the affectionate companion she's meant to be.",
     compatibility: { cats: "Yes — with proper introduction", dogs: "Unknown — no direct experience", youngerChildren: "Possibly — no direct experience", olderChildren: "Yes" },
     healthChecklist: ["Spayed", "Fully vaccinated", "Dewormed", "Flea treated", "Microchipped", "Fostered and socialized"],
     adoptionRequirements: [],
