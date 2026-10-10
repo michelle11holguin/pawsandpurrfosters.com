@@ -41,8 +41,8 @@ appRoot.PAWS_KITTENS = [
       "https://i.ibb.co/ccSzNsLD/5534058-C-D87-A-450-E-AAC5-70-C89-DC2-AD81.png"
     ],
     personalityTraits: ["Outgoing", "Playful", "Social", "Active", "Attention-loving", "Loves other cats"],
-    idealHome: "A home where he can be part of the action, with people around to play, explore, and cuddle.",
-    compatibility: { dogs: "No", cats: "Yes — with proper introduction", youngerChildren: "Possibly — no direct experience", olderChildren: "Yes" },
+    idealHome: "Diego will do best in a loving home where he can get plenty of attention, affection, and opportunities to play. He's a playful, cuddly boy who would be happy with a single person or a family, with or without children. He should be fine with other cats with a proper introduction, and while he hasn't had direct experience with dogs, he may do well with a calm, cat-friendly dog if introductions are handled patiently. Most of all, Diego wants a home where he'll be loved, included, and given all the cuddles and attention he could ask for.",
+    compatibility: { dogs: "Unknown — no direct experience", cats: "Yes — with proper introduction", youngerChildren: "Possibly — no direct experience", olderChildren: "Yes" },
     healthChecklist: ["Neutered", "Fully vaccinated", "Dewormed", "Flea treated", "Microchipped", "Fostered and socialized"],
     adoptionRequirements: [],
     petfinderUrl: "https://www.petfinder.com/cat/diego-050b5d9b-599c-4483-98fc-b2957135ac14/ca/oakley/no-paws-left-behind-kitty-rescue-ca3018/details/",
@@ -71,7 +71,7 @@ appRoot.PAWS_KITTENS = [
       "https://i.ibb.co/QjfhQZ7B/C98-C2165-A5-E8-49-B8-BC3-A-18-E31-E074194.png"
     ],
     personalityTraits: ["Confident", "Playful", "Curious", "Social", "Affectionate", "Vocal"],
-    idealHome: "A home with a warm, attentive family who appreciates a sweet, social companion.",
+    idealHome: "Valentina will do best in a loving home where she can get plenty of attention, affection, and cuddles. She's a sweet, affectionate girl who would be happy with a single person or a family, with or without children. She may do well with children, although she hasn't had direct experience with them. She should be fine with other cats with a proper introduction, and while she hasn't had direct experience with dogs, she may do well with a calm, cat-friendly dog if introductions are handled patiently. Most of all, Valentina wants a home where she'll be loved, included, and given all the cuddles and attention she could ask for.",
     compatibility: { dogs: "Unknown — no direct experience", cats: "Yes — with proper introduction", youngerChildren: "Possibly — no direct experience", olderChildren: "Yes" },
     healthChecklist: ["Spayed", "Fully vaccinated", "Dewormed", "Flea treated", "Microchipped", "Fostered and socialized"],
     adoptionRequirements: [],
@@ -100,8 +100,9 @@ appRoot.PAWS_KITTENS = [
       "assets/kittens/claudia-photo-5.png"
     ],
     personalityTraits: ["Timid at first", "Playful", "Energetic", "Affectionate", "Sweet", "Loving"],
-    idealHome: "High-energy or low-energy",
-    idealHomeNote: "Claudia enjoys being held once she knows you and feels comfortable.",
+    idealHome: "Claudia will do best in a patient, loving home that gives her the time and space she needs to feel comfortable. She can be shy at first, but once she feels safe, her sweet and gentle personality begins to shine. She would benefit from people who let her build trust at her own pace and show her that she is loved. She may do well with children, although she hasn't had direct experience with them. She hasn't had direct experience with dogs either, so any introductions should be slow and patient. She can also live with other cats with a proper introduction. Claudia deserves a home where she can settle in, gain confidence, and become the affectionate companion she's meant to be.
+Personalize the next kitten profile
+Make these sound more consistent",
     compatibility: { cats: "Yes — with proper introduction", dogs: "Unknown — no direct experience", youngerChildren: "Possibly — no direct experience", olderChildren: "Yes" },
     healthChecklist: ["Spayed", "Fully vaccinated", "Dewormed", "Flea treated", "Microchipped", "Fostered and socialized"],
     adoptionRequirements: [],
@@ -110,7 +111,7 @@ appRoot.PAWS_KITTENS = [
     videoUrl: "",
     eventInformation: "",
     pairing: { type: "must", kittenId: "paloma" },
-    pairingDescription: "Claudia and Paloma are biological sisters who are incredibly bonded and are always together. They love playing, chasing each other, and curling up together for naps. You will often find one right behind the other, and their close bond makes them a very sweet pair to watch grow together."
+    pairingDescription: "Claudia and Paloma are biological sisters who are incredibly bonded and are always together. They love playing, chasing each other, and curling up together for naps. You will often find one right behind the other, and their close bond makes them an extra special pair to welcome into your home."
   },
   {
     id: "paloma",
@@ -140,7 +141,7 @@ appRoot.PAWS_KITTENS = [
     videoUrl: "",
     eventInformation: "",
     pairing: { type: "must", kittenId: "claudia" },
-    pairingDescription: "Claudia and Paloma are biological sisters with a special bond and are rarely far apart. They follow each other everywhere, love chasing and playing together, and curl up side by side for naps. They are a very sweet duo who should get to keep growing up together.",
+    pairingDescription: "Claudia and Paloma are sisters with a special bond and are rarely far apart. They follow each other everywhere, love chasing and playing together, and curl up side by side for naps. They are two super sweet kittens with so much love to give to their future family.",
     adoptionNotice: {
       title: "Adoption Event Notice",
       message: "From September 30 through November 5, Claudia cannot attend adoption events during the rescue's black-cat safety period. Because Paloma must be adopted with Claudia, Paloma will not attend events during this period either. Adoption inquiries for the pair may resume after November 5."
@@ -165,7 +166,7 @@ appRoot.PAWS_KITTENS = [
       "assets/kittens/harvey-photo-5.png"
     ],
     personalityTraits: ["Affectionate", "People-loving", "Playful", "Cuddly", "Food motivated", "Sweet"],
-    idealHome: "Harvey would do best in a home with people who are ready for an extremely sweet kitten and have lots of love to give. He would be happy with older children or even as the only person’s special companion. He has plenty of love to share!",
+    idealHome: "Harvey will do best in a loving home with people who are ready for a very sweet kitten with lots of love to give. He would be happy with older children or even a single person who wants a cuddly companion. He's full of love and affection, and he hopes his future family is ready for all the sweetness he has to share. He should do well with other cats with a proper introduction, but a home without dogs and preferably without young children would be best for him. Most of all, Harvey wants a home where he'll be loved, cuddled, and treated like part of the family.",
     compatibility: { dogs: "No", cats: "Yes — with proper introduction", youngerChildren: "No", olderChildren: "Yes" },
     healthChecklist: ["Neutered", "Fully vaccinated", "Dewormed", "Flea treated", "Microchipped", "Fostered and socialized"],
     adoptionRequirements: [],
@@ -174,7 +175,7 @@ appRoot.PAWS_KITTENS = [
     videoUrl: "",
     eventInformation: "",
     pairing: { type: "must", kittenId: "melody" },
-    pairingDescription: "Harvey and Melody are biological siblings, and these two tuxedo kittens look like a little twin duo. They love grooming each other, napping together, and playing side by side. When you see one, the other is never far behind. They are a very bonded pair and should stay together."
+    pairingDescription: "Harvey and Melody are siblings, and these two tuxedo kittens are the sweetest twin duo! They love grooming each other, napping together, and playing side by side. When you see one, the other is never far behind."
   },
   {
     id: "melody",
@@ -196,7 +197,7 @@ appRoot.PAWS_KITTENS = [
       "assets/kittens/melody-photo-6.png"
     ],
     personalityTraits: ["Sweet", "Confident", "Affectionate", "People-loving", "Fearless", "Playful"],
-    idealHome: "Melody would thrive with people who are looking for an extremely affectionate companion and are ready to give her plenty of love and attention. She would be happy with older children or as a special companion for one person. She loves being close to her people and has so much love to give.",
+    idealHome: "Melody will do best in a loving home with people who are ready to give her plenty of love, attention, and cuddles. She's a very sweet girl who would be happy with older children or a single person looking for an affectionate companion. She has so much love to share and hopes her future family is ready for all her cuddles and sweetness. She should be fine with other cats with a proper introduction, but a home without dogs would be best for her. Most of all, Melody wants a home where she'll feel safe, loved, and included as part of the family.",
     compatibility: { dogs: "No", cats: "Yes — with proper introduction", youngerChildren: "No", olderChildren: "Yes" },
     healthChecklist: ["Spayed", "Fully vaccinated", "Dewormed", "Flea treated", "Microchipped", "Fostered and socialized"],
     adoptionRequirements: [],
@@ -205,7 +206,7 @@ appRoot.PAWS_KITTENS = [
     videoUrl: "",
     eventInformation: "",
     pairing: { type: "must", kittenId: "harvey" },
-    pairingDescription: "Melody and Harvey are biological siblings and an adorable pair of tuxedo kittens who look like little twins. They are very bonded and enjoy grooming one another, playing together, and curling up for naps. When one is around, the other is usually close by. These sweet siblings should stay together."
+    pairingDescription: "Melody and Harvey are brother and sister, and they are the sweetest twin tuxedo kitten pair ever! They are very bonded and enjoy grooming one another, playing together, and curling up for naps. When one is around, the other is usually close by."
   },
   {
     id: "wally",
