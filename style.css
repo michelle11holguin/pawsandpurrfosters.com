@@ -246,8 +246,8 @@ h3 { font-family: "Playfair Display", serif; font-size: 27px; margin: 6px 0; }
 .october-notice p { color: var(--muted); }
 .event-card {
   background: var(--purple); color: white; border-radius: 30px;
-  padding: 52px; display: grid; grid-template-columns: 1.3fr .7fr;
-  gap: 45px; align-items: center;
+  padding: clamp(30px, 3vw, 40px); display: grid; grid-template-columns: 1.3fr .7fr;
+  gap: clamp(24px, 3vw, 36px); align-items: center;
 }
 .event-card .eyebrow { color: #dcd2e8; }
 .event-card h2 { margin-bottom: 10px; }
@@ -257,7 +257,7 @@ h3 { font-family: "Playfair Display", serif; font-size: 27px; margin: 6px 0; }
 .event-date { margin: 22px 0; font-size: clamp(20px, 2vw, 25px); font-weight: 700; }
 .event-location {
   background: rgba(255,255,255,.1); border: 1px solid rgba(255,255,255,.16);
-  border-radius: 20px; padding: 24px; display: flex; flex-direction: column; gap: 4px;
+  border-radius: 20px; padding: 20px; display: flex; flex-direction: column; gap: 4px;
 }
 .event-location strong { font-size: 20px; }
 .event-address { display: block; margin-top: 10px; color: inherit; font-weight: 700; text-decoration: underline; text-underline-offset: 3px; }
@@ -336,7 +336,7 @@ footer strong { color: var(--purple-dark); font-family: "Playfair Display", seri
 @media (max-width: 500px) {
   h1 { font-size: 45px; }
   .section { padding-top: 65px; padding-bottom: 65px; }
-  .event-card { padding: 30px 24px; }
+  .event-card { padding: 24px 20px; }
   footer { flex-direction: column; }
 }
 
