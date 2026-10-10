@@ -199,8 +199,9 @@ function renderFosterAlumni(kittenList, today = new Date()) {
 
   const alumniIds = new Map(alumni.map(kitten => [kitten.id, kitten.name]));
   const raymondNotice = document.querySelector("#raymond-wally-notice")?.innerHTML.trim();
+  const twelfthLitterNotice = document.querySelector("#twelfth-litter-notice")?.innerHTML.trim();
   const eleventhLitterNotice = document.querySelector("#eleventh-litter-notice")?.innerHTML.trim();
-  if (!raymondNotice || !eleventhLitterNotice) {
+  if (!raymondNotice || !twelfthLitterNotice || !eleventhLitterNotice) {
     container.innerHTML = '<div class="empty-state" role="alert">Foster alumni notices could not be loaded. Please try again later.</div>';
     console.error("Foster alumni temporary notice templates are missing.");
     return;
@@ -217,7 +218,8 @@ function renderFosterAlumni(kittenList, today = new Date()) {
   container.innerHTML = [...groups.entries()].map(([litter, kittens]) => {
     if (litter === 12) {
       eleventhLitterRendered = true;
-      return `${renderAlumniLitter(litter, kittens, alumniIds, today)}${renderTemporaryAlumniLitter(11, eleventhLitterNotice)}`;
+      const twelfthLitter = renderAlumniLitter(litter, kittens, alumniIds, today, false, twelfthLitterNotice, kittens[kittens.length - 1]?.id);
+      return `${twelfthLitter}${renderTemporaryAlumniLitter(11, eleventhLitterNotice)}`;
     }
     if (litter === 10) {
       const litterTen = renderAlumniLitter(litter, kittens, alumniIds, today, false, raymondNotice, "matilda");
