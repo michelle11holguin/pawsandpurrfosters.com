@@ -37,7 +37,7 @@ alumniRoot.PAWS_FOSTER_ALUMNI = [
     birthday: "2025-04-02",
     adoptionDate: "2026-03-07",
     fosterLitter: 7,
-    image: "assets/kittens/alumni-skylar.png",
+    image: "assets/kittens/alumni-scout.png",
     photos: [],
     secondChance: true
   },
@@ -49,7 +49,7 @@ alumniRoot.PAWS_FOSTER_ALUMNI = [
     birthday: "2025-04-02",
     adoptionDate: "2026-02-07",
     fosterLitter: 7,
-    image: "assets/kittens/alumni-scout.png",
+    image: "assets/kittens/alumni-skylar.png",
     photos: [],
     secondChance: true
   },
