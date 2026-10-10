@@ -143,6 +143,24 @@ function renderAlumniCard(kitten, alumniIds, today = new Date()) {
   </article>`;
 }
 
+function renderAlumniLitter(litter, kittens, alumniIds, today, paired = false) {
+  const heading = formatAlumniLitter(litter);
+  const cards = kittens.map(kitten => renderAlumniCard(kitten, alumniIds, today)).join("");
+  const controls = paired
+    ? ""
+    : `<div class="alumni-carousel-controls" aria-label="${escapeHTML(heading)} card controls">
+        <button class="carousel-button alumni-arrow" type="button" aria-label="Previous alumni in ${escapeHTML(heading)}">‹</button>
+        <button class="carousel-button alumni-arrow" type="button" aria-label="Next alumni in ${escapeHTML(heading)}">›</button>
+      </div>`;
+  return `<section class="alumni-litter${paired ? " alumni-litter--paired" : ""}" aria-labelledby="alumni-litter-${litter}">
+    <div class="alumni-litter-heading">
+      <h2 id="alumni-litter-${litter}">${escapeHTML(heading)}</h2>
+      ${controls}
+    </div>
+    <div class="alumni-cards" role="region" aria-label="${escapeHTML(heading)} alumni" tabindex="0">${cards}</div>
+  </section>`;
+}
+
 function renderFosterAlumni(kittenList, today = new Date()) {
   if (typeof document === "undefined") return;
   const container = document.querySelector("#foster-alumni");
@@ -162,22 +180,19 @@ function renderFosterAlumni(kittenList, today = new Date()) {
     groups.get(litter).push(kitten);
   });
 
+  const hasDiabloFinnPair = groups.has(5) && groups.has(4);
   container.innerHTML = [...groups.entries()].map(([litter, kittens]) => {
-    const heading = formatAlumniLitter(litter);
-    const cards = kittens.map(kitten => renderAlumniCard(kitten, alumniIds, today)).join("");
-    return `<section class="alumni-litter" aria-labelledby="alumni-litter-${litter}">
-      <div class="alumni-litter-heading">
-        <h2 id="alumni-litter-${litter}">${escapeHTML(heading)}</h2>
-        <div class="alumni-carousel-controls" aria-label="${escapeHTML(heading)} card controls">
-          <button class="carousel-button alumni-arrow" type="button" aria-label="Previous alumni in ${escapeHTML(heading)}">‹</button>
-          <button class="carousel-button alumni-arrow" type="button" aria-label="Next alumni in ${escapeHTML(heading)}">›</button>
-        </div>
-      </div>
-      <div class="alumni-cards" role="region" aria-label="${escapeHTML(heading)} alumni" tabindex="0">${cards}</div>
-    </section>`;
+    if (hasDiabloFinnPair && litter === 5) {
+      return `<div class="alumni-litter-pair">
+        ${renderAlumniLitter(5, groups.get(5), alumniIds, today, true)}
+        ${renderAlumniLitter(4, groups.get(4), alumniIds, today, true)}
+      </div>`;
+    }
+    if (hasDiabloFinnPair && litter === 4) return "";
+    return renderAlumniLitter(litter, kittens, alumniIds, today);
   }).join("");
 
-  container.querySelectorAll(".alumni-litter").forEach(section => {
+  container.querySelectorAll(".alumni-litter:not(.alumni-litter--paired)").forEach(section => {
     const track = section.querySelector(".alumni-cards");
     const [previous, next] = section.querySelectorAll(".alumni-arrow");
     const updateControls = () => {

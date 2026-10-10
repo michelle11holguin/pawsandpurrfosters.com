@@ -6,6 +6,113 @@ const alumniRoot = typeof window !== "undefined" ? window : globalThis;
 
 alumniRoot.PAWS_FOSTER_ALUMNI = [
   {
+    id: "freddy",
+    status: "Adopted",
+    name: "Freddy",
+    gender: "Male",
+    birthday: "2025-04-02",
+    adoptionDate: "2025-08-09",
+    fosterLitter: 7,
+    image: "assets/kittens/alumni-freddy.png",
+    photos: [],
+    companionId: "frannie"
+  },
+  {
+    id: "frannie",
+    status: "Adopted",
+    name: "Frannie",
+    gender: "Female",
+    birthday: "2025-04-02",
+    adoptionDate: "2025-08-09",
+    fosterLitter: 7,
+    image: "assets/kittens/alumni-frannie.png",
+    photos: [],
+    companionId: "freddy"
+  },
+  {
+    id: "skylar",
+    status: "Adopted",
+    name: "Skylar",
+    gender: "Female",
+    birthday: "2025-04-02",
+    adoptionDate: "2026-03-07",
+    fosterLitter: 7,
+    image: "assets/kittens/alumni-skylar.png",
+    photos: [],
+    secondChance: true
+  },
+  {
+    id: "scout",
+    status: "Adopted",
+    name: "Scout",
+    gender: "Male",
+    birthday: "2025-04-02",
+    adoptionDate: "2026-02-07",
+    fosterLitter: 7,
+    image: "assets/kittens/alumni-scout.png",
+    photos: [],
+    secondChance: true
+  },
+  {
+    id: "ruben",
+    status: "Adopted",
+    name: "Ruben",
+    gender: "Male",
+    birthday: "2025-03-23",
+    adoptionDate: "2025-09-06",
+    fosterLitter: 6,
+    image: "assets/kittens/alumni-ruben.png",
+    photos: [],
+    companionId: "otto"
+  },
+  {
+    id: "otto",
+    status: "Adopted",
+    name: "Otto",
+    gender: "Male",
+    birthday: "2025-03-23",
+    adoptionDate: "2025-09-06",
+    fosterLitter: 6,
+    image: "assets/kittens/alumni-otto.png",
+    photos: [],
+    companionId: "ruben"
+  },
+  {
+    id: "clementine",
+    status: "Adopted",
+    name: "Clementine",
+    gender: "Female",
+    birthday: "2025-03-23",
+    adoptionDate: "2025-09-17",
+    fosterLitter: 6,
+    image: "assets/kittens/alumni-clementine.png",
+    photos: [],
+    companionId: "charlotte"
+  },
+  {
+    id: "charlotte",
+    status: "Adopted",
+    name: "Charlotte",
+    gender: "Female",
+    birthday: "2025-03-23",
+    adoptionDate: "2025-09-17",
+    fosterLitter: 6,
+    image: "assets/kittens/alumni-charlotte.png",
+    photos: [],
+    companionId: "clementine"
+  },
+  {
+    id: "diablo",
+    status: "Adopted",
+    name: "Diablo",
+    gender: "Male",
+    birthday: "2024-11-13",
+    adoptionDate: "2025-05-17",
+    fosterLitter: 5,
+    image: "assets/kittens/alumni-diablo.png",
+    photos: []
+  },
+  {
     id: "lyra",
     status: "Adopted",
     name: "Lyra",
