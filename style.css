@@ -357,7 +357,10 @@ footer strong { color: var(--purple-dark); font-family: "Playfair Display", seri
 }
 
 .alumni-litters { display: grid; gap: 42px; }
-.alumni-temporary-notices { display: grid; justify-items: start; gap: 22px; margin: 0 0 42px; }
+.alumni-badge-guide { max-width: 860px; margin: -18px auto 42px; }
+.alumni-badge-guide summary { padding: 15px 20px; }
+.alumni-badge-guide .status-guide-body { padding: 0 20px 18px; }
+.alumni-badge-guide__list { margin-bottom: 0; }
 .alumni-temporary-notice {
   width: 100%; padding: 30px clamp(22px, 4vw, 42px); border: 1px solid rgba(117,98,141,.18);
   border-radius: 22px; background: var(--purple-light); color: var(--ink);
@@ -365,8 +368,9 @@ footer strong { color: var(--purple-dark); font-family: "Playfair Display", seri
 .alumni-temporary-notice h2 { margin: 0 0 14px; color: var(--purple-dark); font-size: clamp(25px, 3vw, 34px); }
 .alumni-temporary-notice p { margin: 0 0 14px; color: var(--muted); }
 .alumni-temporary-notice .button { margin-top: 4px; }
-.alumni-temporary-notice__update { margin: 15px 0 0 !important; font-weight: 700; color: var(--purple-dark) !important; }
-.alumni-temporary-notice--pair { max-width: 662px; }
+.alumni-temporary-notice--pair { max-width: none; flex: 0 0 calc(clamp(220px, calc((100% - 44px) / 3), 320px) + clamp(220px, calc((100% - 44px) / 3), 320px) + 22px); }
+.alumni-temporary-notice--eleventh { flex: 0 0 calc(clamp(220px, calc((100% - 44px) / 3), 320px) + clamp(220px, calc((100% - 44px) / 3), 320px) + clamp(220px, calc((100% - 44px) / 3), 320px) + 44px); }
+.alumni-litter--temporary .alumni-cards { overflow-x: auto; }
 .foster-page-intro .page-actions { gap: 12px; flex-wrap: wrap; }
 .alumni-litter { min-width: 0; }
 .alumni-litter-pair { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 22px; }
@@ -384,6 +388,10 @@ footer strong { color: var(--purple-dark); font-family: "Playfair Display", seri
 .alumni-card { flex: 0 0 clamp(220px, calc((100% - 44px) / 3), 320px); min-width: 0; scroll-snap-align: start; }
 .alumni-main-photo { position: relative; }
 .alumni-main-photo > img { object-fit: contain; }
+.alumni-photo-indicators { display: flex; justify-content: center; gap: 8px; padding: 10px 0 2px; }
+.alumni-photo-indicator { width: 9px; height: 9px; padding: 0; border: 0; border-radius: 50%; background: var(--line); cursor: pointer; }
+.alumni-photo-indicator[aria-pressed="true"] { background: var(--purple); }
+.alumni-photo-indicator:focus-visible { outline: 2px solid var(--purple-dark); outline-offset: 3px; }
 .alumni-birthday-cake {
   position: absolute; top: 12px; right: 12px; display: grid; place-items: center;
   width: 38px; height: 38px; border: 1px solid rgba(117,98,141,.22); border-radius: 50%;
@@ -411,6 +419,7 @@ footer strong { color: var(--purple-dark); font-family: "Playfair Display", seri
 }
 
 @media (max-width: 500px) {
+  .alumni-temporary-notice--pair, .alumni-temporary-notice--eleventh { flex-basis: 100%; }
   .alumni-litter--paired .alumni-card { flex-basis: min(76vw, 310px); }
   .alumni-litter-heading { align-items: flex-start; }
   .alumni-carousel-controls { gap: 5px; }

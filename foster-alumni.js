@@ -99,6 +99,8 @@ function formatAlumniLitter(litterNumber) {
   return `${number}${suffix} Foster Litter`;
 }
 
+const alumniPhotoCarouselIds = new Set(["mavis", "fawn", "diablo", "scout", "skylar"]);
+
 function renderAlumniCard(kitten, alumniIds, today = new Date()) {
   const celebrations = getAlumniCelebrations(kitten, today);
   const age = getAlumniAge(kitten.birthday, today);
@@ -110,10 +112,16 @@ function renderAlumniCard(kitten, alumniIds, today = new Date()) {
   const photos = Array.isArray(kitten.photos)
     ? kitten.photos.filter(photo => typeof photo === "string" && photo.trim())
     : [];
-  const gallery = photos.length
+  const hasPhotoCarousel = alumniPhotoCarouselIds.has(kitten.id) && kitten.image && photos.length === 1;
+  const gallery = photos.length && !hasPhotoCarousel
     ? `<div class="alumni-gallery" aria-label="More photos of ${escapeHTML(kitten.name)}">${photos.map((photo, index) => `
       <img src="${escapeHTML(photo)}" alt="${escapeHTML(kitten.name)}${photos.length > 1 ? `, additional photo ${index + 1}` : ", additional photo"}" loading="lazy">
     `).join("")}</div>`
+    : "";
+  const photoIndicators = hasPhotoCarousel
+    ? `<div class="alumni-photo-indicators" role="group" aria-label="${escapeHTML(kitten.name)} photos">
+        ${[kitten.image, ...photos].map((photo, index) => `<button class="alumni-photo-indicator" type="button" data-photo="${escapeHTML(photo)}" data-index="${index}" aria-label="Show ${escapeHTML(kitten.name)} photo ${index + 1}" aria-pressed="${index === 0}"></button>`).join("")}
+      </div>`
     : "";
   const companionLink = kitten.companionId && alumniIds.has(kitten.companionId)
     ? `<a class="alumni-companion" href="#alumni-${escapeHTML(kitten.companionId)}">Adopted with ${escapeHTML(alumniIds.get(kitten.companionId))}</a>`
@@ -124,10 +132,13 @@ function renderAlumniCard(kitten, alumniIds, today = new Date()) {
   ].join("");
 
   return `<article class="kitten-card alumni-card" id="alumni-${escapeHTML(kitten.id)}">
+    ${hasPhotoCarousel ? '<div class="alumni-photo-carousel">' : ""}
     <div class="card-photo-wrap alumni-main-photo">
       ${kitten.image ? `<img src="${escapeHTML(kitten.image)}" alt="${escapeHTML(kitten.name)}" loading="lazy">` : ""}
       ${celebrations.celebratesBirthday ? '<span class="alumni-birthday-cake" aria-label="Birthday month">🎂</span>' : ""}
     </div>
+    ${photoIndicators}
+    ${hasPhotoCarousel ? "</div>" : ""}
     <div class="card-content alumni-card-content">
       <h3>${escapeHTML(kitten.name)}${designation ? ` ${designation}` : ""}</h3>
       <dl class="alumni-details">
@@ -145,9 +156,11 @@ function renderAlumniCard(kitten, alumniIds, today = new Date()) {
   </article>`;
 }
 
-function renderAlumniLitter(litter, kittens, alumniIds, today, paired = false) {
+function renderAlumniLitter(litter, kittens, alumniIds, today, paired = false, extraCardMarkup = "", extraCardAfterId = "") {
   const heading = formatAlumniLitter(litter);
-  const cards = kittens.map(kitten => renderAlumniCard(kitten, alumniIds, today)).join("");
+  const cards = kittens.map(kitten =>
+    `${renderAlumniCard(kitten, alumniIds, today)}${kitten.id === extraCardAfterId ? extraCardMarkup : ""}`
+  ).join("");
   const controls = paired
     ? ""
     : `<div class="alumni-carousel-controls" aria-label="${escapeHTML(heading)} card controls">
@@ -163,6 +176,16 @@ function renderAlumniLitter(litter, kittens, alumniIds, today, paired = false) {
   </section>`;
 }
 
+function renderTemporaryAlumniLitter(litter, noticeMarkup) {
+  const heading = formatAlumniLitter(litter);
+  return `<section class="alumni-litter alumni-litter--temporary" aria-labelledby="alumni-litter-${litter}">
+    <div class="alumni-litter-heading">
+      <h2 id="alumni-litter-${litter}">${escapeHTML(heading)}</h2>
+    </div>
+    <div class="alumni-cards" role="region" aria-label="${escapeHTML(heading)}" tabindex="0">${noticeMarkup}</div>
+  </section>`;
+}
+
 function renderFosterAlumni(kittenList, today = new Date()) {
   if (typeof document === "undefined") return;
   const container = document.querySelector("#foster-alumni");
@@ -175,6 +198,13 @@ function renderFosterAlumni(kittenList, today = new Date()) {
   }
 
   const alumniIds = new Map(alumni.map(kitten => [kitten.id, kitten.name]));
+  const raymondNotice = document.querySelector("#raymond-wally-notice")?.innerHTML.trim();
+  const eleventhLitterNotice = document.querySelector("#eleventh-litter-notice")?.innerHTML.trim();
+  if (!raymondNotice || !eleventhLitterNotice) {
+    container.innerHTML = '<div class="empty-state" role="alert">Foster alumni notices could not be loaded. Please try again later.</div>';
+    console.error("Foster alumni temporary notice templates are missing.");
+    return;
+  }
   const groups = new Map();
   alumni.forEach(kitten => {
     const litter = Number(kitten.fosterLitter);
@@ -183,7 +213,16 @@ function renderFosterAlumni(kittenList, today = new Date()) {
   });
 
   const hasDiabloFinnPair = groups.has(5) && groups.has(4);
+  let eleventhLitterRendered = false;
   container.innerHTML = [...groups.entries()].map(([litter, kittens]) => {
+    if (litter === 12) {
+      eleventhLitterRendered = true;
+      return `${renderAlumniLitter(litter, kittens, alumniIds, today)}${renderTemporaryAlumniLitter(11, eleventhLitterNotice)}`;
+    }
+    if (litter === 10) {
+      const litterTen = renderAlumniLitter(litter, kittens, alumniIds, today, false, raymondNotice, "matilda");
+      return `${eleventhLitterRendered ? "" : renderTemporaryAlumniLitter(11, eleventhLitterNotice)}${litterTen}`;
+    }
     if (hasDiabloFinnPair && litter === 5) {
       return `<div class="alumni-litter-pair">
         ${renderAlumniLitter(5, groups.get(5), alumniIds, today, true)}
@@ -194,7 +233,36 @@ function renderFosterAlumni(kittenList, today = new Date()) {
     return renderAlumniLitter(litter, kittens, alumniIds, today);
   }).join("");
 
-  container.querySelectorAll(".alumni-litter:not(.alumni-litter--paired)").forEach(section => {
+  container.querySelectorAll(".alumni-photo-carousel").forEach(carousel => {
+    const image = carousel.querySelector(".alumni-main-photo > img");
+    const photoArea = carousel.querySelector(".alumni-main-photo");
+    const indicators = [...carousel.querySelectorAll(".alumni-photo-indicator")];
+    if (!image || !photoArea || indicators.length !== 2) return;
+
+    let activeIndex = 0;
+    const showPhoto = index => {
+      activeIndex = (index + indicators.length) % indicators.length;
+      const indicator = indicators[activeIndex];
+      image.src = indicator.dataset.photo;
+      image.alt = `${carousel.closest(".alumni-card").querySelector("h3").textContent.trim()} photo ${activeIndex + 1}`;
+      indicators.forEach((button, buttonIndex) => button.setAttribute("aria-pressed", String(buttonIndex === activeIndex)));
+    };
+    indicators.forEach((button, index) => button.addEventListener("click", () => showPhoto(index)));
+
+    let touchStartX = null;
+    photoArea.addEventListener("touchstart", event => {
+      touchStartX = event.touches[0]?.clientX ?? null;
+    }, { passive: true });
+    photoArea.addEventListener("touchend", event => {
+      const touchEndX = event.changedTouches[0]?.clientX;
+      if (touchStartX === null || touchEndX === undefined) return;
+      const movement = touchEndX - touchStartX;
+      if (Math.abs(movement) > 40) showPhoto(activeIndex + (movement < 0 ? 1 : -1));
+      touchStartX = null;
+    }, { passive: true });
+  });
+
+  container.querySelectorAll(".alumni-litter:not(.alumni-litter--paired):not(.alumni-litter--temporary)").forEach(section => {
     const track = section.querySelector(".alumni-cards");
     const [previous, next] = section.querySelectorAll(".alumni-arrow");
     const updateControls = () => {
@@ -256,6 +324,7 @@ if (typeof module !== "undefined") {
     sortAlumniByLitterAndAdoptionDate,
     formatAlumniLitter,
     renderAlumniCard,
+    renderTemporaryAlumniLitter,
     renderFosterAlumni
   };
 }

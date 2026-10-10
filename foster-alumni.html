@@ -36,22 +36,38 @@
       <p>Once our fosters, always part of our story. Celebrate the kittens who have found their forever homes!</p>
     </section>
 
-    <section class="alumni-temporary-notices" aria-label="Kittens still looking for homes">
-      <article class="alumni-temporary-notice alumni-temporary-notice--litter">
-        <h2>Still Looking for Their Forever Homes</h2>
-        <p>All the kittens in this litter are still in foster care, waiting to find their perfect matches.</p>
-        <p>Once they've graduated from being foster kittens and found their forever homes, they'll be added here to be celebrated!</p>
-        <a class="button primary" href="available-kittens.html">Meet the 11th Litter →</a>
-        <p class="alumni-temporary-notice__update">Check back for updates!</p>
-      </article>
-      <article class="alumni-temporary-notice alumni-temporary-notice--pair">
-        <h2>Still Looking for Their Forever Home</h2>
-        <p>Raymond and Wally are back in foster care and once again waiting for a family to call their own. Everyone deserves a second chance, and their story isn't finished yet!</p>
-        <a class="button primary" href="all-kittens.html">Meet Raymond &amp; Wally →</a>
-      </article>
-    </section>
+    <details class="status-guide alumni-badge-guide">
+      <summary>
+        <span class="status-guide-summary">
+          <span class="status-guide-title">Alumni Badge Guide</span>
+          <span class="status-guide-subtitle">Learn what our alumni badges mean.</span>
+        </span>
+        <span class="status-guide-chevron" aria-hidden="true">▾</span>
+      </summary>
+      <div class="status-guide-body">
+        <ul class="status-guide-list alumni-badge-guide__list">
+          <li><span class="alumni-special-badge">Foster Fail</span> — These kittens started out in our foster care, but along the way, we fell in love and decided to make them permanent members of our family. Sometimes, a foster kitten just finds their forever home right where they started!</li>
+          <li><span class="alumni-special-badge alumni-special-badge--second-chance">Second Chance</span> — These kittens were adopted, returned to foster care, and later found their forever homes again. Their stories are a reminder that every kitten deserves a second chance.</li>
+        </ul>
+      </div>
+    </details>
 
     <section class="alumni-litters" id="foster-alumni" aria-label="Foster alumni by litter" aria-live="polite"></section>
+
+    <template id="raymond-wally-notice">
+      <article class="alumni-temporary-notice alumni-temporary-notice--pair">
+        <h2>Still Looking for Their Forever Home</h2>
+        <p>Raymond and Wally are back in foster care and once again waiting for a family to call their own. Everyone deserves a second chance, and their story isn't finished yet! <strong>Check back for updates!</strong></p>
+        <a class="button primary" href="all-kittens.html">Meet Raymond &amp; Wally →</a>
+      </article>
+    </template>
+    <template id="eleventh-litter-notice">
+      <article class="alumni-temporary-notice alumni-temporary-notice--eleventh">
+        <h2>Still Looking for Their Forever Homes</h2>
+        <p>All the kittens in this litter are still in foster care, waiting to find their perfect matches. Once they've graduated from being foster kittens and found their forever homes, they'll be added here to be celebrated. <strong>Check back for updates!</strong></p>
+        <a class="button primary" href="available-kittens.html">Meet the 11th Litter →</a>
+      </article>
+    </template>
   </main>
 
   <footer>
